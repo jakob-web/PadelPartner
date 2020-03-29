@@ -16,7 +16,7 @@ cur = con.cursor()
 def index():
     cur.execute('select namn from person')
     namn = cur.fetchall()
-    return template('index.html')
+    return template('index.html', namn=namn)
 
 run(host='localhost', port=8080, debug=True)
 con.close()
