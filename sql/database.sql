@@ -15,3 +15,10 @@ ortID integer,
 stad char(40)
 PRIMARY KEY ortID
 );
+
+create table profile (
+id integer,
+username char(50),
+password char(50)
+PRIMARY KEY id
+); 
