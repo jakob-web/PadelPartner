@@ -5,8 +5,7 @@ hejdjasdas
 
 
 
- Nu skriver jag en ny kodsträng
- Detta är uppdaterat
+Ta borta detta och lägg till nåt annat istället :)
 
 
 
