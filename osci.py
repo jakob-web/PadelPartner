@@ -1,5 +1,0 @@
-def get():
-
-get()
-
-JHHJHJHJBJHIHIHUIHIHIHI
