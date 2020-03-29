@@ -15,7 +15,7 @@ cur = con.cursor()
 @route('/')
 def index():
     cur.execute('select namn from person')
-    namn = cur
+    namn = cur.fetchall()
     return template('index.html')
 
 run(host='localhost', port=8080, debug=True)
