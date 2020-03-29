@@ -1,4 +1,0 @@
-
-result_list = []
-
-HEJ
