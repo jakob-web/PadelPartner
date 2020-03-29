@@ -10,6 +10,15 @@ info char(100),
 PRIMARY KEY (pnr)
 );
 
+create table person (
+pnr BIGINT CONSTRAINT TenDigits CHECK (pnr BETWEEN 1000000000 and 9999999999),
+namn varchar(100),
+level int,
+info varchar(1000),
+PRIMARY KEY (pnr)
+);
+
+
 create table ort (
 ortID integer,
 stad char(40),
