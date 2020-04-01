@@ -5,8 +5,8 @@ import psycopg2
 
 con = psycopg2.connect( 
     dbname="padel", 
-    user="ak1838",
-    password="xrqhw4q4",
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -22,19 +22,30 @@ def logIn():
 
     return template("log_in.html")
 
-@route('logInUser', method="POST")
+@route('/logInUser', method="POST")
 def logInUser():
-
+    print("hej")
     # data regarding the profile table
     userName = request.forms.get("userName")
-    password = request.forms.get("pwd")
+    password = request.forms.get("password")
     print(userName, password)
 
+   
+
     def selectMember():
-        cur.execute("select * from profile where profile.password = %s", [password])
+        userSelect = []
+        userSelect.append(userName)
+        userSelect.append(password)
+        
+        sql = "select * from profile where username = %s AND profile.password = %s"
+        cur.execute(sql, userSelect)
         
 
     selectMember()
     
-    return template("index.html")
+    return template("welcome.html")
+
+
+run(host='localhost', port=8080, debug=True)
+con.close()
 
