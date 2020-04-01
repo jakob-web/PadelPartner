@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PadelPartner</title>
+    <link href="/static/style.css" rel="stylesheet" >
+</head>
+<body id="container">
+    <header>
+        <a href="http://localhost:8080/"><h1>PadelPartner</h1></a>
+    </header>
+    <main> 
+        <fieldset>
+            <legend>Registera användare:</legend>
+            <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
+            i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
+            <form action="http://localhost:8080/registerUser" method="POST">
+                
+                <!-- Person data -->
+                <label for="fNamn">Förnamn:</label>
+                <input type="text" name="fNamn" id="fNamn" class="margin20" value="" required> <br>
+                <label for="eNamn">Efternamn:</label>
+                <input type="text" name="eNamn" id="eNamn" class="margin20" value="" required> <br>
+                <label for="pnr">Personnummer (10 siffor):</label>
+                <input type="text" name="pnr" id="pnr" class="margin20" value="" minlength="10" maxlength="10" required> <br>
+                <label for="level">Nivå (1-5):</label>
+                <input type="radio" id="1" name="level" value="1"><label for="1">1</label>
+                <input type="radio" id="2" name="level" value="2"><label for="2">2</label>
+                <input type="radio" id="3" name="level" value="3"><label for="3">3</label>
+                <input type="radio" id="4" name="level" value="4"><label for="4">4</label>
+                <input type="radio" id="5" name="level" value="5"><label for="5">5</label>
+                <br>
+                <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required></textarea> <br>
+                <br>
+                
+                <!-- Profile data -->
+                <label for="userName">Användarnamn:</label>
+                <input type="userName" id="userName" name="userName"><br>
+                <label for="pwd">Lösenord:</label>
+                <input type="password" id="pwd" name="pwd" minlength="8"><br>
+                <input type="submit">
+            </form>
+        </fieldset> 
+        
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
