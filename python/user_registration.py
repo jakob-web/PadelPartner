@@ -51,7 +51,7 @@ def register():
 
     def insertPerson():
         sql = "insert into person values(%s,%s,%s,%s)"
-        namn = förnamn + efternamn
+        namn = förnamn + " " + efternamn
         val = pnr,namn,level,info
         cur.execute(sql,val)
         con.commit()
