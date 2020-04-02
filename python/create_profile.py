@@ -50,7 +50,7 @@ def Profile():
     
     return template("create_profile.html")
 
-@route('/createProfile')
+@route('/createProfile', method="POST")
 def createProfile():
     genderOfPlayer = getattr(request.forms,"gender")
     infoOfPlayer = getattr(request.forms,"info")

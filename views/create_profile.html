@@ -15,16 +15,16 @@
             <legend>Skapa profil</legend>
             <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
             i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
-            <form action="http://localhost:8080/createProfile">
+            <form action="http://localhost:8080/createProfile" method="POST">
                 
                 <!-- Person data -->
                 
                
-                <label for="pnr">Kön:</label>
-                <input type="text" name="gender" id="gender" class="margin20" value=""  required> <br>
+                <label for="gender">Kön:</label>
+                <input type="text" name="gender" id="gender" class="margin20" value=""  required>
                 
                 <br>
-                <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required></textarea> <br>
+                <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required></textarea>
                 <br>
                 
                 <input type="submit">
