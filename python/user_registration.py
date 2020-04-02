@@ -66,7 +66,7 @@ def register():
     insertProfile()
 
 
-    return template("welcome.html")
+    return template("user_registration.html")
 
 
 run(host='localhost', port=8080, debug=True)
