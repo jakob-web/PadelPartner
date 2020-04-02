@@ -26,8 +26,8 @@ def logIn():
 def logInUser():
     print("hej")
     # data regarding the profile table
-    userName = request.forms.get("userName")
-    password = request.forms.get("password")
+    userName = getattr(request.forms,"userName")
+    password = getattr(request.forms,"password")
     print(userName, password)
 
    
