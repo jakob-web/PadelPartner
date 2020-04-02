@@ -31,16 +31,16 @@ def register():
     """
 
     # data regarding the person table
-    förnamn = getattr(request.forms,"fNamn")
-    efternamn = getattr(request.forms,"eNamn")
-    pnr = getattr(request.forms,"pnr")
-    level = getattr(request.forms,"level")
-    info = getattr(request.forms,"info")
+    förnamn = request.forms.get("fNamn")
+    efternamn = request.forms.get("eNamn")
+    pnr = request.forms.get("pnr")
+    level = request.forms.get("level")
+    info = request.forms.get("info")
     print(förnamn, efternamn, pnr, level, info)
     
     # data regarding the profile table
-    userName = getattr(request.forms,"userName")
-    password = getattr(request.forms,"pwd")
+    userName = request.forms.get("userName")
+    password = request.forms.get("pwd")
     print(userName, password)
 
     # fetches the current highest id num and adds 1
