@@ -66,7 +66,7 @@ def createProfile():
        
         sql = "insert into profile1 values(%s,%s,%s)"
         val = id,genderOfPlayer,infoOfPlayer
-        cur.execute(sql, val)
+        cur.execute(sql,val)
         con.commit()
         
 
