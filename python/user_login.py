@@ -26,6 +26,8 @@ def logIn():
 def logInUser():
     print("hej")
     # data regarding the profile table
+
+
     userName = getattr(request.forms,"userName")
     password = getattr(request.forms,"password")
     print(userName, password)
@@ -33,17 +35,20 @@ def logInUser():
    
 
     def selectMember():
-        userSelect = []
-        userSelect.append(userName)
-        userSelect.append(password)
+        # userSelect = []
+        # userSelect.append(userName)
+        # userSelect.append(password)
         
         sql = "select * from profile where username = %s AND profile.password = %s"
-        cur.execute(sql, userSelect)
+        val = userName,password
+        cur.execute(sql, val)
         
 
     selectMember()
     
-    return template("welcome.html")
+    return template("welcome.html", user = userName)
+
+
 
 
 run(host='localhost', port=8080, debug=True)
