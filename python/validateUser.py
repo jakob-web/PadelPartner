@@ -20,7 +20,7 @@ def index():
 @route('/logIn')
 def logIn():
 
-    return template("log_in.html")
+    return template("log_in.html", username = "")
 
 @route('/logInUser', method="POST")
 def login():
@@ -35,7 +35,7 @@ def login():
             cred = cur.fetchall()
             for pwd in cred:
                 if password == pwd[0]:
-                    redirect('/loggedIn')
+                    return template('welcome', username = username)
                 else:
                     print("fel lösenord")
                     return template("log_in")
