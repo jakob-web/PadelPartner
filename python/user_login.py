@@ -19,13 +19,14 @@ def index():
 
 
 
-"""@route('/logIn')
+@route('/logIn')
 def logIn():
 
-    return template("log_in.html", username ="")"""
+    return template('log_in.html', username ="")
 
 #current table = profiletest // change this later!
 
+@route('/logInUser', method="POST")
 
 def password():
     cred = []
@@ -43,9 +44,9 @@ def password():
                     return template("welcome.html", user = username)
                 else:
                     print("Felaktigt lösenord eller Användarnamn")
-                    redirect('/log_in')
+                    redirect("/log_in")
         else:
-            redirect('/log_in')
+            redirect("/log_in")
 
     
 
