@@ -20,7 +20,7 @@ def index():
 @route('/logIn')
 def logIn():
 
-    return template("log_in.html")
+    return template("log_in.html", username ="")
 
 @route('/logInUser', method="POST")
 def login():
