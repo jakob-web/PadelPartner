@@ -21,18 +21,12 @@ def index():
 
 @route('/logIn')
 def logIn():
-
-    return template("log_in.html", username ="")
+    return template('log_in.html', username ="")
 
 @route('/logInUser', method="POST")
 def logInUser():
     user_login.password()
-    
 
-"""@route('/logInUser', method="POST")
-def logInUser():
-    pass"""
-    
 
 @route('/myprofile')
 def myProfile():
