@@ -25,7 +25,6 @@ def logIn():
 
 @route('/logInUser', method="POST")
 def logInUser():
-    print("hej")
     # data regarding the profile table
     userName = getattr(request.forms,"userName")
     password = getattr(request.forms,"password")
