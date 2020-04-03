@@ -28,26 +28,23 @@ def login():
     cur.execute("select username from profiletest")
     cred = cur.fetchall()
     username = getattr(request.forms, "userName")
-    password = getattr(request.forms, "psw")
+    password = getattr(request.forms, "pwd")
     for name in cred:
-        print(name)
-        print(username)
-        if username == name:
+        if username == name[0]:
             cur.execute("select password from profiletest where username='%s'" % (username))
             cred = cur.fetchall()
             for pwd in cred:
-                print(pwd)
                 if password == pwd[0]:
-                    redirect('/welcome')
+                    redirect('/loggedIn')
                 else:
                     print("fel lösenord")
                     return template("log_in")
         else:
-            print("fel användarnamn")
-            return template("log_in")
+            pass
 @route('/loggedIn')
 def loggedIn():
     return template("welcome")
+
 
 run(host='localhost', port=8080, debug=True)
 con.close()

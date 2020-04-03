@@ -27,7 +27,7 @@ def logIn():
 def logInUser():
     # data regarding the profile table
     userName = getattr(request.forms,"userName")
-    password = getattr(request.forms,"password")
+    password = getattr(request.forms,"pwd")
     print(userName, password)
 
     def selectMember():
