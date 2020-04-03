@@ -49,24 +49,37 @@ def register():
         id=row[0]
         id=id+1
 
-    def insertPerson():
-        sql = "insert into person values(%s,%s,%s,%s)"
-        namn = förnamn + " " + efternamn
-        val = pnr,namn,level,info
-        cur.execute(sql,val)
-        con.commit()
-        
-    def insertProfile():
-        sql = "insert into profile values(%s,%s,%s)"
-        val = id,userName,password
-        cur.execute(sql,val)
-        con.commit()
+    # if user name doesn't already exists
+    cur.execute('select username from profile')
+    usernameList = cur.fetchall()
+    usernameList = ("".join(str(usernameList)))
+    print(usernameList)
+    if userName not in usernameList:
+        print("Yeeey")
+    
+        def insertPerson():
+            sql = "insert into person values(%s,%s,%s,%s)"
+            namn = förnamn + " " + efternamn
+            val = pnr,namn,level,info
+            cur.execute(sql,val)
+            con.commit()
+            
+        def insertProfile():
+            sql = "insert into profile values(%s,%s,%s)"
+            val = id,userName,password
+            cur.execute(sql,val)
+            con.commit()
 
-    insertPerson()
-    insertProfile()
+        insertPerson()
+        insertProfile()
 
 
-    return template("user_registration.html")
+        return template("log_in.html", username = userName)
+    
+    # if user name already exists
+    else:
+        print("Username already exists")
+        return template("user_registration.html")
 
 
 run(host='localhost', port=8080, debug=True)
