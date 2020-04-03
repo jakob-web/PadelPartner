@@ -11,20 +11,7 @@ con = psycopg2.connect(
 
 cur = con.cursor()
 
-@route('/')
-def index():
-    cur.execute('select namn from person')
-    namn = cur.fetchall()
-    return template('index.html', namn=namn)
 
-@route('/register')
-def register_form():
-    """
-    Shows a form for registration of a user.
-    """
-    return template("user_registration.html")
-
-@route('/registerUser', method="POST")
 def register():
     """
     Receives User resitration information from a form and creates Person & Profile in the database.
@@ -72,15 +59,6 @@ def register():
 
         insertPerson()
         insertProfile()
-
-
-        return template("log_in.html", username = userName)
-    
-    # if user name already exists
-    else:
-        print("Username already exists")
-        return template("user_registration.html")
-
-
-run(host='localhost', port=8080, debug=True)
-con.close()
+        return True
+    else: 
+        return False
