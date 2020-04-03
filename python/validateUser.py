@@ -41,10 +41,6 @@ def login():
                     return template("log_in")
         else:
             pass
-@route('/loggedIn')
-def loggedIn():
-    return template("welcome")
-
 
 run(host='localhost', port=8080, debug=True)
 con.close()
