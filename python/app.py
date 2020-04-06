@@ -39,21 +39,8 @@ def test():
         return template("user_registration.html")
 
 @route('/logInUser', method="POST")
-<<<<<<< Updated upstream
 def logInUser():
     user_login.password()
-||||||| merged common ancestors
-def logInUser():
-    user_login.password()
-    
-=======
-def test2():
-    if user_login.login() == True:
-        return template("welcome.html", user = "")
-    elif user_login.login() == False:
-        return template("log_in.html", username = "")
-
->>>>>>> Stashed changes
 
 
 
