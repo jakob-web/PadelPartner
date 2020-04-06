@@ -45,6 +45,8 @@ def test2():
     elif user_login.login() == False:
         return template("log_in.html", username = "")
 
+# TODO: Fix username auto fil lin when register form returns True
+
 
 
 
