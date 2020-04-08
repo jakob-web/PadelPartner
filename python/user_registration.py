@@ -1,6 +1,6 @@
 from bottle import route, run, template, static_file, request, redirect
 from os import listdir
-
+import hashlib, binascii, os
 import psycopg2
 
 con = psycopg2.connect( 
@@ -10,6 +10,44 @@ con = psycopg2.connect(
     host="pgserver.mah.se")
 
 cur = con.cursor()
+
+ 
+def hash_password(password):
+    """Hash a password for storing."""
+    salt = hashlib.sha256(os.urandom(60)).hexdigest().encode('ascii')
+    pwdhash = hashlib.pbkdf2_hmac('sha512', password.encode('utf-8'), salt, 100000)
+    pwdhash = binascii.hexlify(pwdhash)
+    print(pwdhash)
+    return (salt + pwdhash).decode('ascii')
+ 
+def verify_password(stored_password, provided_password):
+    """Verify a stored password against one provided by user"""
+    salt = stored_password[:64]
+    stored_password = stored_password[64:]
+    pwdhash = hashlib.pbkdf2_hmac('sha512', provided_password.encode('utf-8'), salt.encode('ascii'), 100000)
+    pwdhash = binascii.hexlify(pwdhash).decode('ascii')
+    if pwdhash == stored_password:
+        print("YES")
+    else:
+        print("NO")
+
+
+# TODO HASH FUNCTION
+#Register func:
+password = input("Lösenord:")
+password = hash_password(password)
+print(password)
+
+#login func
+#make form pwd to hash type
+povided_password = input("Lösenord: ")
+
+#rename 'cred' to stored_password
+stored_password = password
+# remove if password in cred and instead:
+verify_password(stored_password,povided_password)
+
+
 
 
 def register():
@@ -29,6 +67,8 @@ def register():
     userName = getattr(request.forms,"userName")
     password = getattr(request.forms,"pwd")
     print(userName, password)
+    password = hash_password(password)
+    print(password)
 
     # fetches the current highest id num and adds 1
     cur.execute("select max(id) from profile")
