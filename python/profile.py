@@ -21,6 +21,10 @@ def editProfile():
     val = id, info, img
     cur.execute(sql, val)
     con.commit()
+
+def getProfile(): 
+    
+    sql = "select info, picture from profile"
     
 
 
