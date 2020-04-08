@@ -39,7 +39,7 @@ create table person (
     email varchar(100),
     gender varchar(50),
     PRIMARY KEY (pid)
-)
+);
 
 create table profile (
     img varchar(1500),
@@ -48,12 +48,24 @@ create table profile (
     age integer,
     pid integer,
     PRIMARY KEY (pid),
-    FOREIGN KEY (pid) REFERENCES person (pid)
-)
+    FOREIGN KEY (pid) REFERENCES person(pid)
+);
 
 create table registration (
     username varchar(50),
-    password varchar(50),
+    password varchar(1000),
+    pid integer,
+    FOREIGN KEY (pid) REFERENCES person(pid),
     PRIMARY KEY (username)
-)
+);
+
+CREATE SEQUENCE test_id_seq OWNED BY none;
+ALTER TABLE person ALTER COLUMN pid SET DEFAULT nextval('test_id_seq');
+UPDATE person
+SET pid = nextval('test_id_seq');
+
+CREATE SEQUENCE test_id_seq2 OWNED BY none;
+ALTER TABLE profile ALTER COLUMN pid SET DEFAULT nextval('test_id_seq2');
+UPDATE profile
+SET pid = nextval('test_id_seq2');
 

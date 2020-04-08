@@ -6,16 +6,16 @@ import psycopg2
 import profile
 
 con = psycopg2.connect( 
-    dbname="padel", 
-    user="ak1838",
-    password="xrqhw4q4",
+    dbname="albinux", 
+    user="ak3672",
+    password="294evcub",
     host="pgserver.mah.se")
 
 cur = con.cursor()
 
 @route('/')
 def index():
-    cur.execute('select namn from person')
+    cur.execute('select name from person')
     namn = cur.fetchall()
     return template('index.html', namn=namn)
 
