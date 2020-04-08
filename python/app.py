@@ -52,7 +52,3 @@ def test2():
 
 run(host='localhost', port=8080, debug=True)
 con.close()
-
-
-
-TEST <3
