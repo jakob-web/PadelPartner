@@ -3,6 +3,7 @@ from os import listdir
 import user_registration
 import user_login
 import psycopg2
+import profile
 
 con = psycopg2.connect( 
     dbname="padel", 
@@ -45,6 +46,17 @@ def test2():
     elif user_login.login() == False:
         return template("log_in.html", username = "")
 
+
+@route('/changeProfile')
+def changeProfile():
+    
+    return template("edit_profile.html")
+
+@route('/profile', method="POST" )
+def profil():
+    
+    profile.editProfile()
+    return template("welcome.html")
 # TODO: Fix username auto fil lin when register form returns True
 
 

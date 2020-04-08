@@ -10,10 +10,12 @@
         </header>
         <h1>Din Beskrivning</h1>
         <figure>
-        <img src="#" alt="min profil">
+        
         </figure>
-        <form action="#" method="POST">
-            <label for="beskrivning">Beskrivning</label>
+        <form action="http://localhost:8080/profile" method="POST">
+            <label for="img" id="img">Bild-länk:</label><br>
+            <input type="text" name="img" placeholder="Kopiera in din länk här!"><br>
+            <label for="beskrivning" >Beskrivning:</label>
             <br>
             <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required></textarea> <br>
             <br>
