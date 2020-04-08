@@ -67,7 +67,7 @@ SET pid = nextval('test_id_seq');
 CREATE SEQUENCE test_id_seq2 OWNED BY none;
 ALTER TABLE profile ALTER COLUMN pid SET DEFAULT nextval('test_id_seq2');
 UPDATE profile
-SET pid = nextval('test_id_seq2');
+SET pid = nextval('test_id_seq2'); 
 
 CREATE SEQUENCE test_id_seq3 OWNED BY none;
 ALTER TABLE registration ALTER COLUMN pid SET DEFAULT nextval('test_id_seq3');

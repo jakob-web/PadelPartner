@@ -6,9 +6,9 @@ import psycopg2
 import profile
 
 con = psycopg2.connect( 
-    dbname="padel09",
-    user="aj9613",
-    password="g0rvfpok",
+    dbname="padelpartner", 
+    user="ak1838",
+    password="xrqhw4q4",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -58,9 +58,6 @@ def profil():
     profile.editProfile()
     return template("welcome.html")
 # TODO: Fix username auto fil lin when register form returns True
-
-
-
 
 
 run(host='localhost', port=8080, debug=True)
