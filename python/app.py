@@ -6,7 +6,7 @@ import psycopg2
 import profile
 
 con = psycopg2.connect( 
-    dbname="padel09", 
+    dbname="padel09",
     user="aj9613",
     password="g0rvfpok",
     host="pgserver.mah.se")
