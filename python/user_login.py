@@ -4,9 +4,9 @@ from os import listdir
 import psycopg2
 
 con = psycopg2.connect( 
-    dbname="padel", 
-    user="ak3672",
-    password="294evcub",
+    dbname="padel09", 
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -14,7 +14,7 @@ cur = con.cursor()
 
 def login():
     cred = []
-    cur.execute("select username from profile")
+    cur.execute("select username from registration")
     cred = cur.fetchall()
     usernameList = ("".join(str(cred)))
     print(usernameList)
@@ -23,7 +23,7 @@ def login():
     
     if username in usernameList:
         print("YES1")
-        cur.execute("select password from profile where username='%s'" % (username))
+        cur.execute("select password from registration where username='%s'" % (username))
         cred = cur.fetchall()
         cred = ("".join(str(cred)))
         if password in cred:

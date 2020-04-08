@@ -4,9 +4,9 @@ from os import listdir
 import psycopg2
 
 con = psycopg2.connect( 
-    dbname="padel", 
-    user="ak1838",
-    password="xrqhw4q4",
+    dbname="padel09", 
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
 
 cur = con.cursor()
