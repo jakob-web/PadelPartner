@@ -30,6 +30,7 @@ def register():
     print(userName, password)
 
     level = getattr(request.forms,"level")
+    ort = getattr(request.forms, "ort")
 
     # if user name doesn't already exists
     cur.execute('select username from registration')
@@ -52,8 +53,8 @@ def register():
             con.commit()
 
         def insertProfile():
-            sql = "insert into profile(level) values(%s)"
-            val = level
+            sql = "insert into profile(level, ort) values(%s, %s)"
+            val = level, ort
             cur.execute(sql, val)
             con.commit()
 

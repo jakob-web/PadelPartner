@@ -45,6 +45,7 @@ create table profile (
     img varchar(1500),
     info varchar(2000),
     level integer,
+    ort varchar (50),
     age integer,
     pid integer,
     PRIMARY KEY (pid),

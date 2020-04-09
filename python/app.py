@@ -57,6 +57,12 @@ def profil():
     
     profile.editProfile()
     return template("welcome.html")
+
+
+@route('/searchPlayers/')
+def search():
+
+    return template("search_players.html")
 # TODO: Fix username auto fil lin when register form returns True
 
 
