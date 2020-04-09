@@ -15,10 +15,23 @@
         <form action="http://localhost:8080/profile" method="POST">
             <label for="img" id="img">Bild-länk:</label><br>
             <input type="text" name="img" placeholder="Kopiera in din länk här!"><br>
+            
             <label for="beskrivning" >Beskrivning:</label>
             <br>
             <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required></textarea> <br>
             <br>
+
+            <br>
+            <label for="level">Nivå</label>
+            <input type="radio" id="level" name="level" value="1"><label for="level">1</label>
+            <input type="radio" id="level" name="level" value="2"><label for="level">2</label>
+            <input type="radio" id="level" name="level" value="3"><label for="level">3</label>
+            <input type="radio" id="level" name="level" value="4"><label for="level">4</label>
+            <input type="radio" id="level" name="level" value="5"><label for="level">5</label>
+            <br>
+            
+            <label for="age">Ålder:</label>
+            <input type="text" id="age" name="age">
             <input type="submit">
         </form>
     </body>
