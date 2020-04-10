@@ -39,11 +39,15 @@ def test():
         print("Username already exists")
         return template("user_registration.html")
 
+username = ''
+img = ''
 @route('/logInUser', method="POST")
 def test2():
     if user_login.login() == True:
+        global username
         username = getattr(request.forms, "userName")
         cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+        global img
         img = cur.fetchone()
         # img = profile.getImg(username)
         # pid = "Select pid from registration where username = %s", [username]
@@ -56,13 +60,13 @@ def test2():
 @route('/changeProfile')
 def changeProfile():
     
-    return template("edit_profile.html")
+    return template("edit_profile.html",user = username)
 
 @route('/profile', method="POST" )
 def profil():
     
     profile.editProfile()
-    return template("welcome.html")
+    return template("welcome.html", picture = img, user = username)
 
 
 @route('/searchPlayers/')

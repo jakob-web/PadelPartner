@@ -20,17 +20,6 @@ def hash_password(password):
     print(pwdhash)
     return (salt + pwdhash).decode('ascii')
 
-
-# TODO HASH FUNCTION
-#Register func:
-# password = hash_password(password)
-# print(password)
-
-#login func
-#make form pwd to hash type
-# povided_password = input("Lösenord: ")
-
-
 def register():
     """
     Receives User resitration information from a form and creates Person & Profile in the database.
