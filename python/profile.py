@@ -10,7 +10,7 @@ con = psycopg2.connect(
     host="pgserver.mah.se")
 
 cur = con.cursor()
-def editProfile():
+def editProfile(username):
     # cur.execute("select max(id) from profile1")
     # for row in cur:
     #     id=row[0]
@@ -19,8 +19,11 @@ def editProfile():
     info = getattr(request.forms, "info")
     level = getattr(request.forms, "level")
     age = getattr(request.forms, "age")
-    sql = "update profile set img = %s, info = %s, level = %s, age = %s" 
-    val = img, info, level, age
+    #asd = "select pid from registration where username = %s", [username]
+    cur.execute("select pid from registration where username = %s", [username])
+    asd = cur.fetchone()
+    sql = "update profile set img = %s, info = %s, level = %s, age = %s where pid = %s" 
+    val = img, info, level, age, asd
     cur.execute(sql, val)
     con.commit()
 

@@ -13,6 +13,9 @@ con = psycopg2.connect(
 
 cur = con.cursor()
 
+username = ''
+img = ''
+
 @route('/')
 def index():
     cur.execute('select name from person')
@@ -39,8 +42,7 @@ def test():
         print("Username already exists")
         return template("user_registration.html")
 
-username = ''
-img = ''
+
 @route('/logInUser', method="POST")
 def test2():
     if user_login.login() == True:
@@ -64,8 +66,8 @@ def changeProfile():
 
 @route('/profile', method="POST" )
 def profil():
-    
-    profile.editProfile()
+    global username
+    profile.editProfile(username)
     return template("welcome.html", picture = img, user = username)
 
 
