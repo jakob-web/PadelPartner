@@ -68,6 +68,9 @@ def changeProfile():
 def profil():
     global username
     profile.editProfile(username)
+    cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+    global img
+    img = cur.fetchone()
     return template("welcome.html", picture = img, user = username)
 
 
