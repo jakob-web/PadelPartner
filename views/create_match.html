@@ -18,13 +18,28 @@
             
                 
                 <!-- Person data -->
-                <form action="#" method="POST">
+                <form action="http://localhost:8080/findMatch" method="POST">
                     <label for="ort">Välj stad:</label>
                     <select id="ort" name="ort">
                       <option value="malmö">Malmö</option>
                       <option value="Helsingborg">Helsingborg</option>
                       <option value="lund">lund</option>
                       <option value="lomma">lomma</option>
+                    </select>
+
+                    <label for="klass">Välj klass:</label>
+                    <select id="klass" name="klass">
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                    </select>
+
+                    <label for="antal">Välj antal spelare:</label>
+                    <select id="antal" name="antal">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option> 
                     </select>
                   
                 <input type="submit">

@@ -4,6 +4,7 @@ import user_registration
 import user_login
 import psycopg2
 import profile
+import show_match
 
 con = psycopg2.connect( 
     dbname="padelpartner", 
@@ -74,10 +75,20 @@ def profil():
     return template("welcome.html", picture = img, user = username)
 
 
-@route('/searchPlayers/')
-def search():
+@route('/createMatch')
+def create():
 
-    return template("search_players.html")
+    return template("create_match.html")
+
+
+
+@route('/findMatch', method="POST")
+def findMatch():
+    ort = getattr(request.forms, "ort")
+    show_match.createGame()
+
+    show_match.findGame(ort)
+    return template("find_match.html", games=games)
 # TODO: Fix username auto fil lin when register form returns True
 
 

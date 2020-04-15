@@ -60,6 +60,14 @@ create table registration (
     PRIMARY KEY (username)
 );
 
+create table Match (
+    matchID integer,
+    ort varchar(50),
+    klass varchar(10), 
+    antal integer,
+    PRIMARY KEY (matchID)
+)
+
 CREATE SEQUENCE test_id_seq OWNED BY none;
 ALTER TABLE person ALTER COLUMN pid SET DEFAULT nextval('test_id_seq');
 UPDATE person
@@ -74,3 +82,8 @@ CREATE SEQUENCE test_id_seq3 OWNED BY none;
 ALTER TABLE registration ALTER COLUMN pid SET DEFAULT nextval('test_id_seq3');
 UPDATE registration
 SET pid = nextval('test_id_seq3');
+
+CREATE SEQUENCE add_id OWNED BY none;
+ALTER TABLE Match ALTER COLUMN MatchID SET DEFAULT nextval('add_id');
+UPDATE Match
+SET matchID = nextval('add_id');
