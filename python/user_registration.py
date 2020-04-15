@@ -6,8 +6,8 @@ import hashlib, binascii, os
 
 con = psycopg2.connect( 
     dbname="padelpart", 
-    user="aj9613",
-    password="g0rvfpok",
+    user="ak0153",
+    password="uv93mszx",
     host="pgserver.mah.se")
 
 cur = con.cursor()

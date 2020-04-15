@@ -16,29 +16,21 @@
             <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
             i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
             
+            % for game in match:
                 
-                <!-- Person data -->
-                <form action="http://localhost:8080/show_match" method="POST">
-                    <label for="ort">Välj stad:</label>
-                    <select id="ort" name="ort">
-                      <option value="malmö">Malmö</option>
-                      <option value="Helsingborg">Helsingborg</option>
-                      <option value="lund">lund</option>
-                      <option value="lomma">lomma</option>
-                    </select>
-
-                    <!-- <label for="klass">Välj klass:</label>
-                    <select id="klass" name="klass">
-                      <option value="A">A</option>
-                      <option value="B">B</option>
-                      <option value="C">C</option>
-                      <option value="D">D</option>
-                    </select> -->
-
-                  
-                <input type="submit">
-
-            </form>
+                
+                <h3>{{game[4]}}</h3>
+                <br>
+                <p>{{game[3]}}</p>
+                <p>{{game[0]}}</p>
+                <p>{{game[2]}}</p>
+                <p>{{game[1]}}</p>
+        
+            % end
+            
+            
+            
+     
         </fieldset> 
         
     </main>

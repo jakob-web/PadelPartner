@@ -66,6 +66,8 @@ create table Match (
     klass varchar(10), 
     antal integer,
     info varchar(1000),
+    skapare varchar(100),
+    FOREIGN KEY (skapare) REFERENCES registration(username),
     PRIMARY KEY (matchID)
 );
 
