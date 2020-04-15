@@ -7,9 +7,9 @@ import profile
 import show_match
 
 con = psycopg2.connect( 
-    dbname="padelpartner", 
-    user="ak1838",
-    password="xrqhw4q4",
+    dbname="padelpart", 
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -84,11 +84,30 @@ def create():
 
 @route('/findMatch', method="POST")
 def findMatch():
+    
     ort = getattr(request.forms, "ort")
+    
     show_match.createGame()
 
-    show_match.findGame(ort)
-    return template("find_match.html", games=games)
+    return template("find_match.html", games=show_match.findGame(ort))
+    
+       
+
+@route('/show_games')
+def showGame():
+    return template("show_match.html")
+
+@route('/show_match', method="POST")
+def showMatch():
+    ort = getattr(request.forms, "ort")
+       
+    return template("find_match.html", games=show_match.showGame(ort))
+
+# @route('/showMatchProfile')
+# def showMatchProfile():
+
+#     return template("match_profile.html")
+
 # TODO: Fix username auto fil lin when register form returns True
 
 

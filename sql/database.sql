@@ -65,8 +65,9 @@ create table Match (
     ort varchar(50),
     klass varchar(10), 
     antal integer,
+    info varchar(1000),
     PRIMARY KEY (matchID)
-)
+);
 
 CREATE SEQUENCE test_id_seq OWNED BY none;
 ALTER TABLE person ALTER COLUMN pid SET DEFAULT nextval('test_id_seq');

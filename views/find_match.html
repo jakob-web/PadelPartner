@@ -16,23 +16,13 @@
             <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
             i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
             
+            % for game in games:
+                  <p><a href="#">{{game[0]}}, {{game[1]}}, {{game[2]}} </a></p>
+            % end 
+            
 
-            <h2>{{!pagename}}</h2>
-            <h3>Skribent: {{!name}}</h3>
-            <br>
-                <p>{{!file}}</p>
-                % i=0
-                % for item in games:
-                    
-                     
-                % i=i+1
-                % end
-            <br>
-            <h4>Kommentarer</h4>
-            % for comment in comments:
-                <li class="comment">{{!comment}}</li>
-            % end
-    
+            
+            
      
         </fieldset> 
         
