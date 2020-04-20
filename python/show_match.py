@@ -42,13 +42,16 @@ def showGame(ort):
         games.append(record)
     return games
 
-def showMatchProfile(username, ort):
-   
+def showMatchProfile(username):
+    ort = getattr(request.forms, "ort")
     cur.execute("select ort, klass, antal, info, skapare from match where skapare = %s AND ort = %s",[username, ort])
+    print(ort)
     match = []
+    
     
     for record in cur:
         match.append(record)
+        
     return match
 
 

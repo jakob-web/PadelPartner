@@ -106,10 +106,9 @@ def showMatch():
 @route('/showMatchProfile')
 def showMatchProfile():
     global username
-    ort = getattr(request.forms, "ort")
 
-    return template("match_profile.html", match = show_match.showMatchProfile(username, ort))
-3
+    return template("match_profile.html", match = show_match.showMatchProfile(username))
+
 # TODO: Fix username auto fil lin when register form returns True
 
 
