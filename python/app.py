@@ -109,7 +109,7 @@ def showMatchProfile():
     ort = getattr(request.forms, "ort")
 
     return template("match_profile.html", match = show_match.showMatchProfile(username, ort))
-
+3
 # TODO: Fix username auto fil lin when register form returns True
 
 
