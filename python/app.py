@@ -84,7 +84,7 @@ def create():
 
 @route('/findMatch', method="POST")
 def findMatch():
-    
+    global ort
     ort = getattr(request.forms, "ort")
     
     show_match.createGame(username)
@@ -99,15 +99,17 @@ def showGame():
 
 @route('/show_match', method="POST")
 def showMatch():
+    
     ort = getattr(request.forms, "ort")
        
     return template("find_match.html", games=show_match.showGame(ort))
 
-@route('/showMatchProfile')
-def showMatchProfile():
-    global username
-
-    return template("match_profile.html", match = show_match.showMatchProfile(username))
+@route('/showMatchProfile/<matchid>')
+def showMatchProfile(matchid):
+    global username 
+    
+    matchid = matchid
+    return template("match_profile.html", match = show_match.showMatchProfile(matchid))
 
 # TODO: Fix username auto fil lin when register form returns True
 
