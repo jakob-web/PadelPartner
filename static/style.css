@@ -1,1 +1,7 @@
-
+body {
+    text-align: center;
+    background-color: #e6ffff;
+}
+.card {
+    height: 100vh;
+}

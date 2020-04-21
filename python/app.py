@@ -23,6 +23,10 @@ def index():
     namn = cur.fetchall()
     return template('index.html', namn=namn)
 
+@route('/static/<filename>') 
+def static_files(filename):  
+    return static_file(filename, root="static")
+
 @route('/logIn')
 def logIn():
     return template('log_in.html', username ="")
