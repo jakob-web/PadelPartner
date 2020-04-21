@@ -27,7 +27,7 @@ def createGame(username):
     con.commit()
 
 def findGame(ort):
-    cur.execute("select ort, klass, antal from match where ort = %s", [ort])
+    cur.execute("select ort, klass, antal, matchid from match where ort = %s", [ort])
     
     games = []
     for record in cur:
