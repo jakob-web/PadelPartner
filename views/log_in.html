@@ -6,27 +6,29 @@
     <title>PadelPartner</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="/static/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body id="container">
         <div class="card">
             <header class="card-header">
                 <img class="bild" id="b1" src="/static/handshake.png">
-                <a href="http://localhost:8080/"><h1>PadelPartner</h1></a>
+                <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
                 <img class="bild" id ="b2" src="/static/padel.png">
             </header>
             <div class="card-body">
-                <fieldset>
-                <legend><h2>Logga in:</h2></legend>
                     <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
                     i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
                     <form action="http://localhost:8080/logInUser" method="POST">
-                        <!-- Profile data -->
-                        <label for="userName">Användarnamn:</label>
-                        <input type="userName" id="userName" name="userName" 
-                            value= {{username}}><br>
-                        <label for="pwd">Lösenord:</label>
-                        <input type="password" id="pwd" name="pwd" minlength="8"><br>
-                        <input type="submit" class="btn btn-primary">
+                        <fieldset class="formular">
+                            <legend><h2>Logga in:</h2></legend>
+                            <!-- Profile data -->
+                            <label for="userName">Användarnamn:</label><br>
+                            <input type="userName" id="userName" name="userName" 
+                                value= {{username}}><br>
+                            <label for="pwd">Lösenord:</label><br>
+                            <input type="password" id="pwd" name="pwd" minlength="8"><br>
+                            <input type="submit" class="btn btn-primary">
+                        </fieldset>
                     </form>
                 </fieldset> 
             </div>

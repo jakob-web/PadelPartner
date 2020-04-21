@@ -1,6 +1,7 @@
 body {
     text-align: center;
     background-color: #e6ffff;
+    color: black;
 }
 .card {
     height: 100vh;
@@ -22,5 +23,37 @@ body {
 
 .card-header {
     width: 100%;
-    padding: 0%;
+    padding: 5%;
+    position: relative;
+}
+
+#slogan {
+    font-family: 'Bangers', cursive;
+    position: relative;
+    font-size: 250%;
+    color: black;
+}
+.btn-primary {
+    color: black;
+    background-color: #A9C8EF;
+    border: #A9C8EF;
+    text-align: center;
+    margin: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 120%;
+}
+
+.formular {
+    margin-top: 40%;
+    width: 100%;
+    height: 100%;
+    font-size: 150%;
+}
+
+.card-body {
+    height: 100%;
+}
+#container > div > div > form > fieldset > legend {
+    margin-bottom: 20%;
 }
