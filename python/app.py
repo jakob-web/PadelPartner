@@ -3,18 +3,23 @@ from os import listdir
 import user_registration
 import user_login
 import psycopg2
+import profile
+import show_match
 
 con = psycopg2.connect( 
-    dbname="padel", 
-    user="ak1838",
-    password="xrqhw4q4",
+    dbname="padelpart", 
+    user="ak0153",
+    password="uv93mszx",
     host="pgserver.mah.se")
 
 cur = con.cursor()
 
+username = ''
+img = ''
+
 @route('/')
 def index():
-    cur.execute('select namn from person')
+    cur.execute('select name from person')
     namn = cur.fetchall()
     return template('index.html', namn=namn)
 
@@ -38,16 +43,75 @@ def test():
         print("Username already exists")
         return template("user_registration.html")
 
+
 @route('/logInUser', method="POST")
 def test2():
     if user_login.login() == True:
-        return template("welcome.html", user = "")
+        global username
+        username = getattr(request.forms, "userName")
+        cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+        global img
+        img = cur.fetchone()
+        # img = profile.getImg(username)
+        # pid = "Select pid from registration where username = %s", [username]
+        return template("welcome.html", picture = img, user = username)
+        
     elif user_login.login() == False:
         return template("log_in.html", username = "")
 
+
+@route('/changeProfile')
+def changeProfile():
+    
+    return template("edit_profile.html",user = username)
+
+@route('/profile', method="POST" )
+def profil():
+    global username
+    profile.editProfile(username)
+    cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+    global img
+    img = cur.fetchone()
+    return template("welcome.html", picture = img, user = username)
+
+
+@route('/createMatch')
+def create():
+
+    return template("create_match.html", username = username)
+
+
+
+@route('/findMatch', method="POST")
+def findMatch():
+    global ort
+    ort = getattr(request.forms, "ort")
+    
+    show_match.createGame(username)
+
+    return template("find_match.html", games=show_match.findGame(ort))
+    
+       
+
+@route('/show_games')
+def showGame():
+    return template("show_match.html")
+
+@route('/show_match', method="POST")
+def showMatch():
+    
+    ort = getattr(request.forms, "ort")
+       
+    return template("find_match.html", games=show_match.showGame(ort))
+
+@route('/showMatchProfile/<matchid>')
+def showMatchProfile(matchid):
+    global username 
+    
+    matchid = matchid
+    return template("match_profile.html", match = show_match.showMatchProfile(matchid))
+
 # TODO: Fix username auto fil lin when register form returns True
-
-
 
 
 run(host='localhost', port=8080, debug=True)

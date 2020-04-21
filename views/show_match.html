@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PadelPartner</title>
+    <link href="/static/style.css" rel="stylesheet" >
+</head>
+<body id="container">
+    <header>
+        <a href="http://localhost:8080/"><h1>PadelPartner</h1></a>
+    </header>
+    <main> 
+        <fieldset>
+            <legend>Sök spelare:</legend>
+            <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
+            i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
+            
+                
+                <!-- Person data -->
+                <form action="http://localhost:8080/show_match" method="POST">
+                    <label for="ort">Välj stad:</label>
+                    <select id="ort" name="ort">
+                      <option value="malmö">Malmö</option>
+                      <option value="Helsingborg">Helsingborg</option>
+                      <option value="lund">lund</option>
+                      <option value="lomma">lomma</option>
+                    </select>
+
+                    <!-- <label for="klass">Välj klass:</label>
+                    <select id="klass" name="klass">
+                      <option value="A">A</option>
+                      <option value="B">B</option>
+                      <option value="C">C</option>
+                      <option value="D">D</option>
+                    </select> -->
+
+                  
+                <input type="submit">
+
+            </form>
+        </fieldset> 
+        
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
