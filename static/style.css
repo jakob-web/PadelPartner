@@ -125,8 +125,8 @@ input[name="gender"] {
 }
 
 #profilbild {
-    width: 70%;
-    height: 30%;
+    width: 170px;
+    height: 170px;
     border-radius: 100%;
     margin-top: 7%;
     margin-bottom: 7%;
@@ -148,6 +148,7 @@ input[name="gender"] {
     margin: 0px;
     background-color: #A9C8EF;
     color: black;
+    text-transform: capitalize;
 }
 #container > div:nth-child(4) > ul > li.list-group-item.active {
     background-color: #A9C8EF;
@@ -167,6 +168,10 @@ input[name="gender"] {
 
 #last {
     height: 145px;
+}
+
+.hamburger {
+    font-size: 100px;
 }
 /* TODO Create customized mobile friendly radiobuttons with JS?  */
 
