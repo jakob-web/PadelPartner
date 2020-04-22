@@ -94,7 +94,7 @@ label {
     margin-bottom: 0px;
 }
 
-input[type="text"],input[type="username"], input[type="password"], select[name="ort"], select[name="level"]{
+input[type="text"],input[type="username"], input[type="password"], select[name="ort"], select[name="level"], select[name="antal"], select[name="klass"]{
     height: 50px;
     margin: 5px 0px;
     width: 100%;
@@ -104,11 +104,11 @@ input[name="gender"] {
     height: 50px;
     width: 100%;
 }
-/* input[name="level"] {
-    height: 50px;
-    width: 15%;
-} */
 
+textarea {
+    width: 100%;
+    height: 150px;
+}
 .radio {
     font-size: 24px;
     display: inline-block;
