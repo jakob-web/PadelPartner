@@ -1,5 +1,6 @@
-# Created by https://www.gitignore.io/api/macos,python,windows,java-web,database
-# Edit at https://www.gitignore.io/?templates=macos,python,windows,java-web,database
+
+# Created by https://www.gitignore.io/api/macos,flask,python,windows,java-web,database
+# Edit at https://www.gitignore.io/?templates=macos,flask,python,windows,java-web,database
 
 ### Database ###
 *.accdb
@@ -9,39 +10,12 @@
 *.pdb
 *.sqlite3
 
-### Java-Web ###
-## ignoring target file
-target/
+### Flask ###
+instance/*
+!instance/.gitignore
+.webassets-cache
 
-### macOS ###
-# General
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must end with two \r
-Icon
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-### Python ###
+### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -105,6 +79,7 @@ coverage.xml
 docs/_build/
 
 # PyBuilder
+target/
 
 # pyenv
 .python-version
@@ -145,6 +120,84 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+### Java-Web ###
+## ignoring target file
+
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+### Python ###
+# Byte-compiled / optimized / DLL files
+
+# C extensions
+
+# Distribution / packaging
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+
+# Installer logs
+
+# Unit test / coverage reports
+
+# Translations
+
+# Scrapy stuff:
+
+# Sphinx documentation
+
+# PyBuilder
+
+# pyenv
+
+# pipenv
+#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
+#   However, in case of collaboration, if having platform-specific dependencies or dependencies
+#   having no cross-platform support, pipenv may install dependencies that don't work, or not
+#   install all needed dependencies.
+
+# celery beat schedule file
+
+# SageMath parsed files
+
+# Spyder project settings
+
+# Rope project settings
+
+# Mr Developer
+
+# mkdocs documentation
+
+# mypy
+
+# Pyre type checker
+
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -171,4 +224,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/macos,python,windows,java-web,database
+# End of https://www.gitignore.io/api/macos,flask,python,windows,java-web,database
