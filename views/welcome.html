@@ -30,9 +30,9 @@
     </div>
     <div class="text-center">
         %for item in picture:
-            if len(item) ==0:
-                <img id="profilbild" src="blank_profile.png" alt="blank">
-            else:
+            %if picture=="":
+                <img id="profilbild" src="/static/blank_profile.png/" alt="blank">
+            %else:
                 <img id="profilbild" src="{{picture[0]}}" alt="my_profile">
         %end
     </div>
