@@ -44,8 +44,7 @@ def register():
 
     level = getattr(request.forms,"level")
     ort = getattr(request.forms, "ort")
-    #Convert password to hash
-    password = hash_password(password)
+
 
     # if user name doesn't already exists
     cur.execute('select username from registration')

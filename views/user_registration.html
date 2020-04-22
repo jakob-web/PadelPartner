@@ -18,41 +18,44 @@
             <div class="card-body">
             <main>
                 <fieldset>
-                    <legend>Registera användare:</legend>
-                    <form autocomplete="off" action="http://localhost:8080/registerUser" method="POST">
+                    <form autocomplete="off" class="formular" action="http://localhost:8080/registerUser" method="POST">
                         
                         <!-- Person data -->
                         <input type="text" name="fNamn" id="fNamn" class="margin20" value="" placeholder="Förnamn" required> <br>
                         <input type="text" name="eNamn" id="eNamn" class="margin20" value="" placeholder="Efternamn" required> <br>
                         <input type="text" name="email" id="email" class="margin20" value="" placeholder="Email" required> <br>
-                        <label class="radio">
-                            <input type="radio" value="man" name="gender">
-                            man
-                        </label>
-                        <label class="radio">
-                            <input type="radio" value="kvinna" name="gender">
-                            kvinna
-                        </label>
-                        <br>
-                        <label for="level">Nivå</label> <br>
-                        <input type="radio" id="level" name="level" value="1"><label for="level">1</label>
-                        <input type="radio" id="level" name="level" value="2"><label for="level">2</label>
-                        <input type="radio" id="level" name="level" value="3"><label for="level">3</label>
-                        <input type="radio" id="level" name="level" value="4"><label for="level">4</label>
-                        <input type="radio" id="level" name="level" value="5"><label for="level">5</label>
-                        <br>
-                        <label for="ort">Välj stad:</label> <br>
-                        <select id="ort" name="ort">
-                          <option value="malmö">Malmö</option>
-                          <option value="Helsingborg">Helsingborg</option>
-                          <option value="lund">lund</option>
-                          <option value="lomma">lomma</option>
-                        </select>
-                        <br>
                         <!-- Profile data -->
                        <input type="userName" id="userName" name="userName" autocomplete="nope" placeholder="Användarnamn" >
-                       <input type="password" id="pwd" name="pwd" minlength="8" placeholder="Lösenord" autocomplete="new-password"><br>
-                        <input type="submit">
+                       <input type="password" id="pwd" name="pwd" minlength="8" placeholder="Lösenord (minst 8 tecken)" autocomplete="new-password"><br>
+                       <select id="ort" name="ort">
+                            <option value="" disabled selected hidden>Stad</option>
+                            <option value="malmö">Malmö</option>
+                            <option value="Helsingborg">Helsingborg</option>
+                            <option value="lund">Lund</option>
+                            <option value="lomma">Lomma</option>
+                       </select>
+                       <br>
+                       <select id="level" name="level">
+                            <option value="" disabled selected hidden>Nivå</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                       </select>
+                        <br>
+                          <label class="switch">
+                            <input type="radio" value="man" name="gender">
+                            
+                            <span class="slider round">Man</span>
+                          </label>
+                          <label class="switch">
+                            <input type="radio" value="kvinna" name="gender">
+                            
+                            <span class="slider round">Kvinna</span>
+                          </label>
+                          
+                        <input type="submit" class="btn btn-primary" value="Registrera">
                     </form>
                 </fieldset> 
             </main> 
