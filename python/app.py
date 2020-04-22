@@ -7,9 +7,9 @@ import profile
 import show_match
 
 con = psycopg2.connect( 
-    dbname="padelpart", 
-    user="ak0153",
-    password="uv93mszx",
+    dbname="tennispartner", 
+    user="ak3672",
+    password="294evcub",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -61,10 +61,10 @@ def test2():
         cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
         profileInfo = cur.fetchall()
 
-        personName = []
         cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
         personName = cur.fetchone()
         print(personName)
+        print(username)
         # img = profile.getImg(username)
         # pid = "Select pid from registration where username = %s", [username]
         return template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
@@ -90,12 +90,7 @@ def profil():
     cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
     profileInfo = cur.fetchall()
 
-    personName = []
-    cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
-    cur.fetchone()
-
-
-    return template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
+    return template("welcome.html", picture = img, user = username, profileInfo = profileInfo)
 
 
 @route('/createMatch')

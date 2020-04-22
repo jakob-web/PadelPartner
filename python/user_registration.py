@@ -5,9 +5,9 @@ import psycopg2
 import hashlib, binascii, os
 
 con = psycopg2.connect( 
-    dbname="padelpart", 
-    user="ak0153",
-    password="uv93mszx",
+    dbname="tennispartner", 
+    user="ak3672",
+    password="294evcub",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -67,8 +67,9 @@ def register():
             con.commit()
 
         def insertProfile():
-            sql = "insert into profile(level, ort) values(%s, %s)"
-            val = level, ort
+            sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
+            image = '/static/blank_profile.png'
+            val = image, level, ort
             cur.execute(sql, val)
             con.commit()
 

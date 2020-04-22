@@ -29,12 +29,9 @@
         </nav>
     </div>
     <div class="text-center">
-        %for item in picture:
-            %if picture=="":
-                <img id="profilbild" src="/static/blank_profile.png/" alt="blank">
-            %else:
-                <img id="profilbild" src="{{picture[0]}}" alt="my_profile">
-        %end
+      %for item in picture:
+      <img src="{{picture[0]}}" id="profilbild">
+      %end
     </div>
     <div>
     <ul class="list-group">
