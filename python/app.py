@@ -56,9 +56,18 @@ def test2():
         cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
         global img
         img = cur.fetchone()
+
+        profileInfo = []
+        cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+        profileInfo = cur.fetchall()
+
+        personName = []
+        cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
+        personName = cur.fetchone()
+        print(personName)
         # img = profile.getImg(username)
         # pid = "Select pid from registration where username = %s", [username]
-        return template("welcome.html", picture = img, user = username)
+        return template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
         
     elif user_login.login() == False:
         return template("log_in.html", username = "")
@@ -76,7 +85,17 @@ def profil():
     cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
     global img
     img = cur.fetchone()
-    return template("welcome.html", picture = img, user = username)
+
+    profileInfo = []
+    cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+    profileInfo = cur.fetchall()
+
+    personName = []
+    cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
+    cur.fetchone()
+
+
+    return template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
 
 
 @route('/createMatch')

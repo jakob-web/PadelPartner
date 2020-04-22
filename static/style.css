@@ -1,10 +1,6 @@
 body {
     text-align: center;
-    background-color: #e6ffff;
     color: black;
-    height: 100vh;
-}
-.card {
     height: 100vh;
 }
 
@@ -112,6 +108,55 @@ input[name="gender"] {
 background-color: blue;
 }
 
+.pos-f-t {
+    position: static;
+    margin-top: 0px;
+}
+
+#profilbild {
+    width: 70%;
+    height: 30%;
+    border-radius: 100%;
+    margin-top: 7%;
+    margin-bottom: 7%;
+}
+
+.left {
+    float: left;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.right {
+    float: right;
+    font-size: 20px;
+}
+
+.profilnamn {
+    font-size: 30px;
+    margin: 0px;
+    background-color: #A9C8EF;
+    color: black;
+}
+#container > div:nth-child(4) > ul > li.list-group-item.active {
+    background-color: #A9C8EF;
+    padding: 2%;
+}
+
+#marker {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px;
+}
+
+#beskrivning {
+    float: left;
+    font-size: 20px;
+}
+
+#last {
+    height: 145px;
+}
 /* TODO Create customized mobile friendly radiobuttons with JS?  */
 
 /* .radio {
