@@ -133,6 +133,11 @@ textarea {
     margin-bottom: 7%;
 }
 
+#name {
+    background-color: #A9C8EF;
+    border-color: #A9C8EF;
+}
+
 .left {
     float: left;
     font-weight: bold;

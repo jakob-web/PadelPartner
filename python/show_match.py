@@ -35,9 +35,12 @@ def findGame(ort):
         games.append(record)
     return games
 
-def showGame(ort):
-    cur.execute("select ort, klass, antal, matchid from match where ort = %s", [ort])
-
+def showGame(ort,klass,antal):
+    print(ort,klass,antal)
+    # cur.execute("select ort, klass, antal, matchid from match where ort = %s AND klass = %s AND antal = %s", [ort],[klass],[antal])
+    sql = "select ort, klass, antal, matchid from match where ort = %s AND klass = %s AND antal = %s"
+    val = ort, klass, antal
+    cur.execute(sql, val)
     games = []
     for record in cur:
         games.append(record)
