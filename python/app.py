@@ -91,7 +91,6 @@ def profil():
     profileInfo = []
     cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
     profileInfo = cur.fetchall()
-
     cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
     personName = cur.fetchone()
 
@@ -124,8 +123,10 @@ def showGame():
 def showMatch():
     
     ort = getattr(request.forms, "ort")
+    klass = getattr(request.forms, "klass")
+    antal = getattr(request.forms, "antal")
        
-    return template("find_match.html", games=show_match.showGame(ort))
+    return template("find_match.html", games=show_match.showGame(ort,klass,antal))
 
 @route('/showMatchProfile/<matchid>')
 def showMatchProfile(matchid):
