@@ -25,11 +25,12 @@
                 
                 <label for="beskrivning" >Beskrivning:</label>
                 <br>
-                <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required></textarea> <br>
+                <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required>{{item[1]}}</textarea> <br>
                 <br>
-                
+
+                <label for="Nivå" >Nivå:</label>
                 <select id="level" name="level">
-                <option value="" disabled selected hidden>Nivå</option>
+                <option disabled selected hidden >{{item[2]}}</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
@@ -38,7 +39,7 @@
                 </select>
                 <br>
                 <label for="age">Ålder:</label>
-                <input type="text" id="age" name="age">
+                <input type="text" id="age" name="age" value={{item[4]}}>
             <input type="submit" class="btn btn-primary" value="Uppdatera">
             </form>
         </fieldset>

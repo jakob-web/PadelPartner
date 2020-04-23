@@ -77,6 +77,7 @@ def test2():
 def changeProfile():
     cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
     informationProfile = cur.fetchall()
+    print(informationProfile)
     return template("edit_profile.html",user = username, info = informationProfile)
 
 @route('/profile', method="POST" )
