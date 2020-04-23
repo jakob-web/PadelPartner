@@ -2,12 +2,11 @@ from bottle import route, run, template, static_file, request, redirect
 from os import listdir
 import hashlib, binascii, os
 import psycopg2
-import hashlib, binascii, os
 
 con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+    dbname="filipspadel", 
+    user="ak1838",
+    password="xrqhw4q4",
     host="pgserver.mah.se")
 
 cur = con.cursor()
