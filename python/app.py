@@ -73,11 +73,9 @@ def test2():
 
 @route('/changeProfile')
 def changeProfile():
-
-    cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
-    personName = cur.fetchone()
-    
-    return template("edit_profile.html",user = username, personName = personName)
+    cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
+    informationProfile = cur.fetchall()
+    return template("edit_profile.html",user = username, info = informationProfile)
 
 @route('/profile', method="POST" )
 def profil():
