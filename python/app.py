@@ -63,8 +63,6 @@ def test2():
 
         cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
         personName = cur.fetchone()
-        print(personName)
-        print(username)
         # img = profile.getImg(username)
         # pid = "Select pid from registration where username = %s", [username]
         return template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
@@ -75,8 +73,11 @@ def test2():
 
 @route('/changeProfile')
 def changeProfile():
+
+    cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
+    personName = cur.fetchone()
     
-    return template("edit_profile.html",user = username)
+    return template("edit_profile.html",user = username, personName = personName)
 
 @route('/profile', method="POST" )
 def profil():
@@ -90,7 +91,11 @@ def profil():
     cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
     profileInfo = cur.fetchall()
 
-    return template("welcome.html", picture = img, user = username, profileInfo = profileInfo)
+    cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
+    personName = cur.fetchone()
+    
+
+    return template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
 
 
 @route('/createMatch')
