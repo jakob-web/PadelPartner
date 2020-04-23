@@ -4,11 +4,11 @@ from os import listdir
 import psycopg2
 
 con = psycopg2.connect( 
-    dbname="filipspadel", 
-    user="ak1838",
-    password="xrqhw4q4",
+    dbname="tennispartner", 
+    user="ak3672",
+    password="294evcub",
     host="pgserver.mah.se")
-
+    
 cur = con.cursor()
 #TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
 

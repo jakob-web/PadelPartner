@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PadelPartner</title>
-    <link href="/static/style.css" rel="stylesheet" >
-</head>
-<body id="container">
-    <header>
-        <a href="http://localhost:8080/"><h1>PadelPartner</h1></a>
-    </header>
-    <main> 
-        <fieldset>
-            <legend>Sök spelare:</legend>
-            <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
-            i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
-            
-            % for game in games:
-                  <p><a href="http://localhost:8080/showMatchProfile/{{game[3]}}">{{game[0]}}, {{game[1]}}, {{game[2]}}, {{game[3]}}  </a></p>
-            % end 
-            
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>PadelPartner</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="/static/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+    </head>
+    <body id="container">
+        <div class="card">
+            <header class="card-header">
+                <img class="bild" id="b1" src="/static/padel.png">
+                <a id="slogan" href="http://localhost:8080/logIn">PadelPartner</a>
+                <img class="bild" id ="b2" src="/static/handshake.png">
+            </header>
+        </div>
+        <div class="container">
+            <div class="row">
+              <div class="col">
+                Rank
+              </div>
+              <div class="col-6">
+                Sökes:
+              </div>
+              <div class="col">
+                Ort:
+              </div>
+            </div>
+          </div>
+        <div class="list-group">
+            %for game in games:
+            <a href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
+            <p class="left2">{{game[1]}}</p>
+            <p class="middle">{{game[2]}}</p>
+            <p class="right2">{{game[0]}}</p>
+            </a>
+            %end
+          </div>
+          <button onclick="goBack()" type="button" class="btn btn-primary btn-lg btn-block">Tillbaka</button>
 
-            
-            
-     
-        </fieldset> 
-        
-    </main>
-    <footer>
-    </footer>
-</body>
+            <script>
+            function goBack() {
+              window.history.back();
+            }
+            </script>
+    </body>
 </html>

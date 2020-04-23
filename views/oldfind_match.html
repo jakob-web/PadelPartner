@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PadelPartner</title>
+    <link href="/static/style.css" rel="stylesheet" >
+</head>
+<body id="container">
+    <header>
+        <a href="http://localhost:8080/"><h1>PadelPartner</h1></a>
+    </header>
+    <main> 
+        <fieldset>
+            <legend>Sök spelare:</legend>
+            <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
+            i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
+            
+            % for game in games:
+                  <p><a href="http://localhost:8080/showMatchProfile/{{game[3]}}">{{game[0]}}, {{game[1]}}, {{game[2]}}, {{game[3]}}  </a></p>
+            % end 
+            
+
+            
+            
+     
+        </fieldset> 
+        
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>
