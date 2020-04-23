@@ -2,7 +2,6 @@ from bottle import route, run, template, static_file, request, redirect
 from os import listdir
 import hashlib, binascii, os
 import psycopg2
-import hashlib, binascii, os
 
 con = psycopg2.connect( 
     dbname="filipspadel", 

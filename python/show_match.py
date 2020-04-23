@@ -10,6 +10,7 @@ con = psycopg2.connect(
     host="pgserver.mah.se")
 
 cur = con.cursor()
+#TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
 
 def createGame(username):
     ort = getattr(request.forms, "ort")
