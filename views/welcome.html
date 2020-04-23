@@ -32,9 +32,6 @@
           </button>
         </nav>
     </div>
-    %for string in personName:
-        <li class="list-group-item active" id="name"><p class="profilnamn">{{string}}</p></li>
-        %end
     <div class="text-center">
       %for item in picture:
       <img src="{{picture[0]}}" id="profilbild">
@@ -42,6 +39,9 @@
     </div>
     <div>
     <ul class="list-group">
+      %for string in personName:
+      <li class="list-group-item active"><p class="profilnamn">{{string}}</p></li>
+      %end
         %for info in profileInfo:
         <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{info[2]}}</p></li>
         <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{info[3]}}</p></li>

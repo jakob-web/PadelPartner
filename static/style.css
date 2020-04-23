@@ -242,4 +242,37 @@ textarea {
     border-radius: 50%;
   }
 
-  
+
+.col {
+    font-size: 30px;
+    background-color: #A9C8EF;
+}
+
+.col-6 {
+    font-size: 30px;
+    background-color: #A9C8EF;
+}
+
+.left2 {
+    float: left;
+    font-size: 20px;
+    color: black;
+}
+
+.right2 {
+    float: right;
+    font-size: 20px;
+    text-transform: capitalize;
+
+}
+
+.middle {
+    display: inline-block;
+    font-size: 20px;
+    color: black;
+    margin-left: 16%;
+}
+
+#container > button {
+    margin: 0%;
+}
