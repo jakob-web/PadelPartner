@@ -30,6 +30,7 @@
             </div>
           </div>
         <div class="list-group">
+            <!-- TODO add "visit game" button (?) -->
             %for game in games:
             <a href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
             <p class="left2">{{game[1]}}</p>
@@ -38,12 +39,15 @@
             </a>
             %end
           </div>
-          <button onclick="goBack()" type="button" class="btn btn-primary btn-lg btn-block">Tillbaka</button>
-
-            <script>
-            function goBack() {
-              window.history.back();
-            }
-            </script>
+          <button type="button" class="btn btn-primary btn-lg btn-block" id="backBtn">Tillbaka</button>
     </body>
-</html>
+    <script>
+      const goBack = function() {
+        window.history.back();
+      }
+      document.getElementById("backBtn").onclick = function (){
+        goBack();
+      }
+      // TODO If time: Solve JS folder as script
+      </script>
+    </html>
