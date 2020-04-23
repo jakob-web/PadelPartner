@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -34,7 +34,7 @@
             </form>
         %end
     </body>
-</html>
+</html> -->
 
 
 <!DOCTYPE html>
@@ -48,7 +48,6 @@
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body id="container">
-    <!-- TODO: ADD NAV & MAIN -->
     <div class="card">
         <header class="card-header">
             <img class="bild" id="b1" src="/static/padel.png">
@@ -58,33 +57,29 @@
         <div class="card-body">
         <main> 
         <fieldset>
+        %for item in info:
             <form action="http://localhost:8080/profile" method="POST">
-                <select id="ort" name="ort">
-                <option value="" disabled selected hidden>Stad</option>
-                <option value="malmö">Malmö</option>
-                <option value="Helsingborg">Helsingborg</option>
-                <option value="lund">Lund</option>
-                <option value="lomma">Lomma</option>
-            </select>
-            <select id="antal" name="antal">
-                <option value="" disabled selected hidden>Söker</option>
-                <option value="1">1 Spelare</option>
-                <option value="2">2 Spelare</option>
-                <option value="3">3 Spelare</option> 
-            </select> <br>
-            <select id="klass" name="klass">
+                <label for="img" id="img">Bild-länk:</label><br>
+                <input type="text" name="img" value="{{item[0]}}" placeholder="Kopiera in din länk här!"><br>
+                
+                <label for="beskrivning" >Beskrivning:</label>
+                <br>
+                <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required></textarea> <br>
+                <br>
+                
+                <select id="level" name="level">
                 <option value="" disabled selected hidden>Nivå</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-            </select>
-            <br>
-            <textarea name="info" placeholder="Övrig relevant information" required></textarea> <br>
-            <br>
-            <input type="hidden" id="username" name="username" value="{{username}}">
-            <input type="submit" class="btn btn-primary" value="Skapa Match">
-        </form>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                </select>
+                <br>
+                <label for="age">Ålder:</label>
+                <input type="text" id="age" name="age">
+            <input type="submit" class="btn btn-primary" value="Uppdatera">
+            </form>
         </fieldset>
         </main>
         </div>
