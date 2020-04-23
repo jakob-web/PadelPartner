@@ -1,4 +1,4 @@
-from bottle import route, run, template, static_file, request, redirect
+from flask import Flask, render_template, request, redirect, session
 from os import listdir
 import hashlib, binascii, os
 
@@ -33,8 +33,8 @@ def login():
     cur.execute("select username from registration")
     cred = cur.fetchall()
     usernameList = ("".join(str(cred)))
-    username = getattr(request.forms, "userName")
-    password = getattr(request.forms, "pwd")
+    username = request.form["userName"]
+    password = request.form["pwd"]
     
     if username in usernameList:
         print("Username exists")

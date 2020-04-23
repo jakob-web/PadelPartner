@@ -1,4 +1,4 @@
-from bottle import route, run, template, static_file, request, redirect
+from flask import Flask, render_template, request, redirect
 from os import listdir
 
 import psycopg2

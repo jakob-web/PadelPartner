@@ -11,8 +11,9 @@
             <a href="http://localhost:8080/logIn">Logga in</a>
         </header>
         <h1>Hello World</h1>
-        %for person in namn:
+        {%for person in namn:%}
         <p>{{person[0]}}</p>
+        {%endfor%}
         
     </body>
 </html>
