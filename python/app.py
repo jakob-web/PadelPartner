@@ -9,9 +9,9 @@ import show_match
 import psycopg2
 app = Flask(__name__)
 con = psycopg2.connect( 
-    dbname="padelpart", 
-    user="aj9613",
-    password="g0rvfpok",
+    dbname="tennispartner", 
+    user="ak3672",
+    password="294evcub",
     host="pgserver.mah.se")
 
 cur = con.cursor()

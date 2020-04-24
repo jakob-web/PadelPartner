@@ -18,7 +18,7 @@
         <div class="card-body">
         <main> 
         <fieldset>
-        %for item in info:
+        {%for item in info:%}
             <form action="http://localhost:8080/profile" method="POST">
                 <label for="img" id="img">Bild-länk:</label><br>
                 <input type="text" name="img" value="{{item[0]}}" placeholder="Kopiera in din länk här!"><br>
@@ -45,6 +45,7 @@
         </fieldset>
         </main>
         </div>
+        {%endfor%}
     </div> 
     <footer>
     </footer>
