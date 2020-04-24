@@ -6,8 +6,8 @@ import hashlib, binascii, os
 
 con = psycopg2.connect( 
     dbname="padelpart", 
-    user="ak0153",
-    password="uv93mszx",
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -44,8 +44,8 @@ def register():
 
     level = request.form["level"]
     ort = request.form["ort"]
-    #Convert password to hash
-    password = hash_password(password)
+    
+
 
     # if user name doesn't already exists
     cur.execute('select username from registration')

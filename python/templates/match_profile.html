@@ -16,7 +16,7 @@
             <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
             i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
             
-            % for game in match:
+            {% for game in match:%}
                 
                 
                 <h3>{{game[4]}}</h3>
@@ -26,7 +26,7 @@
                 <p>{{game[2]}}</p>
                 <p>{{game[1]}}</p>
         
-            % end
+            {% endfor%}
             
             
             

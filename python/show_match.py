@@ -5,18 +5,18 @@ import psycopg2
 
 con = psycopg2.connect( 
     dbname="padelpart", 
-    user="ak0153",
-    password="uv93mszx",
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
 
 cur = con.cursor()
 
 def createGame(username):
-    ort = getattr(request.forms, "ort")
-    klass = getattr(request.forms, "klass")
-    antal = getattr(request.forms, "antal")
-    info = getattr(request.forms, "info")
-    username = getattr(request.forms, "username")
+    ort = request.form["ort"]
+    klass = request.form["klass"]
+    antal = request.form["antal"]
+    info = request.form["info"]
+    username = request.form["username"]
     
 
     

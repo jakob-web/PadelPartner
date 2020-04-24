@@ -5,8 +5,8 @@ import psycopg2
 
 con = psycopg2.connect( 
     dbname="padelpart", 
-    user="ak0153",
-    password="uv93mszx",
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -15,10 +15,10 @@ def editProfile(username):
     # for row in cur:
     #     id=row[0]
     #     id=id+1
-    img = getattr(request.forms, "img")
-    info = getattr(request.forms, "info")
-    level = getattr(request.forms, "level")
-    age = getattr(request.forms, "age")
+    img = request.form["img"]
+    info = request.form["info"]
+    level = request.form["level"]
+    age = request.form["age"]
     #asd = "select pid from registration where username = %s", [username]
     cur.execute("select pid from registration where username = %s", [username])
     asd = cur.fetchone()

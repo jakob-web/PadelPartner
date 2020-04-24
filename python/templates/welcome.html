@@ -13,9 +13,9 @@
 
         <h1>Welcome {{user}}</h1>
 
-        %for item in picture:
+        {%for item in picture:%}
         <img src="{{picture[0]}}">
-        %end
+        {%endfor%}
         <p><a href="http://localhost:8080/changeProfile">Uppdatera profil</a></p>
         
         <!-- Drop down Meny:  -->
