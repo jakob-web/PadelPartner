@@ -1,11 +1,12 @@
-from bottle import route, run, template, static_file, request, redirect
+from flask import Flask, render_template, request, redirect, session
+from flask_socketio import SocketIO
 from os import listdir
 import user_registration
 import user_login
 import psycopg2
 import profile
 import show_match
-
+app = Flask(__name__)
 con = psycopg2.connect( 
     dbname="tennispartner", 
     user="ak3672",
@@ -17,38 +18,38 @@ cur = con.cursor()
 username = ''
 img = ''
 
-@route('/')
+@app.route('/')
 def index():
     cur.execute('select name from person')
     namn = cur.fetchall()
-    return template('index.html', namn=namn)
+    return render_template('index.html', namn=namn)
 
-@route('/static/<filename>') 
+@app.route('/static/<filename>') 
 def static_files(filename):  
     return static_file(filename, root="static")
 
 @route('/logIn')
 def logIn():
-    return template('log_in.html', username ="")
+    return render_template('log_in.html', username ="")
 
-@route('/register')
+@app.route('/register')
 def register_form():
     """
     Shows a form for registration of a user.
     """
-    return template("user_registration.html")
+    return render_template("user_registration.html")
 
-@route('/registerUser', method="POST")
+@app.route('/registerUser' , methods=['GET', 'POST'])
 def test():
     if user_registration.register() == True:
-        return template("log_in.html",username="")
+        return render_template("log_in.html",username="")
 
     elif user_registration.register() == False:
         print("Username already exists")
-        return template("user_registration.html")
+        return render_template("user_registration.html")
 
 
-@route('/logInUser', method="POST")
+@app.route('/logInUser', methods=['GET', 'POST'])
 def test2():
     if user_login.login() == True:
         global username
@@ -67,20 +68,20 @@ def test2():
         print(username)
         # img = profile.getImg(username)
         # pid = "Select pid from registration where username = %s", [username]
-        return template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
+        return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
         
     elif user_login.login() == False:
-        return template("log_in.html", username = "")
+        return render_template("log_in.html", username = "")
 
 
-@route('/changeProfile')
+@app.route('/changeProfile')
 def changeProfile():
     cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
     informationProfile = cur.fetchall()
     print(informationProfile)
-    return template("edit_profile.html",user = username, info = informationProfile)
+    return render_template("edit_profile.html",user = username, info = informationProfile)
 
-@route('/profile', method="POST" )
+@app.route('/profile', methods=['GET', 'POST'])
 def profil():
     global username
     profile.editProfile(username)
@@ -94,49 +95,52 @@ def profil():
     cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
     personName = cur.fetchone()
 
-    return template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
+    return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
 
 
-@route('/createMatch')
+@app.route('/createMatch')
 def create():
 
-    return template("create_match.html", username = username)
+    return render_template("create_match.html", username = username)
 
 
 
-@route('/findMatch', method="POST")
+@app.route('/findMatch', methods=['GET', 'POST'])
 def findMatch():
     global ort
     ort = getattr(request.forms, "ort")
     
     show_match.createGame(username)
 
-    return template("find_match.html", games=show_match.findGame(ort))
+    return render_template("find_match.html", games=show_match.findGame(ort))
     
        
 
-@route('/show_games')
+@app.route('/show_games')
 def showGame():
-    return template("show_match.html")
+    return render_template("show_match.html")
 
-@route('/show_match', method="POST")
+@app.route('/show_match', methods=['GET', 'POST'])
 def showMatch():
     
     ort = getattr(request.forms, "ort")
     klass = getattr(request.forms, "klass")
     antal = getattr(request.forms, "antal")
        
-    return template("find_match.html", games=show_match.showGame(ort,klass,antal))
+    return render_template("find_match.html", games=show_match.showGame(ort,klass,antal))
 
-@route('/showMatchProfile/<matchid>')
+@app.route('/showMatchProfile/<matchid>')
 def showMatchProfile(matchid):
     global username 
     
     matchid = matchid
-    return template("match_profile.html", match = show_match.showMatchProfile(matchid))
+    return render_template("match_profile.html", match = show_match.showMatchProfile(matchid))
 
 # TODO: Fix username auto fil lin when register form returns True
 
+if __name__ == '__main__':
+    app.debug = True
+    app.run(host='localhost', port=8080, debug=True)
 
-run(host='localhost', port=8080, debug=True)
+
 con.close()
