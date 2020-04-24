@@ -25,11 +25,7 @@ def index():
     namn = cur.fetchall()
     return render_template('index.html', namn=namn)
 
-@app.route('/static/<filename>') 
-def static_files(filename):  
-    return static_file(filename, root="static")
-
-@route('/logIn')
+@app.route('/logIn')
 def logIn():
     return render_template('log_in.html', username ="")
 
@@ -125,6 +121,8 @@ def showGame():
 def showMatch():
     
     ort = request.form["ort"]
+    klass = request.form["klass"]
+    antal = request.form["antal"]
        
     return render_template("find_match.html", games=show_match.showGame(ort,klass,antal))
 
