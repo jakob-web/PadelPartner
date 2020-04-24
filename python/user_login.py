@@ -5,9 +5,9 @@ import hashlib, binascii, os
 import psycopg2
 
 con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+    dbname="padelpart", 
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -43,6 +43,8 @@ def login():
         cur.execute("select password from registration where username='%s'" % (username))
         cred = cur.fetchone()
         stored_password = cred[0]
+        print(stored_password)
+        print(password)
         if verify_password(stored_password,password):
                 print("Password is correct")
                 return True

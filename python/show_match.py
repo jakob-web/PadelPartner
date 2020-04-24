@@ -4,20 +4,20 @@ from os import listdir
 import psycopg2
 
 con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+    dbname="padelpart", 
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
     
 cur = con.cursor()
 #TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
 
 def createGame(username):
-    ort = getattr(request.forms, "ort")
-    klass = getattr(request.forms, "klass")
-    antal = getattr(request.forms, "antal")
-    info = getattr(request.forms, "info")
-    username = getattr(request.forms, "username")
+    ort = request.form["ort"]
+    klass = request.form["klass"]
+    antal = request.form["antal"]
+    info = request.form["info"]
+    username = request.form["username"]
     
 
     

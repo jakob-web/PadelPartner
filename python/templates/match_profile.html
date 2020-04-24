@@ -34,7 +34,7 @@
         </nav>
         </div>
     <main>
-        %for game in match:
+        {%for game in match:%}
         <div class="card text-center">
             <div class="card-header">
               Ort: {{game[0]}}
@@ -49,6 +49,7 @@
               tillbaka
             </div>
           </div>
+        {%endfor%}
     </main>
 <footer>
 </footer>

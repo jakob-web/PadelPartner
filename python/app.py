@@ -3,14 +3,15 @@ from flask_socketio import SocketIO
 from os import listdir
 import user_registration
 import user_login
-import psycopg2
 import profile
 import show_match
+
+import psycopg2
 app = Flask(__name__)
 con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+    dbname="padelpart", 
+    user="aj9613",
+    password="g0rvfpok",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -53,7 +54,7 @@ def test():
 def test2():
     if user_login.login() == True:
         global username
-        username = getattr(request.forms, "userName")
+        username = request.form["userName"]
         cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
         global img
         img = cur.fetchone()
@@ -108,7 +109,7 @@ def create():
 @app.route('/findMatch', methods=['GET', 'POST'])
 def findMatch():
     global ort
-    ort = getattr(request.forms, "ort")
+    ort = request.form["ort"]
     
     show_match.createGame(username)
 
@@ -123,9 +124,7 @@ def showGame():
 @app.route('/show_match', methods=['GET', 'POST'])
 def showMatch():
     
-    ort = getattr(request.forms, "ort")
-    klass = getattr(request.forms, "klass")
-    antal = getattr(request.forms, "antal")
+    ort = request.form["ort"]
        
     return render_template("find_match.html", games=show_match.showGame(ort,klass,antal))
 
