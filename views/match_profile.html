@@ -2,39 +2,58 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PadelPartner</title>
-    <link href="/static/style.css" rel="stylesheet" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="/static/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body id="container">
-    <header>
-        <a href="http://localhost:8080/"><h1>PadelPartner</h1></a>
-    </header>
-    <main> 
-        <fieldset>
-            <legend>Sök spelare:</legend>
-            <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
-            i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
-            
-            % for game in match:
-                
-                
-                <h3>{{game[4]}}</h3>
-                <br>
-                <p>{{game[3]}}</p>
-                <p>{{game[0]}}</p>
-                <p>{{game[2]}}</p>
-                <p>{{game[1]}}</p>
-        
-            % end
-            
-            
-            
-     
-        </fieldset> 
-        
+    <div class="card">
+        <header class="card-header">
+            <img class="bild" id="b1" src="/static/padel.png">
+            <a id="slogan" href="http://localhost:8080/logIn">PadelPartner</a>
+            <img class="bild" id ="b2" src="/static/handshake.png">
+        </header>
+    </div>
+    <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
+          <div class="bg-dark p-4">
+            <ul class="list-group">
+              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
+              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
+              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
+              <li class="list-group-item" class="hamburger"><a href="#">Inkorg</a></li>
+            </ul>
+          </div>
+        </div>
+        <nav class="navbar navbar-dark bg-dark">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </nav>
+        </div>
+    <main>
+        %for game in match:
+        <div class="card text-center">
+            <div class="card-header">
+              Ort: {{game[0]}}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Skapare av match: {{game[4]}}</h5>
+              <p class="card-text">Info: {{game[3]}}</p>
+              <p class="card-text">Spelarnivå: {{game[1]}}</p>
+              <a href="#" class="btn btn-primary">Boka</a>
+            </div>
+            <div class="card-footer text-muted">
+              tillbaka
+            </div>
+          </div>
     </main>
-    <footer>
-    </footer>
+<footer>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
