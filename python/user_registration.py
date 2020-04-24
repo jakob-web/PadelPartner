@@ -1,13 +1,12 @@
-from bottle import route, run, template, static_file, request, redirect
+from flask import Flask, render_template, request, redirect
 from os import listdir
 import hashlib, binascii, os
 import psycopg2
-import hashlib, binascii, os
 
 con = psycopg2.connect( 
-    dbname="padelpart", 
-    user="ak0153",
-    password="uv93mszx",
+    dbname="tennispartner", 
+    user="ak3672",
+    password="294evcub",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -26,26 +25,26 @@ def register():
     """
 
     # data regarding the profile table
-    level = getattr(request.forms,"level")
+    level = request.form["level"]
 
     # data regarding the person table
-    förnamn = getattr(request.forms,"fNamn")
-    efternamn = getattr(request.forms,"eNamn")
-    email = getattr(request.forms,"email")
-    gender = getattr(request.forms,"gender")
+    förnamn = request.form["fNamn"]
+    efternamn = request.form["eNamn"]
+    email = request.form["email"]
+    gender = request.form["gender"]
     print(förnamn, efternamn, email, gender)
 
     # data regarding the registration table
-    userName = getattr(request.forms,"userName")
-    password = getattr(request.forms,"pwd")
+    userName = request.form["userName"]
+    password = request.form["pwd"]
     print(userName, password)
     password = hash_password(password)
     print(password)
 
-    level = getattr(request.forms,"level")
-    ort = getattr(request.forms, "ort")
-    #Convert password to hash
-    password = hash_password(password)
+    level = request.form["level"]
+    ort = request.form["ort"]
+    
+
 
     # if user name doesn't already exists
     cur.execute('select username from registration')
@@ -68,8 +67,9 @@ def register():
             con.commit()
 
         def insertProfile():
-            sql = "insert into profile(level, ort) values(%s, %s)"
-            val = level, ort
+            sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
+            image = '/static/criminal.jpg'
+            val = image, level, ort
             cur.execute(sql, val)
             con.commit()
 

@@ -1,0 +1,290 @@
+body {
+    text-align: center;
+    color: black;
+    height: 100vh;
+}
+
+.bild {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+
+#b1 {
+    float: left;
+}
+
+#b2 {
+    float: right;
+}
+
+.card-header {
+    width: 100%;
+    padding: 5%;
+    position: relative;
+}
+
+#slogan {
+    font-family: 'Bangers', cursive;
+    position: relative;
+    font-size: 250%;
+    color: black;
+}
+.btn-primary {
+    color: black;
+    background-color: #A9C8EF;
+    border: #A9C8EF;
+    text-align: center;
+    margin: 5% auto 10% auto;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 120%;
+}
+input[type="submit"] {
+    width: 80%;
+    line-height: 50px;
+    margin-top: 10%;
+}
+.formular {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    height: 100%;
+    font-size: 150%;
+}
+
+.divider {
+    width: 100%; 
+    text-align: center; 
+    border-bottom: 1px solid #A9C8EF;
+    line-height: 0.1em;
+    margin: 10px 0 20px; 
+}
+
+.divider span { 
+    background:#fff; 
+    padding:0 10px; 
+}
+
+.card-body {
+    height: 100%;
+}
+#container > div > div > form > fieldset > legend {
+    margin-bottom: 1%;
+}
+
+a {
+    color: black;
+    font-weight: bold;
+}
+a:hover {
+    color: #A9C8EF;    
+    text-decoration: none;
+    -webkit-transition-duration: 0.6s;
+    transition-duration: 0.6s;
+}
+
+img {
+    /* Temp lösning för lättar visuell överblick */
+    width: 100%;
+    text-align: center;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+input[type="text"],input[type="username"], input[type="password"], select[name="ort"], select[name="level"], select[name="antal"], select[name="klass"]{
+    height: 50px;
+    margin: 5px 0px;
+    width: 100%;
+}
+
+input[name="gender"] {
+    height: 50px;
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+}
+.radio {
+    font-size: 24px;
+    display: inline-block;
+    margin: 2%;
+    width: 30%;
+}
+.radio input:checked ~ .radio:after {
+    display: block;
+  }
+
+.pos-f-t {
+    position: static;
+    margin-top: 0px;
+}
+
+#profilbild {
+    object-fit: cover;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    margin-top: 7%;
+    margin-bottom: 7%;
+}
+
+#name {
+    background-color: #A9C8EF;
+    border-color: #A9C8EF;
+}
+
+.left {
+    float: left;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.right {
+    float: right;
+    font-size: 20px;
+}
+
+.profilnamn {
+    font-size: 30px;
+    margin: 0px;
+    background-color: #A9C8EF;
+    color: black;
+    text-transform: capitalize;
+}
+#container > div:nth-child(4) > ul > li.list-group-item.active {
+    background-color: #A9C8EF;
+    padding: 2%;
+}
+
+#marker {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0px;
+}
+
+#beskrivning {
+    float: left;
+    font-size: 20px;
+}
+
+#last {
+    height: 145px;
+}
+
+.hamburger {
+    font-size: 100px;
+}
+/* TODO Create customized mobile friendly radiobuttons with JS?  */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    margin-top: 5%;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(143, 143, 143, 0.692);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 30px;
+    width: 30px;
+    left: 4px;
+    bottom: 6px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: rgb(0, 192, 16);
+    color: rgba(255, 255, 255, 0.76);
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px rgb(0, 192, 16);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(100px);
+    -ms-transform: translateX(100px);
+    transform: translateX(110px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
+.col {
+    font-size: 30px;
+    background-color: #A9C8EF;
+}
+
+.col-6 {
+    font-size: 30px;
+    background-color: #A9C8EF;
+}
+
+.left2 {
+    float: left;
+    font-size: 20px;
+    color: black;
+}
+
+.right2 {
+    float: right;
+    font-size: 20px;
+    text-transform: capitalize;
+
+}
+
+.middle {
+    display: inline-block;
+    font-size: 20px;
+    color: black;
+    margin-left: 16%;
+}
+
+#container > button {
+    margin: 0%;
+}
+
+#container > div.pos-f-t > nav {
+    background-color: #A9C8EF!important;
+}
+
+#navbarToggleExternalContent > div {
+    background-color: #A9C8EF!important;
+}
+
+#container > div:nth-child(4) > ul > li.list-group-item.active {
+    border-color: #A9C8EF;
+}

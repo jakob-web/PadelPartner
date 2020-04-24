@@ -1,22 +1,23 @@
-from bottle import route, run, template, static_file, request, redirect
+from flask import Flask, render_template, request, redirect
 from os import listdir
 
 import psycopg2
 
 con = psycopg2.connect( 
-    dbname="padelpart", 
-    user="ak0153",
-    password="uv93mszx",
+    dbname="tennispartner", 
+    user="ak3672",
+    password="294evcub",
     host="pgserver.mah.se")
-
+    
 cur = con.cursor()
+#TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
 
 def createGame(username):
-    ort = getattr(request.forms, "ort")
-    klass = getattr(request.forms, "klass")
-    antal = getattr(request.forms, "antal")
-    info = getattr(request.forms, "info")
-    username = getattr(request.forms, "username")
+    ort = request.form["ort"]
+    klass = request.form["klass"]
+    antal = request.form["antal"]
+    info = request.form["info"]
+    username = request.form["username"]
     
 
     
@@ -34,9 +35,12 @@ def findGame(ort):
         games.append(record)
     return games
 
-def showGame(ort):
-    cur.execute("select ort, klass, antal, matchid from match where ort = %s", [ort])
-
+def showGame(ort,klass,antal):
+    print(ort,klass,antal)
+    # cur.execute("select ort, klass, antal, matchid from match where ort = %s AND klass = %s AND antal = %s", [ort],[klass],[antal])
+    sql = "select ort, klass, antal, matchid from match where ort = %s AND klass = %s AND antal = %s"
+    val = ort, klass, antal
+    cur.execute(sql, val)
     games = []
     for record in cur:
         games.append(record)
