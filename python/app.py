@@ -21,13 +21,12 @@ img = ''
 
 @app.route('/')
 def index():
-    cur.execute('select name from person')
-    namn = cur.fetchall()
-    return render_template('index.html', namn=namn)
+    return render_template('log_in.html', username = username)
+
 
 @app.route('/logIn')
 def logIn():
-    return render_template('log_in.html', username ="")
+    return render_template('log_in.html', username = username)
 
 @app.route('/register')
 def register_form():
