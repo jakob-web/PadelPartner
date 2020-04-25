@@ -43,7 +43,6 @@ body {
 input[type="submit"] {
     width: 80%;
     line-height: 50px;
-    margin-top: 10%;
 }
 .formular {
     margin-top: 5%;
@@ -272,10 +271,10 @@ textarea {
     color: black;
     margin-left: 16%;
 }
-
+/* 
 #container > button {
     margin: 0%;
-}
+} */
 
 #container > div.pos-f-t > nav {
     background-color: #A9C8EF!important;
@@ -287,4 +286,9 @@ textarea {
 
 #container > div:nth-child(4) > ul > li.list-group-item.active {
     border-color: #A9C8EF;
+}
+
+#backBtn {
+    margin: 10px auto auto auto;
+    width: 80%;
 }
