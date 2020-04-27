@@ -1,17 +1,19 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_socketio import SocketIO
 from os import listdir
+import main
 import user_registration
 import user_login
 import profile
 import show_match
-
 import psycopg2
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
+socketio = SocketIO(app)
 con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+    dbname="padelpar", 
+    user="ak1838",
+    password="xrqhw4q4",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -134,9 +136,27 @@ def showMatchProfile(matchid):
 
 # TODO: Fix username auto fil lin when register form returns True
 
+@app.route('/show_chatt', methods=['GET', 'POST'])
+def showChatt():
+
+    def sessions():
+        return render_template('session.html')
+
+    def messageReceived(methods=['GET', 'POST']):
+        print('message was received!!!')
+
+
+    @socketio.on('my event')
+    def handle_my_custom_event(json, methods=['GET', 'POST']):
+        print('received my event: ' + str(json))
+        socketio.emit('my response', json, callback=messageReceived)
+    return render_template('session.html')
+
+
 if __name__ == '__main__':
     app.debug = True
     app.run(host='localhost', port=8080, debug=True)
+    socketio.run(app, debug=True)
 
 
 con.close()

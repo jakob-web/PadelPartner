@@ -12,7 +12,7 @@
     <div class="card">
         <header class="card-header">
             <img class="bild" id="b1" src="/static/padel.png">
-            <a id="slogan" href="http://localhost:8080/logIn">PadelPartner</a>
+            <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
             <img class="bild" id ="b2" src="/static/handshake.png">
         </header>
     </div>
@@ -23,7 +23,7 @@
               <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
               <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
               <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
-              <li class="list-group-item" class="hamburger"><a href="#">Inkorg</a></li>
+              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_chatt">Inkorg</a></li>
             </ul>
           </div>
         </div>
@@ -43,7 +43,7 @@
               <h5 class="card-title">Skapare av match: {{game[4]}}</h5>
               <p class="card-text">Info: {{game[3]}}</p>
               <p class="card-text">Spelarnivå: {{game[1]}}</p>
-              <a href="#" class="btn btn-primary">Boka</a>
+              <a href="http://localhost:8080/show_chatt" class="btn btn-primary">Boka</a>
             </div>
           </div>
         {%endfor%}
