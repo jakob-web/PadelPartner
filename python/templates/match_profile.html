@@ -9,59 +9,51 @@
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body id="container">
-    <div class="card">
-        <header class="card-header">
-            <img class="bild" id="b1" src="/static/padel.png">
-            <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
-            <img class="bild" id ="b2" src="/static/handshake.png">
-        </header>
+  <div class="card">
+      <header class="card-header">
+          <img class="bild" id="b1" src="/static/padel.png">
+          <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
+          <img class="bild" id ="b2" src="/static/handshake.png">
+      </header>
+  </div>
+  <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+        <ul class="list-group">
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_chatt">Inkorg</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-          <div class="bg-dark p-4">
-            <ul class="list-group">
-              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
-              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
-              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
-              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_chatt">Inkorg</a></li>
-            </ul>
+    <nav class="navbar navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
+  <main>
+      {%for game in match:%}
+      <div class="card text-center">
+          <div class="card-header">
+            Ort: {{game[0]}}
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Skapare av match: {{game[4]}}</h5>
+            <p class="card-text">Info: {{game[3]}}</p>
+            <p class="card-text">Spelarnivå: {{game[1]}}</p>
+            <a href="http://localhost:8080/show_chatt" class="btn btn-primary">Boka</a>
           </div>
         </div>
-        <nav class="navbar navbar-dark bg-dark">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
-        </div>
-    <main>
-        {%for game in match:%}
-        <div class="card text-center">
-            <div class="card-header">
-              Ort: {{game[0]}}
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Skapare av match: {{game[4]}}</h5>
-              <p class="card-text">Info: {{game[3]}}</p>
-              <p class="card-text">Spelarnivå: {{game[1]}}</p>
-              <a href="http://localhost:8080/show_chatt" class="btn btn-primary">Boka</a>
-            </div>
-          </div>
-        {%endfor%}
-        <button type="button" class="btn btn-primary btn-lg btn-block" id="backBtn">Tillbaka</button>
-        <script>
-          const goBack = function() {
-            window.history.back();
-          }
-          document.getElementById("backBtn").onclick = function (){
-            goBack();
-          }
-          // TODO If time: Solve JS folder as script
-          </script>
-    </main>
+      {%endfor%}
+      <button type="button" class="btn btn-primary btn-lg btn-block" id="backBtn">Tillbaka</button>
+  </main>
 <footer>
 </footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
 </body>
 </html>

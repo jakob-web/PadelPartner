@@ -271,10 +271,6 @@ textarea {
     color: black;
     margin-left: 16%;
 }
-/* 
-#container > button {
-    margin: 0%;
-} */
 
 #container > div.pos-f-t > nav {
     background-color: #A9C8EF!important;
@@ -284,8 +280,9 @@ textarea {
     background-color: #A9C8EF!important;
 }
 
-#container > div:nth-child(4) > ul > li.list-group-item.active {
+li.list-group-item.active {
     border-color: #A9C8EF;
+    background-color: #A9C8EF;
 }
 
 #backBtn {

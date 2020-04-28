@@ -9,33 +9,33 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
 <body id="container">
-        <div class="card">
-            <header class="card-header">
-                <img class="bild" id="b1" src="/static/padel.png">
-                <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
-                <img class="bild" id ="b2" src="/static/handshake.png">
-            </header>
-            <div class="card-body">
-                    <!-- Tänker att de kan vara smart att dela upp registering i två delar när vi sedan sak behandla datan
-                    i python kan vi då dela upp och insert into rätt tabell. Antingen person eller profile. -->
-                    <form action="http://localhost:8080/logInUser" method="POST">
-                        <fieldset class="formular">
-                            <label for="userName">Användarnamn</label><br>
-                            <input type="userName" id="userName" name="userName" 
-                                value= {{username}}><br>
-                            <label for="pwd">Lösenord</label><br>
-                            <input type="password" id="pwd" name="pwd" minlength="8"><br>
-                            <input type="submit" class="btn btn-primary" value="Logga in">
-                        </fieldset>
-                    </form>
-                    <h6 class="divider"><span>ELLER</span></h6>
-                    <p>Ej Medlem? <a href="http://localhost:8080/register"> Registrera dig här </a> </p>
-            </div>
-        </div>
-    <footer>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <div class="card">
+    <header class="card-header">
+        <img class="bild" id="b1" src="/static/padel.png">
+        <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
+        <img class="bild" id ="b2" src="/static/handshake.png">
+    </header>
+<main>    
+    <div class="card-body">
+    <form action="http://localhost:8080/logInUser" method="POST">
+    <fieldset class="formular">
+        <label for="userName">Användarnamn</label><br>
+        <input type="userName" id="userName" name="userName" value= {{username}}><br>
+        <label for="pwd">Lösenord</label><br>
+        <input type="password" id="pwd" name="pwd" minlength="8"><br>
+        <input type="submit" class="btn btn-primary" value="Logga in">
+    </fieldset>
+    </form>
+    <h6 class="divider"><span>ELLER</span></h6>
+    <p>Ej Medlem? <a href="http://localhost:8080/register"> Registrera dig här </a> </p>
+    </div>
+</main>
+</div>
+
+<footer>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>
