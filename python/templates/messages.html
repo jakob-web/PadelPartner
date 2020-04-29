@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PadelPartner</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+</head>
+<body id="container">
+  <div class="card">
+    <header class="card-header">
+      <img class="bild" id="b1" src="/static/padel.png">
+      <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
+      <img class="bild" id ="b2" src="/static/handshake.png">
+    </header>
+  </div>
+
+  <h3>{{user}}</h3>
+  <div class="list-group">
+    {%for message in messages:%}
+    <!-- Add route to friends profile <a href="http://localhost:8080/showMatchProfile/{{friend}}#" class="list-group-item list-group-item-action"> -->
+    <p class="">{{message[0]}}: {{message[1]}}     {{message[2]}}</p>
+    </a>
+    {%endfor%}
+  </div>
+  <button type="button" class="btn btn-primary btn-lg btn-block" id="backBtn">Tillbaka</button>
+</body>
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
+</html>

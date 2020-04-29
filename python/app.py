@@ -133,11 +133,33 @@ def showMatchProfile(matchid):
     
     matchid = matchid
     return render_template("match_profile.html", match = show_match.showMatchProfile(matchid))
+    # TODO: Fix username auto fil lin when register form returns True
 
-# TODO: Fix username auto fil lin when register form returns True
+@app.route('/show_past_chatt')
+def showPastChatt():
+    global username
+    print(username)
+    messages = []
+    sql = "select writer,message,date from msg WHERE writer = %s OR reciever = %s"
+    val = username, username
+    cur.execute(sql, val)
+    messages = cur.fetchall()
+    print(messages)
+    return render_template("messages.html", user = username, messages = messages)
 
-@app.route('/show_chatt', methods=['GET', 'POST'])
-def showChatt():
+
+@app.route('/show_chatt/<matchid>', methods=['GET', 'POST'])
+def showChatt(matchid):
+    global username 
+    matchid = int(matchid)
+    print(matchid, username)
+    cur.execute("select skapare from match where matchid = %s", [matchid])
+    creatorName = cur.fetchone()
+    sql = "insert into booking values(%s,%s,%s)"
+    val = matchid,username,creatorName
+    print(matchid, username,creatorName)
+    cur.execute(sql,val)
+    con.commit()
 
     def sessions():
         return render_template('session.html')

@@ -48,7 +48,7 @@ def showGame(ort,klass,antal):
 
 def showMatchProfile(matchid):
     
-    cur.execute("select ort, klass, antal, info, skapare from match where matchid = %s", [matchid])
+    cur.execute("select ort, klass, antal, info, skapare, matchid from match where matchid = %s", [matchid])
     
     match = []
 
