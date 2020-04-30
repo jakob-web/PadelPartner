@@ -5,9 +5,10 @@ import psycopg2
 
 con = psycopg2.connect( 
     dbname="padelpar", 
-    user="ak1838",
-    password="xrqhw4q4",
+    user="ak3672",
+    password="ioczj66l",
     host="pgserver.mah.se")
+
     
 cur = con.cursor()
 #TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
@@ -27,7 +28,7 @@ def createGame(username):
     cur.execute(sql, val)
     con.commit()
 
-def findGame(ort):
+def find_Game(ort):
     cur.execute("select ort, klass, antal, matchid from match where ort = %s", [ort])
     
     games = []
@@ -35,7 +36,7 @@ def findGame(ort):
         games.append(record)
     return games
 
-def showGame(ort,klass,antal):
+def show_Game(ort,klass,antal):
     print(ort,klass,antal)
     # cur.execute("select ort, klass, antal, matchid from match where ort = %s AND klass = %s AND antal = %s", [ort],[klass],[antal])
     sql = "select ort, klass, antal, matchid from match where ort = %s AND klass = %s AND antal = %s"
@@ -46,7 +47,7 @@ def showGame(ort,klass,antal):
         games.append(record)
     return games
 
-def showMatchProfile(matchid):
+def show_Match_Profile(matchid):
     
     cur.execute("select ort, klass, antal, info, skapare, matchid from match where matchid = %s", [matchid])
     

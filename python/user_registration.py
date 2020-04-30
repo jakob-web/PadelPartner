@@ -5,9 +5,10 @@ import psycopg2
 
 con = psycopg2.connect( 
     dbname="padelpar", 
-    user="ak1838",
-    password="xrqhw4q4",
+    user="ak3672",
+    password="ioczj66l",
     host="pgserver.mah.se")
+
 
 cur = con.cursor()
 
@@ -53,29 +54,29 @@ def register():
     print(usernameList)
     if userName not in usernameList:
     
-        def insertPerson():
+        def insert_Person():
             sql = "insert into person(name, email, gender) values(%s,%s,%s)"
             namn = förnamn + " " + efternamn
             val = namn, email, gender
             cur.execute(sql,val)
             con.commit()
             
-        def insertRegistration():
+        def insert_Registration():
             sql = "insert into registration(username, password) values(%s,%s)"
             val = userName,password
             cur.execute(sql,val)
             con.commit()
 
-        def insertProfile():
+        def insert_Profile():
             sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
             image = '/static/criminal.jpg'
             val = image, level, ort
             cur.execute(sql, val)
             con.commit()
 
-        insertPerson()
-        insertProfile()
-        insertRegistration()
+        insert_Person()
+        insert_Profile()
+        insert_Registration()
         return True
     else: 
         return False

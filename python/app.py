@@ -13,8 +13,8 @@ app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 con = psycopg2.connect( 
     dbname="padelpar", 
-    user="ak1838",
-    password="xrqhw4q4",
+    user="ak3672",
+    password="ioczj66l",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -27,7 +27,7 @@ def index():
     return render_template('log_in.html', username = username)
 
 @app.route('/logIn')
-def logIn():
+def log_in():
     return render_template('log_in.html', username = username)
 
 @app.route('/register')
@@ -38,7 +38,7 @@ def register_form():
     return render_template("user_registration.html")
 
 @app.route('/registerUser' , methods=['GET', 'POST'])
-def test():
+def register_user():
     if user_registration.register() == True:
         return render_template("log_in.html",username="")
 
@@ -48,7 +48,7 @@ def test():
 
 
 @app.route('/logInUser', methods=['GET', 'POST'])
-def test2():
+def user_log():
     if user_login.login() == True:
         global username
         username = request.form["userName"]
@@ -74,7 +74,7 @@ def test2():
 
 
 @app.route('/changeProfile')
-def changeProfile():
+def change_profile():
     cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
     informationProfile = cur.fetchall()
     print(informationProfile)
@@ -105,39 +105,39 @@ def create():
 
 
 @app.route('/findMatch', methods=['GET', 'POST'])
-def findMatch():
+def find_match():
     global ort
     ort = request.form["ort"]
     
     show_match.createGame(username)
 
-    return render_template("find_match.html", games=show_match.findGame(ort))
+    return render_template("find_match.html", games=show_match.find_Game(ort))
     
        
 
 @app.route('/show_games')
-def showGame():
+def show_game():
     return render_template("show_match.html")
 
 @app.route('/show_match', methods=['GET', 'POST'])
-def showMatch():
+def show_matches():
     
     ort = request.form["ort"]
     klass = request.form["klass"]
     antal = request.form["antal"]
        
-    return render_template("find_match.html", games=show_match.showGame(ort,klass,antal))
+    return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
 
 @app.route('/showMatchProfile/<matchid>')
-def showMatchProfile(matchid):
+def show_match_profile(matchid):
     global username 
     
     matchid = matchid
-    return render_template("match_profile.html", match = show_match.showMatchProfile(matchid))
+    return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid))
     # TODO: Fix username auto fil lin when register form returns True
 
 @app.route('/show_past_chatt')
-def showPastChatt():
+def show_past_chatt():
     global username
     print(username)
     messages = []
@@ -150,7 +150,7 @@ def showPastChatt():
 
 
 @app.route('/show_chatt/<matchid>', methods=['GET', 'POST'])
-def showChatt(matchid):
+def show_chatt(matchid):
     global username 
     matchid = int(matchid)
     print(matchid, username)
