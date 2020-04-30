@@ -5,9 +5,10 @@ import psycopg2
 
 con = psycopg2.connect( 
     dbname="padelpar", 
-    user="ak3672",
-    password="ioczj66l",
+    user="ak0153",
+    password="uv93mszx",
     host="pgserver.mah.se")
+
 
 
 cur = con.cursor()

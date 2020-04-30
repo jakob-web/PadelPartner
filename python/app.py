@@ -13,8 +13,8 @@ app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 con = psycopg2.connect( 
     dbname="padelpar", 
-    user="ak3672",
-    password="ioczj66l",
+    user="ak0153",
+    password="uv93mszx",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -83,7 +83,7 @@ def change_profile():
 @app.route('/profile', methods=['GET', 'POST'])
 def profil():
     global username
-    profile.editProfile(username)
+    profile.edit_Profile(username)
     cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
     global img
     img = cur.fetchone()
@@ -109,7 +109,7 @@ def find_match():
     global ort
     ort = request.form["ort"]
     
-    show_match.createGame(username)
+    show_match.create_Game(username)
 
     return render_template("find_match.html", games=show_match.find_Game(ort))
     

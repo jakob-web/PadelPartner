@@ -5,15 +5,16 @@ import psycopg2
 
 con = psycopg2.connect( 
     dbname="padelpar", 
-    user="ak3672",
-    password="ioczj66l",
+    user="ak0153",
+    password="uv93mszx",
     host="pgserver.mah.se")
+
 
     
 cur = con.cursor()
 #TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
 
-def createGame(username):
+def create_Game(username):
     ort = request.form["ort"]
     klass = request.form["klass"]
     antal = request.form["antal"]
