@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_socketio import SocketIO
+from flask import flash
 from os import listdir
 import main
 import user_registration
@@ -24,7 +25,6 @@ img = ''
 @app.route('/')
 def index():
     return render_template('log_in.html', username = username)
-
 
 @app.route('/logIn')
 def logIn():
@@ -69,6 +69,7 @@ def test2():
         return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
         
     elif user_login.login() == False:
+        flash("Fel lösenord eller användarnamn")
         return render_template("log_in.html", username = "")
 
 

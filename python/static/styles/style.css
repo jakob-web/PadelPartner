@@ -289,3 +289,9 @@ li.list-group-item.active {
     margin: 10px auto auto auto;
     width: 80%;
 }
+
+.alert-error {
+    padding: 8px;
+    background-color: red;
+    color: white;
+  }

@@ -18,6 +18,9 @@
 <main>    
     <div class="card-body">
     <form action="http://localhost:8080/logInUser" method="POST">
+    {% for message in get_flashed_messages() %}
+        <p class="alert-error" >{{ message }}</p>
+    {% endfor %}
     <fieldset class="formular">
         <label for="userName">Användarnamn</label><br>
         <input type="userName" id="userName" name="userName" value= {{username}}><br>
