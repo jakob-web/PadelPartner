@@ -19,6 +19,7 @@
 <main>
     <fieldset>
     <form autocomplete="off" class="formular" action="http://localhost:8080/registerUser" method="POST">
+
         {% for message in get_flashed_messages() %}
         <p class="alert-error" >{{ message }}</p>
         {% endfor %}

@@ -4,8 +4,8 @@ import psycopg2
 
 con = psycopg2.connect( 
     dbname="padelpar", 
-    user="ak0153",
-    password="uv93mszx",
+    user="ak1838",
+    password="xrqhw4q4",
     host="pgserver.mah.se")
 
 

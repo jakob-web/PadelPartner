@@ -12,8 +12,8 @@ app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 con = psycopg2.connect( 
     dbname="padelpar", 
-    user="ak0153",
-    password="uv93mszx",
+    user="ak1838",
+    password="xrqhw4q4",
     host="pgserver.mah.se")
 
 cur = con.cursor()
@@ -42,7 +42,7 @@ def register_user():
         return render_template("log_in.html",username="")
 
     elif user_registration.register() == False:
-        print("Username already exists")
+        flash("Användarnamn existerar redan")
         return render_template("user_registration.html")
 
 
@@ -93,24 +93,9 @@ def profil():
 
     return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
 
-
 @app.route('/createMatch')
 def create():
-
     return render_template("create_match.html", username = username)
-
-
-
-@app.route('/findMatch', methods=['GET', 'POST'])
-def find_match():
-    global ort
-    ort = request.form["ort"]
-    
-    show_match.create_Game(username)
-
-    return render_template("find_match.html", games=show_match.find_Game(ort))
-    
-       
 
 @app.route('/show_games')
 def show_game():
