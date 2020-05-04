@@ -8,13 +8,13 @@ import show_match
 
 import psycopg2
 app = Flask(__name__)
-con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+conn = psycopg2.connect( 
+    dbname="padelpar", 
+    user="aj7951",
+    password="ez2g1c1h",
     host="pgserver.mah.se")
 
-cur = con.cursor()
+cur = conn.cursor()
 
 username = ''
 img = ''
@@ -53,13 +53,19 @@ def test2():
         cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
         global img
         img = cur.fetchone()
+        conn.commit()
+        cur.close()
 
         profileInfo = []
         cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
         profileInfo = cur.fetchall()
+        conn.commit()
+        cur.close()
 
         cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
         personName = cur.fetchone()
+        conn.commit()
+        cur.close()
         print(personName)
         print(username)
         # img = profile.getImg(username)
@@ -74,6 +80,8 @@ def test2():
 def changeProfile():
     cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
     informationProfile = cur.fetchall()
+    conn.commit()
+    cur.close()
     print(informationProfile)
     return render_template("edit_profile.html",user = username, info = informationProfile)
 
@@ -84,12 +92,17 @@ def profil():
     cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
     global img
     img = cur.fetchone()
+    conn.commit()
+    cur.close()
+
 
     profileInfo = []
     cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
     profileInfo = cur.fetchall()
     cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
     personName = cur.fetchone()
+    conn.commit()
+    cur.close()
 
     return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
 
@@ -139,4 +152,4 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, debug=True)
 
 
-con.close()
+conn.close()

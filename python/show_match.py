@@ -3,13 +3,13 @@ from os import listdir
 
 import psycopg2
 
-con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+conn = psycopg2.connect( 
+    dbname="padelpar", 
+    user="aj7951",
+    password="ez2g1c1h",
     host="pgserver.mah.se")
     
-cur = con.cursor()
+cur = conn.cursor()
 #TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
 
 def createGame(username):
@@ -25,10 +25,13 @@ def createGame(username):
     sql = "insert into match(ort, klass, antal, info, skapare) values(%s, %s, %s, %s, %s)"
     val = ort, klass, antal, info, username
     cur.execute(sql, val)
-    con.commit()
+    conn.commit()
+    cur.close()
 
 def findGame(ort):
     cur.execute("select ort, klass, antal, matchid from match where ort = %s", [ort])
+    conn.commit()
+    cur.close()
     
     games = []
     for record in cur:
@@ -41,6 +44,8 @@ def showGame(ort,klass,antal):
     sql = "select ort, klass, antal, matchid from match where ort = %s AND klass = %s AND antal = %s"
     val = ort, klass, antal
     cur.execute(sql, val)
+    conn.commit()
+    cur.close()
     games = []
     for record in cur:
         games.append(record)
@@ -49,7 +54,8 @@ def showGame(ort,klass,antal):
 def showMatchProfile(matchid):
     
     cur.execute("select ort, klass, antal, info, skapare from match where matchid = %s", [matchid])
-    
+    conn.commit()
+    cur.close()
     match = []
 
     for record in cur:
@@ -57,6 +63,7 @@ def showMatchProfile(matchid):
         
     return match
 
+conn.close()
 
      
 # def showGame():

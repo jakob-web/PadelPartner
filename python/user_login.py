@@ -4,13 +4,13 @@ import hashlib, binascii, os
 
 import psycopg2
 
-con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+conn = psycopg2.connect( 
+    dbname="padelpar", 
+    user="aj7951",
+    password="ez2g1c1h",
     host="pgserver.mah.se")
 
-cur = con.cursor()
+cur = conn.cursor()
 
 def verify_password(stored_password, provided_password):
     """Verify a stored password against one provided by user"""
@@ -34,6 +34,8 @@ def login():
     cred = []
     cur.execute("select username from registration")
     cred = cur.fetchall()
+    conn.commit()
+    cur.close()
     usernameList = ("".join(str(cred)))
     username = request.form["userName"]
     password = request.form["pwd"]
@@ -42,6 +44,8 @@ def login():
         print("Username exists")
         cur.execute("select password from registration where username='%s'" % (username))
         cred = cur.fetchone()
+        conn.commit()
+        cur.close()
         stored_password = cred[0]
         print(stored_password)
         print(password)
@@ -55,3 +59,5 @@ def login():
             return False
     else:
         return False
+
+conn.close()

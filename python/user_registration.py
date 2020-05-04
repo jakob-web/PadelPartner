@@ -3,13 +3,13 @@ from os import listdir
 import hashlib, binascii, os
 import psycopg2
 
-con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+conn = psycopg2.connect( 
+    dbname="padelpar", 
+    user="aj7951",
+    password="ez2g1c1h",
     host="pgserver.mah.se")
 
-cur = con.cursor()
+cur = conn.cursor()
 
 def hash_password(password):
     """Hash a password for storing."""
@@ -48,6 +48,8 @@ def register():
 
     # if user name doesn't already exists
     cur.execute('select username from registration')
+    conn.commit()
+    cur.close()
     usernameList = cur.fetchall()
     usernameList = ("".join(str(usernameList)))
     print(usernameList)
@@ -58,20 +60,23 @@ def register():
             namn = förnamn + " " + efternamn
             val = namn, email, gender
             cur.execute(sql,val)
-            con.commit()
+            conn.commit()
+            cur.close()
             
         def insertRegistration():
             sql = "insert into registration(username, password) values(%s,%s)"
             val = userName,password
             cur.execute(sql,val)
-            con.commit()
+            conn.commit()
+            cur.close()
 
         def insertProfile():
             sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
             image = '/static/criminal.jpg'
             val = image, level, ort
             cur.execute(sql, val)
-            con.commit()
+            conn.commit()
+            cur.close()
 
         insertPerson()
         insertProfile()
@@ -79,3 +84,6 @@ def register():
         return True
     else: 
         return False
+
+
+conn.close()

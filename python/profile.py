@@ -3,13 +3,13 @@ from os import listdir
 
 import psycopg2
 
-con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="294evcub",
+conn = psycopg2.connect( 
+    dbname="padelpar", 
+    user="aj7951",
+    password="ez2g1c1h",
     host="pgserver.mah.se")
 
-cur = con.cursor()
+cur = conn.cursor()
 def editProfile(username):
     # cur.execute("select max(id) from profile1")
     # for row in cur:
@@ -25,7 +25,10 @@ def editProfile(username):
     sql = "update profile set img = %s, info = %s, level = %s, age = %s where pid = %s" 
     val = img, info, level, age, asd
     cur.execute(sql, val)
-    con.commit()
+    conn.commit()
+    cur.close()
+
+conn.close()
 
 
 # def getImg(username):
