@@ -1,7 +1,5 @@
 from flask import Flask, render_template, request, redirect, session
-from os import listdir
 import hashlib, binascii, os
-
 import psycopg2
 
 con = psycopg2.connect( 
@@ -27,12 +25,8 @@ def verify_password(stored_password, provided_password):
     else:
         return False
 
-# #rename 'cred' to stored_password
-# stored_password = password
-# # remove if password in cred and instead:
-# verify_password(stored_password,povided_password)
 
-def login():
+def log_in():
     cred = []
     cur.execute("select username from registration")
     cred = cur.fetchall()

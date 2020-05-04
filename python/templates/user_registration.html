@@ -19,11 +19,13 @@
 <main>
     <fieldset>
     <form autocomplete="off" class="formular" action="http://localhost:8080/registerUser" method="POST">
-        <!-- Person data -->
+        {% for message in get_flashed_messages() %}
+        <p class="alert-error" >{{ message }}</p>
+        {% endfor %}
         <input type="text" name="fNamn" id="fNamn" class="margin20" value="" placeholder="Förnamn" required> <br>
         <input type="text" name="eNamn" id="eNamn" class="margin20" value="" placeholder="Efternamn" required> <br>
         <input type="text" name="email" id="email" class="margin20" value="" placeholder="Email" required> <br>
-        <!-- Profile data -->
+
         <input type="userName" id="userName" name="userName" autocomplete="nope" placeholder="Användarnamn" >
         <input type="password" id="pwd" name="pwd" minlength="8" placeholder="Lösenord (minst 8 tecken)" autocomplete="new-password"><br>
         <select id="ort" name="ort">

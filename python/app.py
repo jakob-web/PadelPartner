@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 from flask_socketio import SocketIO
 from flask import flash
-from os import listdir
 import main
 import user_registration
 import user_login
@@ -49,7 +48,7 @@ def register_user():
 
 @app.route('/logInUser', methods=['GET', 'POST'])
 def user_log():
-    if user_login.login() == True:
+    if user_login.log_in() == True:
         global username
         username = request.form["userName"]
         cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
@@ -64,11 +63,9 @@ def user_log():
         personName = cur.fetchone()
         print(personName)
         print(username)
-        # img = profile.getImg(username)
-        # pid = "Select pid from registration where username = %s", [username]
         return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
         
-    elif user_login.login() == False:
+    elif user_login.log_in() == False:
         flash("Fel lösenord eller användarnamn")
         return render_template("log_in.html", username = "")
 
@@ -134,7 +131,6 @@ def show_match_profile(matchid):
     
     matchid = matchid
     return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid))
-    # TODO: Fix username auto fil lin when register form returns True
 
 @app.route('/show_past_chatt')
 def show_past_chatt():
