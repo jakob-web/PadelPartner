@@ -1,0 +1,4 @@
+dbname=
+user=
+password=
+host=

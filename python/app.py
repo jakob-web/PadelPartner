@@ -5,14 +5,14 @@ import user_registration
 import user_login
 import profile
 import show_match
-
+from config import *
 import psycopg2
 app = Flask(__name__)
 con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="ioczj66l",
-    host="pgserver.mah.se")
+    dbname=dbname, 
+    user=user,
+    password=password,
+    host=host)
 
 cur = con.cursor()
 

@@ -4,10 +4,10 @@ import hashlib, binascii, os
 import psycopg2
 
 con = psycopg2.connect( 
-    dbname="tennispartner", 
-    user="ak3672",
-    password="ioczj66l",
-    host="pgserver.mah.se")
+    dbname="padelpartner", 
+    user="jakob",
+    password="bokaj",
+    host="127.0.0.1")
 
 cur = con.cursor()
 
