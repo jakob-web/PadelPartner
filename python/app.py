@@ -99,6 +99,17 @@ def profil():
 def create():
     return render_template("create_match.html", username = username)
 
+@app.route('/insert_match', methods=['GET', 'POST'])
+def insert_match():
+    
+    ort = request.form["ort"]
+    klass = request.form["klass"]
+    antal = request.form["antal"]
+    
+    show_match.create_Game(username)
+    return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
+
+
 @app.route('/show_games')
 def show_game():
     return render_template("show_match.html")
@@ -109,7 +120,7 @@ def show_matches():
     ort = request.form["ort"]
     klass = request.form["klass"]
     antal = request.form["antal"]
-       
+    
     return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
 
 @app.route('/showMatchProfile/<matchid>')
