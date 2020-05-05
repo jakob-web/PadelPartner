@@ -23,6 +23,10 @@ cur = con.cursor()
 username = ''
 img = ''
 
+@app.route('/test')
+def test():
+    return render_template('test.html', user = session["username"])
+
 @app.route('/')
 def index():
     return render_template('log_in.html', username = username)
@@ -65,7 +69,8 @@ def user_log():
         personName = cur.fetchone()
         print(personName)
         print(username)
-        return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
+        session["username"] = username
+        return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
         
     elif user_login.log_in() == False:
         flash("Fel lösenord eller användarnamn")
