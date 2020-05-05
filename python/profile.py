@@ -4,10 +4,10 @@ from os import listdir
 import psycopg2
 
 con = psycopg2.connect( 
-    dbname="padelpar", 
-    user="ak1838",
-    password="xrqhw4q4",
-    host="pgserver.mah.se")
+    dbname="padelpart", 
+    user="filipmoltzer",
+    password=" ",
+    host="127.0.0.1")
 
 cur = con.cursor()
 def editProfile(username):
