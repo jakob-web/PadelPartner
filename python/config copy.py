@@ -1,4 +1,4 @@
-dbname=
-user=
-password=
-host=
+dbname =""
+user =""
+password =""
+host =""

@@ -1,14 +1,14 @@
 from flask import Flask, render_template, request, redirect, session
 from os import listdir
 import hashlib, binascii, os
-
+from config import *
 import psycopg2
 
 con = psycopg2.connect( 
-    dbname="padelpartner", 
-    user="jakob",
-    password="bokaj",
-    host="127.0.0.1")
+    dbname=dbname, 
+    user=user,
+    password=password,
+    host=host)
 
 cur = con.cursor()
 

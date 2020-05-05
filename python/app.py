@@ -7,6 +7,7 @@ import profile
 import show_match
 from config import *
 import psycopg2
+
 app = Flask(__name__)
 con = psycopg2.connect( 
     dbname=dbname, 
