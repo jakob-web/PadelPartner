@@ -8,6 +8,7 @@ con = psycopg2.connect(
     user=user,
     password=password,
     host=host)
+    
 cur = con.cursor()
 def create_Game(username):
     ort = request.form["ort"]
