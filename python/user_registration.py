@@ -6,7 +6,7 @@ import psycopg2
 con = psycopg2.connect( 
     dbname="tennispartner", 
     user="ak3672",
-    password="294evcub",
+    password="ioczj66l",
     host="pgserver.mah.se")
 
 cur = con.cursor()
