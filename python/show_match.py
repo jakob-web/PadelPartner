@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect
 import psycopg2
+from config import *
+
 
 con = psycopg2.connect( 
     dbname=dbname, 
