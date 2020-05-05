@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request, redirect
-from os import listdir
-from config import *
 import psycopg2
 
 con = psycopg2.connect( 
@@ -9,24 +7,19 @@ con = psycopg2.connect(
     password=password,
     host=host)
 cur = con.cursor()
-#TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
-
-def createGame(username):
+def create_Game(username):
     ort = request.form["ort"]
     klass = request.form["klass"]
     antal = request.form["antal"]
     info = request.form["info"]
     username = request.form["username"]
-    
-
-    
 
     sql = "insert into match(ort, klass, antal, info, skapare) values(%s, %s, %s, %s, %s)"
     val = ort, klass, antal, info, username
     cur.execute(sql, val)
     con.commit()
 
-def findGame(ort):
+def find_Game(ort):
     cur.execute("select ort, klass, antal, matchid from match where ort = %s", [ort])
     
     games = []
@@ -34,9 +27,8 @@ def findGame(ort):
         games.append(record)
     return games
 
-def showGame(ort,klass,antal):
+def show_Game(ort,klass,antal):
     print(ort,klass,antal)
-    # cur.execute("select ort, klass, antal, matchid from match where ort = %s AND klass = %s AND antal = %s", [ort],[klass],[antal])
     sql = "select ort, klass, antal, matchid from match where ort = %s AND klass = %s AND antal = %s"
     val = ort, klass, antal
     cur.execute(sql, val)
@@ -45,26 +37,15 @@ def showGame(ort,klass,antal):
         games.append(record)
     return games
 
-def showMatchProfile(matchid):
+def show_Match_Profile(matchid):
     
-    cur.execute("select ort, klass, antal, info, skapare from match where matchid = %s", [matchid])
+    cur.execute("select ort, klass, antal, info, skapare, matchid from match where matchid = %s", [matchid])
     
     match = []
 
     for record in cur:
         match.append(record)
-        
     return match
-
-
-     
-# def showGame():
-#     cur.execute("select ort, klass from match where ort = %s", [ort])
-
-
-    # games = cur.execute(sql, val)
-    # con.commit()
-    
 
 
    

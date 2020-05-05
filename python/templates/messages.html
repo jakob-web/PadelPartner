@@ -16,26 +16,12 @@
       <img class="bild" id ="b2" src="/static/handshake.png">
     </header>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        Rank
-      </div>
-      <div class="col-6">
-        Sökes:
-      </div>
-      <div class="col">
-        Ort:
-      </div>
-    </div>
-  </div>
+
+  <h3>{{user}}</h3>
   <div class="list-group">
-    <!-- TODO add "visit game" button (?) -->
-    {%for game in games:%}
-    <a href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
-    <p class="left2">{{game[1]}}</p>
-    <p class="middle">{{game[2]}}</p>
-    <p class="right2">{{game[0]}}</p>
+    {%for message in messages:%}
+    <!-- Add route to friends profile <a href="http://localhost:8080/showMatchProfile/{{friend}}#" class="list-group-item list-group-item-action"> -->
+    <p class="">{{message[0]}}: {{message[1]}}     {{message[2]}}</p>
     </a>
     {%endfor%}
   </div>

@@ -9,60 +9,61 @@
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body id="container">
-        <div class="card">
-            <header class="card-header">
-                <img class="bild" id="b1" src="/static/padel.png">
-                <a id="slogan" href="http://localhost:8080/logIn">PadelPartner</a>
-                <img class="bild" id ="b2" src="/static/handshake.png">
-            </header>
-            <div class="card-body">
-            <main>
-                <fieldset>
-                    <form autocomplete="off" class="formular" action="http://localhost:8080/registerUser" method="POST">
-                        <!-- Person data -->
-                        <input type="text" name="fNamn" id="fNamn" class="margin20" value="" placeholder="Förnamn" required> <br>
-                        <input type="text" name="eNamn" id="eNamn" class="margin20" value="" placeholder="Efternamn" required> <br>
-                        <input type="text" name="email" id="email" class="margin20" value="" placeholder="Email" required> <br>
-                        <!-- Profile data -->
-                       <input type="userName" id="userName" name="userName" autocomplete="nope" placeholder="Användarnamn" >
-                       <input type="password" id="pwd" name="pwd" minlength="8" placeholder="Lösenord (minst 8 tecken)" autocomplete="new-password"><br>
-                       <select id="ort" name="ort">
-                            <option value="" disabled selected hidden>Stad</option>
-                            <option value="Malmö">Malmö</option>
-                            <option value="Helsingborg">Helsingborg</option>
-                            <option value="Lund">Lund</option>
-                            <option value="Lomma">Lomma</option>
-                       </select>
-                       <br>
-                       <select id="level" name="level">
-                            <option value="" disabled selected hidden>Nivå</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                       </select>
-                        <br>
-                          <label class="switch">
-                            <input type="radio" value="man" name="gender">
-                            <span class="slider round">Man</span>
-                          </label>
-                          <label class="switch">
-                            <input type="radio" value="kvinna" name="gender">
-                            
-                            <span class="slider round">Kvinna</span>
-                          </label>
-                          
-                        <input type="submit" class="btn btn-primary" value="Registrera">
-                    </form>
-                </fieldset> 
-            </main> 
-        </div>
-        </div>
-    <footer>
-    </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <div class="card">
+        <header class="card-header">
+            <img class="bild" id="b1" src="/static/padel.png">
+            <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
+            <img class="bild" id ="b2" src="/static/handshake.png">
+        </header>
+    <div class="card-body">
+<main>
+    <fieldset>
+    <form autocomplete="off" class="formular" action="http://localhost:8080/registerUser" method="POST">
+
+        {% for message in get_flashed_messages() %}
+        <p class="alert-error" >{{ message }}</p>
+        {% endfor %}
+        <input type="text" name="fNamn" id="fNamn" class="margin20" value="" placeholder="Förnamn" required> <br>
+        <input type="text" name="eNamn" id="eNamn" class="margin20" value="" placeholder="Efternamn" required> <br>
+        <input type="text" name="email" id="email" class="margin20" value="" placeholder="Email" required> <br>
+
+        <input type="userName" id="userName" name="userName" autocomplete="nope" placeholder="Användarnamn" >
+        <input type="password" id="pwd" name="pwd" minlength="8" placeholder="Lösenord (minst 8 tecken)" autocomplete="new-password"><br>
+        <select id="ort" name="ort">
+            <option value="" disabled selected hidden>Stad</option>
+            <option value="Malmö">Malmö</option>
+            <option value="Helsingborg">Helsingborg</option>
+            <option value="Lund">Lund</option>
+            <option value="Lomma">Lomma</option>
+        </select>
+        <br>
+        <select id="level" name="level">
+            <option value="" disabled selected hidden>Nivå</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <br>
+        <label class="switch">
+            <input type="radio" value="man" name="gender">
+            <span class="slider round">Man</span>
+        </label>
+        <label class="switch">
+            <input type="radio" value="kvinna" name="gender">
+            <span class="slider round">Kvinna</span>
+        </label>
+        <input type="submit" class="btn btn-primary" value="Registrera">
+    </form>
+    </fieldset> 
+</main> 
+</div>
+</div>
+<footer>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

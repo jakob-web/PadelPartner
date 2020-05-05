@@ -1,56 +1,60 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PadelPartner</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PadelPartner</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+  <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body id="container">
-    <div class="card">
-        <header class="card-header">
-            <img class="bild" id="b1" src="/static/padel.png">
-            <a id="slogan" href="http://localhost:8080/logIn">PadelPartner</a>
-            <img class="bild" id ="b2" src="/static/handshake.png">
-        </header>
+  <div class="card">
+      <header class="card-header">
+          <img class="bild" id="b1" src="/static/padel.png">
+          <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
+          <img class="bild" id ="b2" src="/static/handshake.png">
+      </header>
+  </div>
+  <div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-dark p-4">
+        <ul class="list-group">
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-          <div class="bg-dark p-4">
-            <ul class="list-group">
-              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
-              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
-              <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
-              <li class="list-group-item" class="hamburger"><a href="#">Inkorg</a></li>
-            </ul>
-          </div>
-        </div>
-        <nav class="navbar navbar-dark bg-dark">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </nav>
-    </div>
-    <div class="text-center">
-      {%for item in picture:%}
-      <img src="{{picture[0]}}" id="profilbild">
-      {%endfor%}
-    </div>
-    <div>
+    <nav class="navbar navbar-dark bg-dark">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
+<main>
+  <div class="text-center">
+    {%for item in picture:%}
+    <img src="{{picture[0]}}" id="profilbild">
+    {%endfor%}
+  </div>
+  <div>
     <ul class="list-group">
-      {%for string in personName:%}
-      <li class="list-group-item active"><p class="profilnamn">{{string}}</p></li>
-      {%endfor%}
-        {%for info in profileInfo:%}
-        <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{info[2]}}</p></li>
-        <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{info[3]}}</p></li>
-        <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{info[4]}}</p></li>
-        <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{info[1]}}</p></li>
-        {%endfor%}
-      </ul>
-    </div>
+    {%for string in personName:%}
+    <li class="list-group-item active"><p class="profilnamn">{{string}}</p></li>
+    {%endfor%}
+      
+    {%for info in profileInfo:%}
+    <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{info[2]}}</p></li>
+    <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{info[3]}}</p></li>
+    <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{info[4]}}</p></li>
+    <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{info[1]}}</p></li>
+    {%endfor%}
+    </ul>
+  </div>
+</main>
+    
 <footer>
 </footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
