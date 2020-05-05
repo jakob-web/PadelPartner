@@ -71,6 +71,21 @@ create table Match (
     PRIMARY KEY (matchID)
 );
 
+create table booking (
+    matchid integer,
+    username varchar(50),
+    creatorName varchar(50)
+);
+
+create table msg (
+    writer varchar(50),
+    reciever varchar(50),
+    message varchar(3000),
+    date timestamp DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
 CREATE SEQUENCE test_id_seq OWNED BY none;
 ALTER TABLE person ALTER COLUMN pid SET DEFAULT nextval('test_id_seq');
 UPDATE person
