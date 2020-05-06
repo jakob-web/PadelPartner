@@ -9,17 +9,6 @@ from db_operations import fetchone, fetchmany, fetchall
 
 import psycopg2
 app = Flask(__name__)
-<<<<<<< Updated upstream
-conn = psycopg2.connect( 
-    dbname="padelpar", 
-    user="aj7951",
-    password="ez2g1c1h",
-    host="pgserver.mah.se")
-
-cur = conn.cursor()
-=======
->>>>>>> Stashed changes
-
 username = ''
 img = ''
 
@@ -54,30 +43,11 @@ def test2():
         global username
         username = request.form["userName"]
         global img
-<<<<<<< Updated upstream
-        img = cur.fetchone()
-        conn.commit()
-        cur.close()
-
-        profileInfo = []
-        cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
-        profileInfo = cur.fetchall()
-        conn.commit()
-        cur.close()
-
-        cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
-        personName = cur.fetchone()
-        conn.commit()
-        cur.close()
-        print(personName)
-        print(username)
-=======
         img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
         profileInfo = []
         profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
 
         personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
->>>>>>> Stashed changes
         # img = profile.getImg(username)
         # pid = "Select pid from registration where username = %s", [username]
         return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
@@ -88,14 +58,7 @@ def test2():
 
 @app.route('/changeProfile')
 def changeProfile():
-<<<<<<< Updated upstream
-    cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
-    informationProfile = cur.fetchall()
-    conn.commit()
-    cur.close()
-=======
     informationProfile = fetchall("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
->>>>>>> Stashed changes
     print(informationProfile)
     return render_template("edit_profile.html",user = username, info = informationProfile)
 
@@ -104,26 +67,11 @@ def profil():
     global username
     profile.editProfile(username)
     global img
-<<<<<<< Updated upstream
-    img = cur.fetchone()
-    conn.commit()
-    cur.close()
-
-
-    profileInfo = []
-    cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
-    profileInfo = cur.fetchall()
-    cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
-    personName = cur.fetchone()
-    conn.commit()
-    cur.close()
-=======
     img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
 
     profileInfo = []
     profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
     personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
->>>>>>> Stashed changes
 
     return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
 
@@ -173,4 +121,3 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, debug=True)
 
 
-conn.close()

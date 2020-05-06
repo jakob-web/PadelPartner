@@ -4,16 +4,6 @@ from db_operations import fetchone, update
 
 import psycopg2
 
-<<<<<<< Updated upstream
-conn = psycopg2.connect( 
-    dbname="padelpar", 
-    user="aj7951",
-    password="ez2g1c1h",
-    host="pgserver.mah.se")
-
-cur = conn.cursor()
-=======
->>>>>>> Stashed changes
 def editProfile(username):
     # cur.execute("select max(id) from profile1")
     # for row in cur:
@@ -24,22 +14,10 @@ def editProfile(username):
     level = request.form["level"]
     age = request.form["age"]
     #asd = "select pid from registration where username = %s", [username]
-<<<<<<< Updated upstream
-    cur.execute("select pid from registration where username = %s", [username])
-    asd = cur.fetchone()
-    sql = "update profile set img = %s, info = %s, level = %s, age = %s where pid = %s" 
-    val = img, info, level, age, asd
-    cur.execute(sql, val)
-    conn.commit()
-    cur.close()
-
-conn.close()
-=======
     asd = fetchone("select pid from registration where username = %s", [username])
     sql = "update profile set img = %s, info = %s, level = %s, age = %s where pid = %s"
     val = (img, info, level, age, asd)
     update(sql, val)
->>>>>>> Stashed changes
 
 
 # def getImg(username):
