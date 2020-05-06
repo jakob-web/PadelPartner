@@ -6,7 +6,8 @@ import user_registration
 import user_login
 import profile
 import show_match
-from config import *
+from db_operations import fetchone, fetchmany, fetchall
+
 import psycopg2
 
 app = Flask(__name__)
@@ -36,15 +37,12 @@ def index():
     else:
         print("Success")
         username = session["username"]
-        cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
-        img = cur.fetchone()
+        img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
 
         profileInfo = []
-        cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
-        profileInfo = cur.fetchall()
+        profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
 
-        cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
-        personName = cur.fetchone()
+        personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
         session["logged_in"] = True
 
         return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
@@ -81,15 +79,11 @@ def register_user():
 def user_log():
     if user_login.log_in() == True:
         username = request.form["userName"]
-        cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
-        img = cur.fetchone()
-
+        img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
         profileInfo = []
-        cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
-        profileInfo = cur.fetchall()
+        profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
 
-        cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
-        personName = cur.fetchone()
+        personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
         print(personName)
         print(username)
         session["username"] = username
@@ -104,23 +98,21 @@ def user_log():
 
 
 @app.route('/changeProfile')
-def change_profile():
-    cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
-    informationProfile = cur.fetchall()
+def changeProfile():
+    informationProfile = fetchall("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
     print(informationProfile)
     return render_template("edit_profile.html",user = session["username"], info = informationProfile)
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profil():
-    profile.edit_Profile(session["username"])
-    cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
-    img = cur.fetchone()
+    global username
+    profile.editProfile(session["username"])
+    global img
+    img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
 
     profileInfo = []
-    cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
-    profileInfo = cur.fetchall()
-    cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [session["username"]])
-    personName = cur.fetchone()
+    profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
+    personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [session["username"]])
 
     return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
 
@@ -188,4 +180,3 @@ if __name__ == '__main__':
     app.run(host='localhost', port=8080, debug=True)
     socketio.run(app, debug=True)
 
-con.close()

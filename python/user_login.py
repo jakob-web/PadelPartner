@@ -1,17 +1,6 @@
 from flask import Flask, render_template, request, redirect, session
 import hashlib, binascii, os
-import psycopg2
-from config import *
-
-con = psycopg2.connect( 
-    dbname=dbname, 
-    user=user,
-    password=password,
-    host=host)
-
-
-
-cur = con.cursor()
+from db_operations import fetchall, fetchone
 
 def verify_password(stored_password, provided_password):
     """Verify a stored password against one provided by user"""
@@ -29,16 +18,14 @@ def verify_password(stored_password, provided_password):
 
 def log_in():
     cred = []
-    cur.execute("select username from registration")
-    cred = cur.fetchall()
+    cred = fetchall("select username from registration", "")
     usernameList = ("".join(str(cred)))
     username = request.form["userName"]
     password = request.form["pwd"]
-    
+
     if username in usernameList:
-        print("Username exists")
-        cur.execute("select password from registration where username='%s'" % (username))
-        cred = cur.fetchone()
+        usernameToFind = (username,)
+        cred = fetchone("select password from registration where username=%s", usernameToFind)
         stored_password = cred[0]
         print(stored_password)
         print(password)
