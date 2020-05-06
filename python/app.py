@@ -14,13 +14,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 
-@app.route('/test')
-def test():
-    return render_template('test.html', user = session["username"])
-
-
-@app.route('/')
-def index():
+@app.route('/start_page')
+def start_page():
     print(session.get("username"))
     print(session.get("logged_in"))
     if not session.get("logged_in"):
@@ -28,17 +23,21 @@ def index():
         return log_in()
     else:
         print("Success")
-        username = session["username"]
-        img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+        img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
 
         profileInfo = []
-        profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+        profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
 
-        personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
+        personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [session["username"]])
         session["logged_in"] = True
 
         return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
         
+
+@app.route('/')
+def index():
+    session['logged_in'] = False
+    return render_template('log_in.html', username = "")
 
 @app.route('/logIn')
 def log_in():
@@ -76,12 +75,8 @@ def user_log():
         profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
 
         personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
-        print(personName)
-        print(username)
         session["username"] = username
         session["logged_in"] = True
-        print(session["username"])
-
         return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
         
     elif user_login.log_in() == False:
