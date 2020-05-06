@@ -42,7 +42,7 @@ def show_Game(ort,klass,antal):
 
 def show_Match_Profile(matchid):
 
-    result = fetchall("select ort, klass, antal, info, skapare from match where matchid = %s", [matchid])
+    result = fetchall("select ort, klass, antal, info, skapare, matchid from match where matchid = %s", [matchid])
 
     match = []
 
