@@ -20,20 +20,45 @@ con = psycopg2.connect(
 
 cur = con.cursor()
 
-username = ''
-img = ''
 
 @app.route('/test')
 def test():
     return render_template('test.html', user = session["username"])
 
+
 @app.route('/')
 def index():
-    return render_template('log_in.html', username = username)
+    print(session.get("username"))
+    print(session.get("logged_in"))
+    if not session.get("logged_in"):
+        print("No username found in session")
+        return log_in()
+    else:
+        print("Success")
+        username = session["username"]
+        cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+        img = cur.fetchone()
+
+        profileInfo = []
+        cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+        profileInfo = cur.fetchall()
+
+        cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
+        personName = cur.fetchone()
+        session["logged_in"] = True
+
+        return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
+        
 
 @app.route('/logIn')
 def log_in():
-    return render_template('log_in.html', username = username)
+    return render_template('log_in.html', username = session["username"])
+
+@app.route("/logout")
+def logout():
+    session['logged_in'] = False
+    return index()
+
 
 @app.route('/register')
 def register_form():
@@ -55,10 +80,8 @@ def register_user():
 @app.route('/logInUser', methods=['GET', 'POST'])
 def user_log():
     if user_login.log_in() == True:
-        global username
         username = request.form["userName"]
         cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
-        global img
         img = cur.fetchone()
 
         profileInfo = []
@@ -70,6 +93,9 @@ def user_log():
         print(personName)
         print(username)
         session["username"] = username
+        session["logged_in"] = True
+        print(session["username"])
+
         return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
         
     elif user_login.log_in() == False:
@@ -79,30 +105,28 @@ def user_log():
 
 @app.route('/changeProfile')
 def change_profile():
-    cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
+    cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
     informationProfile = cur.fetchall()
     print(informationProfile)
-    return render_template("edit_profile.html",user = username, info = informationProfile)
+    return render_template("edit_profile.html",user = session["username"], info = informationProfile)
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profil():
-    global username
-    profile.edit_Profile(username)
-    cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
-    global img
+    profile.edit_Profile(session["username"])
+    cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
     img = cur.fetchone()
 
     profileInfo = []
-    cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+    cur.execute("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
     profileInfo = cur.fetchall()
-    cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
+    cur.execute("select name from(person join registration on person.pid = registration.pid) where username = %s", [session["username"]])
     personName = cur.fetchone()
 
-    return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
+    return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
 
 @app.route('/createMatch')
 def create():
-    return render_template("create_match.html", username = username)
+    return render_template("create_match.html", username = session["username"])
 
 @app.route('/show_games')
 def show_game():
@@ -118,35 +142,30 @@ def show_matches():
     return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
 
 @app.route('/showMatchProfile/<matchid>')
-def show_match_profile(matchid):
-    global username 
-    
+def show_match_profile(matchid):    
     matchid = matchid
     return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid))
 
 @app.route('/show_past_chatt')
 def show_past_chatt():
-    global username
-    print(username)
     messages = []
     sql = "select writer,message,date from msg WHERE writer = %s OR reciever = %s"
-    val = username, username
+    val = session["username"], session["username"]
     cur.execute(sql, val)
     messages = cur.fetchall()
     print(messages)
-    return render_template("messages.html", user = username, messages = messages)
+    return render_template("messages.html", user = session["username"], messages = messages)
 
 
 @app.route('/show_chatt/<matchid>', methods=['GET', 'POST'])
 def show_chatt(matchid):
-    global username 
     matchid = int(matchid)
-    print(matchid, username)
+    print(matchid, session["username"])
     cur.execute("select skapare from match where matchid = %s", [matchid])
     creatorName = cur.fetchone()
     sql = "insert into booking values(%s,%s,%s)"
-    val = matchid,username,creatorName
-    print(matchid, username,creatorName)
+    val = matchid,session["username"],creatorName
+    print(matchid, session["username"],creatorName)
     cur.execute(sql,val)
     con.commit()
 
@@ -168,6 +187,5 @@ if __name__ == '__main__':
     app.debug = True
     app.run(host='localhost', port=8080, debug=True)
     socketio.run(app, debug=True)
-
 
 con.close()
