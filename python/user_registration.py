@@ -39,7 +39,7 @@ def register():
 
 
     # if user name doesn't already exists
-    usernameList = fetchall('select username from registration')
+    usernameList = fetchall("select username from registration", "")
     usernameList = ("".join(str(usernameList)))
     print(usernameList)
     if userName not in usernameList:
