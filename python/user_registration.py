@@ -58,7 +58,7 @@ def register():
 
         def insert_Profile():
             sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
-            image = '/static/criminal.jpg'
+            image = '/static/blank_profile.png'
             val = image, level, ort
             cur.execute(sql, val)
             con.commit()
