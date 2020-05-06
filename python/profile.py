@@ -3,7 +3,7 @@ from os import listdir
 from db_operations import fetchone, update
 
 import psycopg2
-from config import *
+
 
 def editProfile(username):
     img = request.form["img"]
