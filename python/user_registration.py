@@ -1,17 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import hashlib, binascii, os
-from config import *
-import psycopg2
-from flask import flash
-
-
-con = psycopg2.connect( 
-    dbname=dbname, 
-    user=user,
-    password=password,
-    host=host)
-
-cur = con.cursor()
+from db_operations import insert, fetchall
 
 def hash_password(password):
     """Hash a password for storing."""
@@ -37,35 +26,35 @@ def register():
 
     level = request.form["level"]
     ort = request.form["ort"]
-    
-    cur.execute('select username from registration')
-    usernameList = cur.fetchall()
+
+
+
+    # if user name doesn't already exists
+    usernameList = fetchall("select username from registration", "")
     usernameList = ("".join(str(usernameList)))
 
     if userName not in usernameList:
+
         def insert_Person():
             sql = "insert into person(name, email, gender) values(%s,%s,%s)"
             namn = förnamn + " " + efternamn
-            val = namn, email, gender
-            cur.execute(sql,val)
-            con.commit()
-            
+            val = (namn, email, gender,)
+            insert(sql,val)
+
         def insert_Registration():
             sql = "insert into registration(username, password) values(%s,%s)"
-            val = userName,password
-            cur.execute(sql,val)
-            con.commit()
+            val = (userName, password,)
+            insert(sql,val)
 
         def insert_Profile():
             sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
-            image = '/static/criminal.jpg'
-            val = image, level, ort
-            cur.execute(sql, val)
-            con.commit()
+            image = '/static/blank_profile.png'
+            val = (image, level, ort,)
+            insert(sql,val)
 
         insert_Person()
         insert_Profile()
         insert_Registration()
         return True
-    else: 
+    else:
         return False
