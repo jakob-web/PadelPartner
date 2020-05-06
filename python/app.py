@@ -52,7 +52,6 @@ def index():
 
 @app.route('/logIn')
 def log_in():
-    return render_template('log_in.html', username = session["username"])
 
 @app.route("/logout")
 def logout():
