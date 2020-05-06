@@ -1,8 +1,4 @@
-config = {
-    "db": {
-        "dbName": "maxdatabas2",
-        "username": "ak3672",
-        "password": "ioczj66l",
-        "host": "pgserver.mah.se"
-    }
-}
+dbname ="padel10"
+user ="postgres"
+password ="postgres"
+host ="127.0.0.1"

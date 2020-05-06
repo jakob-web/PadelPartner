@@ -1,12 +1,12 @@
-from config import config
+from config import *
 import psycopg2
 
 def connectToDb():
-    connection = psycopg2.connect(
-        dbname = config["db"]["dbName"],
-        user = config["db"]["username"],
-        password = config["db"]["password"],
-        host = config["db"]["host"])
+    connection = psycopg2.connect( 
+    dbname=dbname, 
+    user=user,
+    password=password,
+    host=host)
     return connection
 
 def closeConnections(cursor, connection):

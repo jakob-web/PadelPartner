@@ -35,13 +35,13 @@ def register():
 
     if userName not in usernameList:
 
-        def insertPerson():
+        def insert_Person():
             sql = "insert into person(name, email, gender) values(%s,%s,%s)"
             namn = förnamn + " " + efternamn
             val = (namn, email, gender,)
             insert(sql,val)
 
-        def insertRegistration():
+        def insert_Registration():
             sql = "insert into registration(username, password) values(%s,%s)"
             val = (userName, password,)
             insert(sql,val)

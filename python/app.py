@@ -6,21 +6,13 @@ import user_registration
 import user_login
 import profile
 import show_match
-from db_operations import fetchone, fetchmany, fetchall
+from db_operations import fetchone, fetchmany, fetchall, insert
 
 import psycopg2
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
-con = psycopg2.connect( 
-    dbname=dbname, 
-    user=user,
-    password=password,
-    host=host)
-
-cur = con.cursor()
-
 
 @app.route('/test')
 def test():
@@ -68,7 +60,7 @@ def register_form():
 @app.route('/registerUser' , methods=['GET', 'POST'])
 def register_user():
     if user_registration.register() == True:
-        return render_template("log_in.html",username="")
+        return render_template("log_in.html", username="")
 
     elif user_registration.register() == False:
         flash("Användarnamn existerar redan")
@@ -105,9 +97,7 @@ def changeProfile():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profil():
-    global username
     profile.editProfile(session["username"])
-    global img
     img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
 
     profileInfo = []
@@ -143,8 +133,8 @@ def show_past_chatt():
     messages = []
     sql = "select writer,message,date from msg WHERE writer = %s OR reciever = %s"
     val = session["username"], session["username"]
-    cur.execute(sql, val)
-    messages = cur.fetchall()
+    insert(sql, val)
+    messages = fetchall(sql, val)
     print(messages)
     return render_template("messages.html", user = session["username"], messages = messages)
 
@@ -153,13 +143,11 @@ def show_past_chatt():
 def show_chatt(matchid):
     matchid = int(matchid)
     print(matchid, session["username"])
-    cur.execute("select skapare from match where matchid = %s", [matchid])
-    creatorName = cur.fetchone()
+    creatorName = fetchone("select skapare from match where matchid = %s", [matchid])
     sql = "insert into booking values(%s,%s,%s)"
     val = matchid,session["username"],creatorName
     print(matchid, session["username"],creatorName)
-    cur.execute(sql,val)
-    con.commit()
+    insert(sql, val)
 
     def sessions():
         return render_template('session.html')

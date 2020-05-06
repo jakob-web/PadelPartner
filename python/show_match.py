@@ -3,7 +3,6 @@ from os import listdir
 from db_operations import insert, fetchall
 
 import psycopg2
-from config import *
 
 #TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
 
@@ -39,7 +38,7 @@ def show_Game(ort,klass,antal):
         games.append(record)
     return games
 
-def showMatchProfile(matchid):
+def show_Match_Profile(matchid):
 
     result = fetchall("select ort, klass, antal, info, skapare from match where matchid = %s", [matchid])
 
