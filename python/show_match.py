@@ -8,7 +8,7 @@ from config import *
 
 #TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
 
-def createGame(username):
+def create_Game(username):
     ort = request.form["ort"]
     klass = request.form["klass"]
     antal = request.form["antal"]
@@ -22,7 +22,7 @@ def createGame(username):
     val = (ort, klass, antal, info, username,)
     insert(sql, val)
 
-def findGame(ort):
+def find_Game(ort):
     result = fetchall("select ort, klass, antal, matchid from match where ort = %s", [ort])
 
     games = []

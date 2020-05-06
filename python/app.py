@@ -117,7 +117,7 @@ def insert_match():
     klass = request.form["klass"]
     antal = request.form["antal"]
     
-    show_match.create_Game(username)
+    show_match.create_Game(session["username"])
     return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
 
 
