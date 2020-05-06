@@ -3,7 +3,7 @@ from os import listdir
 from db_operations import insert, fetchall
 
 import psycopg2
-from config import *
+
 
 
 #TODO BUG, Skapa match och gå sedan ett steg tillbaka så skapas match igen & igen.....
