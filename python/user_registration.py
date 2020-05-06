@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from os import listdir
 import hashlib, binascii, os
+<<<<<<< Updated upstream
 import psycopg2
 
 conn = psycopg2.connect( 
@@ -10,6 +11,9 @@ conn = psycopg2.connect(
     host="pgserver.mah.se")
 
 cur = conn.cursor()
+=======
+from db_operations import insert, fetchall
+>>>>>>> Stashed changes
 
 def hash_password(password):
     """Hash a password for storing."""
@@ -43,21 +47,26 @@ def register():
 
     level = request.form["level"]
     ort = request.form["ort"]
-    
+
 
 
     # if user name doesn't already exists
+<<<<<<< Updated upstream
     cur.execute('select username from registration')
     conn.commit()
     cur.close()
     usernameList = cur.fetchall()
+=======
+    usernameList = fetchall('select username from registration')
+>>>>>>> Stashed changes
     usernameList = ("".join(str(usernameList)))
     print(usernameList)
     if userName not in usernameList:
-    
+
         def insertPerson():
             sql = "insert into person(name, email, gender) values(%s,%s,%s)"
             namn = förnamn + " " + efternamn
+<<<<<<< Updated upstream
             val = namn, email, gender
             cur.execute(sql,val)
             conn.commit()
@@ -69,21 +78,40 @@ def register():
             cur.execute(sql,val)
             conn.commit()
             cur.close()
+=======
+            val = (namn, email, gender,)
+            insert(sql,val)
+
+        def insertRegistration():
+            sql = "insert into registration(username, password) values(%s,%s)"
+            val = (userName, password,)
+            insert(sql,val)
+>>>>>>> Stashed changes
 
         def insertProfile():
             sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
             image = '/static/criminal.jpg'
+<<<<<<< Updated upstream
             val = image, level, ort
             cur.execute(sql, val)
             conn.commit()
             cur.close()
+=======
+            val = (image, level, ort,)
+            insert(sql,val)
+>>>>>>> Stashed changes
 
         insertPerson()
         insertProfile()
         insertRegistration()
         return True
+<<<<<<< Updated upstream
     else: 
         return False
 
 
 conn.close()
+=======
+    else:
+        return False
+>>>>>>> Stashed changes

@@ -5,9 +5,11 @@ import user_registration
 import user_login
 import profile
 import show_match
+from db_operations import fetchone, fetchmany, fetchall
 
 import psycopg2
 app = Flask(__name__)
+<<<<<<< Updated upstream
 conn = psycopg2.connect( 
     dbname="padelpar", 
     user="aj7951",
@@ -15,6 +17,8 @@ conn = psycopg2.connect(
     host="pgserver.mah.se")
 
 cur = conn.cursor()
+=======
+>>>>>>> Stashed changes
 
 username = ''
 img = ''
@@ -22,7 +26,6 @@ img = ''
 @app.route('/')
 def index():
     return render_template('log_in.html', username = username)
-
 
 @app.route('/logIn')
 def logIn():
@@ -50,8 +53,8 @@ def test2():
     if user_login.login() == True:
         global username
         username = request.form["userName"]
-        cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
         global img
+<<<<<<< Updated upstream
         img = cur.fetchone()
         conn.commit()
         cur.close()
@@ -68,20 +71,31 @@ def test2():
         cur.close()
         print(personName)
         print(username)
+=======
+        img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+        profileInfo = []
+        profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+
+        personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
+>>>>>>> Stashed changes
         # img = profile.getImg(username)
         # pid = "Select pid from registration where username = %s", [username]
         return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
-        
+
     elif user_login.login() == False:
         return render_template("log_in.html", username = "")
 
 
 @app.route('/changeProfile')
 def changeProfile():
+<<<<<<< Updated upstream
     cur.execute("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
     informationProfile = cur.fetchall()
     conn.commit()
     cur.close()
+=======
+    informationProfile = fetchall("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [username])
+>>>>>>> Stashed changes
     print(informationProfile)
     return render_template("edit_profile.html",user = username, info = informationProfile)
 
@@ -89,8 +103,8 @@ def changeProfile():
 def profil():
     global username
     profile.editProfile(username)
-    cur.execute("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
     global img
+<<<<<<< Updated upstream
     img = cur.fetchone()
     conn.commit()
     cur.close()
@@ -103,6 +117,13 @@ def profil():
     personName = cur.fetchone()
     conn.commit()
     cur.close()
+=======
+    img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+
+    profileInfo = []
+    profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [username])
+    personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [username])
+>>>>>>> Stashed changes
 
     return render_template("welcome.html", picture = img, user = username, profileInfo = profileInfo, personName = personName)
 
@@ -118,12 +139,12 @@ def create():
 def findMatch():
     global ort
     ort = request.form["ort"]
-    
+
     show_match.createGame(username)
 
     return render_template("find_match.html", games=show_match.findGame(ort))
-    
-       
+
+
 
 @app.route('/show_games')
 def showGame():
@@ -131,17 +152,17 @@ def showGame():
 
 @app.route('/show_match', methods=['GET', 'POST'])
 def showMatch():
-    
+
     ort = request.form["ort"]
     klass = request.form["klass"]
     antal = request.form["antal"]
-       
+
     return render_template("find_match.html", games=show_match.showGame(ort,klass,antal))
 
 @app.route('/showMatchProfile/<matchid>')
 def showMatchProfile(matchid):
-    global username 
-    
+    global username
+
     matchid = matchid
     return render_template("match_profile.html", match = show_match.showMatchProfile(matchid))
 

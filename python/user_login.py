@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from os import listdir
 import hashlib, binascii, os
+<<<<<<< Updated upstream
 
 import psycopg2
 
@@ -11,6 +12,9 @@ conn = psycopg2.connect(
     host="pgserver.mah.se")
 
 cur = conn.cursor()
+=======
+from db_operations import fetchall, fetchone
+>>>>>>> Stashed changes
 
 def verify_password(stored_password, provided_password):
     """Verify a stored password against one provided by user"""
@@ -32,20 +36,29 @@ def verify_password(stored_password, provided_password):
 
 def login():
     cred = []
+<<<<<<< Updated upstream
     cur.execute("select username from registration")
     cred = cur.fetchall()
     conn.commit()
     cur.close()
+=======
+    cred = fetchall("select username from registration", "")
+>>>>>>> Stashed changes
     usernameList = ("".join(str(cred)))
     username = request.form["userName"]
     password = request.form["pwd"]
-    
+
     if username in usernameList:
+<<<<<<< Updated upstream
         print("Username exists")
         cur.execute("select password from registration where username='%s'" % (username))
         cred = cur.fetchone()
         conn.commit()
         cur.close()
+=======
+        usernameToFind = (username,)
+        cred = fetchone("select password from registration where username=%s", usernameToFind)
+>>>>>>> Stashed changes
         stored_password = cred[0]
         print(stored_password)
         print(password)
@@ -58,6 +71,7 @@ def login():
             print("fel lösenord")
             return False
     else:
+        print("Kmr returna false")
         return False
 
 conn.close()
