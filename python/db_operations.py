@@ -36,10 +36,8 @@ def dbExecute(query, fetch, val):
     cursor = connection.cursor()
     if val != "":
         cursor.execute(query, val)
-        print("kommer till val")
     else:
         cursor.execute(query)
-        print("kommer till utan val")
     result = ""
     if fetch != "":
         if fetch == "fetchone":
