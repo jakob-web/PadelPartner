@@ -44,7 +44,7 @@ create table person (
 create table profile (
     img varchar(1500),
     info varchar(2000),
-    level integer,
+    level varchar(1),
     ort varchar (50),
     age integer,
     pid integer,
@@ -90,3 +90,7 @@ CREATE SEQUENCE add_id OWNED BY none;
 ALTER TABLE Match ALTER COLUMN MatchID SET DEFAULT nextval('add_id');
 UPDATE Match
 SET matchID = nextval('add_id');
+
+
+
+alter table profile alter column level type varchar(2);      
