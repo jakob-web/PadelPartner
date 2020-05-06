@@ -1,4 +1,5 @@
-dbname ="padel10"
+dbname ="padelpartner"
 user ="postgres"
-password ="postgres"
+password ="albin123"
 host ="127.0.0.1"
+UPLOAD_FOLDER = "static"

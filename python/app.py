@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, url_for
 from flask_socketio import SocketIO
 from flask import flash
 import main
@@ -7,10 +7,17 @@ import user_login
 import profile
 import show_match
 from db_operations import fetchone, fetchmany, fetchall, insert
+from werkzeug.utils import secure_filename
+from flask import send_from_directory
+import os
+from config import UPLOAD_FOLDER
 
 import psycopg2
 
 app = Flask(__name__)
+
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 
@@ -97,13 +104,46 @@ def changeProfile():
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profil():
+    filename = "albin1337"
     profile.editProfile(session["username"])
     img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
 
     profileInfo = []
     profileInfo = fetchall("select * from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
     personName = fetchone("select name from(person join registration on person.pid = registration.pid) where username = %s", [session["username"]])
+    
+    def allowed_file(filename):
+        return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
+    def upload_file():
+        if request.method == 'POST':
+            # check if the post request has the file part
+            if 'file' not in request.files:
+                flash('No file part')
+                return redirect(request.url)
+            file = request.files['file']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            print("stuffsinshit")
+            return redirect(url_for('welcome',filename=filename))
+        return render_template("index.html")
+
+    def uploaded_file(filename):
+        return send_from_directory(app.config['UPLOAD_FOLDER'],
+                                filename)
+    allowed_file(filename)
+    upload_file()
+    uploaded_file(filename)
+        
+ 
     return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
 
 @app.route('/createMatch')
