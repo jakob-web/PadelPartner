@@ -38,6 +38,7 @@ def show_Game(ort,klass,antal):
     games = []
     for record in result:
         games.append(record)
+    print(games)
     return games
 
 def show_Match_Profile(matchid):
@@ -57,6 +58,7 @@ def show_all_match(ort):
     games = []
     for record in result:
         games.append(record)
+    print(games)
     return games
 
 def show_all_ranks(ort, klass):
@@ -66,6 +68,7 @@ def show_all_ranks(ort, klass):
     games = []
     for record in result:
         games.append(record)
+    print(games)
     return games
 
 def show_all_players(ort, antal):
@@ -75,6 +78,7 @@ def show_all_players(ort, antal):
     games = []
     for record in result:
         games.append(record)
+    print(games)
     return games
     
 

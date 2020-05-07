@@ -49,13 +49,17 @@
   </div>
   <div class="list-group">
     <!-- TODO add "visit game" button (?) -->
-    {%for game in games:%}
-    <a href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
-    <p class="left2">{{game[1]}}</p>
-    <p class="middle">{{game[2]}}</p>
-    <p class="right2">{{game[0]}}</p>
-    </a>
-    {%endfor%}
+    {%if games == []:%}
+    <p>Inga tillgängliga matcher</p>
+    {%else:%}
+      {%for game in games:%}
+        <a href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
+        <p class="left2">{{game[1]}}</p>
+        <p class="middle">{{game[2]}}</p>
+        <p class="right2">{{game[0]}}</p>
+        </a>
+      {%endfor%}
+      {%endif%}
   </div>
   <button type="button" class="btn btn-primary btn-lg btn-block" id="backBtn">Tillbaka</button>
 </main>
