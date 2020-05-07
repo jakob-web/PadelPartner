@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash, url_for
 from flask_socketio import SocketIO
 from flask import flash
 import main
@@ -7,12 +7,23 @@ import user_login
 import profile
 import show_match
 from db_operations import fetchone, fetchmany, fetchall, insert
+from werkzeug.utils import secure_filename
+import os
+
 
 import psycopg2
 
+UPLOAD_FOLDER = '/Users/marcusasker/Downloads/Grupp09/python/static/img'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 socketio = SocketIO(app)
+
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/start_page')
 def start_page():
@@ -87,8 +98,8 @@ def user_log():
 @app.route('/changeProfile')
 def changeProfile():
     informationProfile = fetchall("select * from (profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
-    print(informationProfile)
-    return render_template("edit_profile.html",user = session["username"], info = informationProfile)
+    img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", [session["username"]])
+    return render_template("edit_profile.html",user = session["username"], info = informationProfile, pics = img)
 
 @app.route('/profile', methods=['GET', 'POST'])
 def profil():
@@ -195,6 +206,32 @@ def show_chatt(matchid):
         print('received my event: ' + str(json))
         socketio.emit('my response', json, callback=messageReceived)
     return render_template('session.html')
+
+@app.route('/uploadpicture')
+def uploadpicture():
+    return render_template("uploadpicture.html")
+
+
+@app.route('/uploaded', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        file.filname = "bajs.jpg"
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            flash('file {} saved'.format(file.filename))
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            os.rename(UPLOAD_FOLDER + filename, UPLOAD_FOLDER+'BAJS.jpg')
+            return redirect('/changeProfile')
 
 
 if __name__ == '__main__':
