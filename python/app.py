@@ -207,31 +207,59 @@ def show_chatt(matchid):
         socketio.emit('my response', json, callback=messageReceived)
     return render_template('session.html')
 
-@app.route('/uploadpicture')
+app.config["IMAGE_UPLOADS"] = '/Users/marcusasker/Downloads/Grupp09/python/static/img/uploads'
+app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG", "GIF"]
+
+def allowed_image(filename):
+    
+    if not "." in filename:
+        return False
+
+    ext = filename.rsplit(".", 1)[1]
+
+    if ext.upper() in app.config["ALLOWED_IMAGE_EXTENSIONS"]:
+        return True 
+    else:
+        return False
+
+@app.route('/uploadpicture', methods=['GET', 'POST'])
 def uploadpicture():
+
+    name = fetchone("select pid from registration where username = %s", [session["username"]])
+    for something in name:
+        picturename = something
+
+    if request.method == "POST":
+
+        if request.files:
+
+            image = request.files["image"]
+
+            if image.filename == "":
+                print("image must have a filename")
+                return redirect(request.url)
+            
+            if not allowed_image(image.filename):
+                print("That image extension is not allowed")
+                return redirect(request.url)
+
+            else:
+                filename = secure_filename(image.filename)
+
+            print(image)
+            print(image.filename)
+            image.filename = str(picturename) + ".jpg"
+            print(image.filename)
+            image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
+
+            sql = "update profile set img = %s where pid = %s"
+            val = (image.filename, picturename,)
+
+            insert(sql, val)
+            return redirect("/changeProfile")
+
     return render_template("uploadpicture.html")
 
-
-@app.route('/uploaded', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
-        file = request.files['file']
-        file.filname = "bajs.jpg"
-        # if user does not select file, browser also
-        # submit an empty part without filename
-        if file.filename == '':
-            flash('No selected file')
-            return redirect(request.url)
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            flash('file {} saved'.format(file.filename))
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            os.rename(UPLOAD_FOLDER + filename, UPLOAD_FOLDER+'BAJS.jpg')
-            return redirect('/changeProfile')
 
 
 if __name__ == '__main__':
