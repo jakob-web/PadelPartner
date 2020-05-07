@@ -16,8 +16,9 @@ def create_Game(username):
     info = request.form["info"]
     username = request.form["username"]
 
-    sql = "insert into match(ort, klass, antal, info, skapare) values(%s, %s, %s, %s, %s)"
-    val = ort, klass, antal, info, username
+    sql = "insert into match(ort, klass, antal, info, skapare, booked) values(%s, %s, %s, %s, %s, %s)"
+    booked = 4 - int(antal)
+    val = ort, klass, antal, info, username, booked
     cur.execute(sql, val)
     con.commit()
 
@@ -32,7 +33,7 @@ def find_Game(ort):
 def show_Game(ort,klass,antal):
     print(ort,klass,antal)
     # check if creator name is username session, then don't show.
-    sql = "select ort, klass, antal, match.matchid, booked from(match join booking on match.matchid = booking.matchid) where ort = %s AND klass = %s AND antal = %s AND booked < 4;"
+    sql = "select ort, klass, antal, match.matchid, booked from(match join booking on match.matchid = booking.matchid) where ort = %s AND klass = %s AND antal = %s AND antal > 0;"
     val = ort, klass, antal
     games = fetchall(sql, val)
     return games
@@ -40,7 +41,7 @@ def show_Game(ort,klass,antal):
 
 def show_Match_Profile(matchid):
     
-    cur.execute("select ort, klass, antal, info, skapare, matchid from match where matchid = %s", [matchid])
+    cur.execute("select ort, klass, antal, info, skapare, matchid from match where matchid = %s AND antal > 0", [matchid])
     
     match = []
 
@@ -49,7 +50,7 @@ def show_Match_Profile(matchid):
     return match
 
 def show_all_match(ort):
-    sql = "select ort, klass, antal, matchid from match where ort = %s"
+    sql = "select ort, klass, antal, matchid from match where ort = %s AND antal > 0"
     val = (ort,)
     result = fetchall(sql, val)
     games = []
@@ -59,7 +60,7 @@ def show_all_match(ort):
     return games
 
 def show_all_ranks(ort, klass):
-    sql = "select ort, klass, antal, matchid from match where ort = %s and klass = %s"
+    sql = "select ort, klass, antal, matchid from match where ort = %s and klass = %s AND antal > 0"
     val = (ort, klass,)
     result = fetchall(sql, val)
     games = []
@@ -69,7 +70,7 @@ def show_all_ranks(ort, klass):
     return games
 
 def show_all_players(ort, antal):
-    sql = "select ort, klass, antal, matchid from match where ort = %s and antal = %s"
+    sql = "select ort, klass, antal, matchid from match where ort = %s and antal = %s AND antal > 0"
     val = (ort, antal,)
     result = fetchall(sql, val)
     games = []

@@ -46,9 +46,9 @@
             <p class="card-text">Info: {{match[2]}}</p>
             <p class="card-text">Spelarnivå: {{match[1]}}</p>
             <p class="card-text">Ort: {{match[0]}}</p>
-            
-            
-            
+            {%if creator == True:%}
+            <a href="http://localhost:8080/remove_match/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Ta bort match</button></a>
+            {%endif%}
           </div>
         </div>
       {%endfor%}

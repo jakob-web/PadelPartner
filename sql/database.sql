@@ -32,6 +32,7 @@ create table Match (
     antal integer,
     info varchar(1000),
     skapare varchar(100),
+    booked int,
     FOREIGN KEY (skapare) REFERENCES registration(username),
     PRIMARY KEY (matchID)
 );
@@ -40,7 +41,6 @@ create table booking (
     matchid integer,
     username varchar(50),
     creatorName varchar(50),
-    booked int
 );
 
 create table msg (
