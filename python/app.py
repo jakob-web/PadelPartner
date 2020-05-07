@@ -6,7 +6,7 @@ import user_registration
 import user_login
 import profile
 import show_match
-from db_operations import fetchone, fetchmany, fetchall, insert
+from db_operations import fetchone, fetchmany, fetchall, insert, update
 
 import psycopg2
 
@@ -111,8 +111,18 @@ def insert_match():
     ort = request.form["ort"]
     klass = request.form["klass"]
     antal = request.form["antal"]
-    
+
     show_match.create_Game(session["username"])
+    matchid = fetchone("select max(matchid) from match where matchid > %s", "0")
+    print(matchid)
+    if matchid[0] == None:
+        matchid = 1
+        print(matchid)  
+    sql = "insert into booking (matchid,creatorname,booked) values (%s,%s,%s)"
+    val = matchid,session["username"],antal
+    insert(sql, val)
+    print(matchid, session["username"])
+
     return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
 
 
@@ -134,14 +144,24 @@ def show_match_profile(matchid):
     matchid = matchid
     return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid))
 
+# Old my_games
+# @app.route('/my_games/')
+# def show_my_games():
+#     print(session["username"])
+#     game = []
+#     result = fetchall("select ort, klass, antal, skapare, matchid from match where skapare = %s", [session["username"]])
+    
+#     for record in result:
+#         game.append(record)
+#     print(game)
+#     return render_template("my_games.html", user = session["username"], matches = game)
+
 @app.route('/my_games/')
 def show_my_games():
     print(session["username"])
-    game = []
-    result = fetchall("select ort, klass, antal, skapare, matchid from match where skapare = %s", [session["username"]])
-    
-    for record in result:
-        game.append(record)
+    sql = "select ort, klass, antal, skapare, match.matchid from (match join booking on match.matchid = booking.matchid) where match.skapare = %s OR booking.username = %s"
+    val = session["username"],session["username"]
+    game = fetchall(sql, val)
     print(game)
     return render_template("my_games.html", user = session["username"], matches = game)
 
@@ -170,12 +190,17 @@ def show_past_chatt():
 @app.route('/show_chatt/<matchid>', methods=['GET', 'POST'])
 def show_chatt(matchid):
     matchid = int(matchid)
+    print(matchid)
+    antal = request.form["antal"]
+    booked = fetchone("select booked from booking where matchid = %s", [matchid])
+    print(booked[0])
+    antal = int(antal) + booked[0]
     print(matchid, session["username"])
-    creatorName = fetchone("select skapare from match where matchid = %s", [matchid])
-    sql = "insert into booking values(%s,%s,%s)"
-    val = matchid,session["username"],creatorName
-    print(matchid, session["username"],creatorName)
-    insert(sql, val)
+    # creatorName = fetchone("select skapare from match where matchid = %s", [matchid])
+    sql = "UPDATE booking SET booked = %s, username = %s WHERE matchid = %s;"
+    val = antal,session["username"],matchid
+    print(matchid, session["username"])
+    update(sql, val)
 
     def sessions():
         return render_template('session.html')

@@ -39,7 +39,8 @@ create table Match (
 create table booking (
     matchid integer,
     username varchar(50),
-    creatorName varchar(50)
+    creatorName varchar(50),
+    booked int
 );
 
 create table msg (
@@ -70,7 +71,5 @@ CREATE SEQUENCE add_id OWNED BY none;
 ALTER TABLE Match ALTER COLUMN MatchID SET DEFAULT nextval('add_id');
 UPDATE Match
 SET matchID = nextval('add_id');
-
-
 
 alter table profile alter column level type varchar(2);      

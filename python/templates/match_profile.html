@@ -45,7 +45,17 @@
             <h5 class="card-title">Skapare av match: {{game[4]}}</h5>
             <p class="card-text">Info: {{game[3]}}</p>
             <p class="card-text">Spelarnivå: {{game[1]}}</p>
-            <a href="http://localhost:8080/show_chatt/{{game[5]}}#" class="btn btn-primary">Boka</a>
+            <p class="card-text">Sökes: {{game[2]}}</p>
+            
+            <form action="http://localhost:8080/show_chatt/{{game[5]}}#" method="POST">
+            <label for="antal" >Antal platser:</label>
+            <select id="antal" name="antal">
+            <option selected hidden >{{game[2]}}</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            </select><br>
+            <input type="submit" class="btn btn-primary" value="Boka">
           </div>
         </div>
       {%endfor%}
