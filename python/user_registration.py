@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 import hashlib, binascii, os
 from db_operations import insert, fetchall
 
@@ -11,50 +11,44 @@ def hash_password(password):
 
 def register():
     """
-    Receives User resitration information from a form and creates Person & Profile in the database.
+    Receives User registration information from a form and creates Person,Profile % registartion in the database.
     """
-    level = request.form["level"]
-
     förnamn = request.form["fNamn"]
     efternamn = request.form["eNamn"]
     email = request.form["email"]
     gender = request.form["gender"]
 
-    userName = request.form["userName"]
+    username = request.form["userName"]
     password = request.form["pwd"]
     password = hash_password(password)
 
     level = request.form["level"]
     ort = request.form["ort"]
 
-
-
-    # if user name doesn't already exists
-    usernameList = fetchall("select username from registration", "")
-    usernameList = ("".join(str(usernameList)))
-
-    if userName not in usernameList:
-
-        def insert_Person():
+    username_list = fetchall("select username from registration", "")
+    username_list = ("".join(str(username_list)))
+    
+    if username not in username_list:
+        def insert_person():
             sql = "insert into person(name, email, gender) values(%s,%s,%s)"
             namn = förnamn + " " + efternamn
             val = (namn, email, gender,)
             insert(sql,val)
 
-        def insert_Registration():
+        def insert_registration():
             sql = "insert into registration(username, password) values(%s,%s)"
-            val = (userName, password,)
+            val = (username, password,)
             insert(sql,val)
 
-        def insert_Profile():
+        def insert_profile():
             sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
             image = '/static/blank_profile.png'
             val = (image, level, ort,)
             insert(sql,val)
 
-        insert_Person()
-        insert_Profile()
-        insert_Registration()
+        insert_person()
+        insert_profile()
+        insert_registration()
         return True
     else:
         return False
