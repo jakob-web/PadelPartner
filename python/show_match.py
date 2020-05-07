@@ -24,6 +24,7 @@ def create_Game(username):
 
 def find_Game(ort):
     result = fetchall("select ort, klass, antal, matchid from match where ort = %s", [ort])
+    
 
     games = []
     for record in result:
@@ -50,6 +51,15 @@ def show_Match_Profile(matchid):
         match.append(record)
     return match
 
+def show_all_match(ort):
+    print(ort)
+    sql = "select ort, klass, antal, matchid from match where ort = %s"
+    val = (ort,)
+    result = fetchall(sql, val)
+    games = []
+    for record in result:
+        games.append(record)
+    return games
 
    
 

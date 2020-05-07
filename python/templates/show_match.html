@@ -38,7 +38,7 @@
     <main> 
     <fieldset>
         <form action="http://localhost:8080/show_match" method="POST">
-                <select id="ort" name="ort">
+                <select id="ort" name="ort" required>
                 <option value="" disabled selected hidden>Stad</option>
                 <option value="malmö">Malmö</option>
                 <option value="Helsingborg">Helsingborg</option>
@@ -46,20 +46,22 @@
                 <option value="lomma">Lomma</option>
             </select>
             
-            <select id="klass" name="klass">
+            <select id="klass" name="klass" requred>
                 <option value="" disabled selected hidden>Nivå</option>
                 <option value="A">A</option>
                 <option value="B">B</option>
                 <option value="C">C</option>
                 <option value="D">D</option>
+                <option value="1" selected hitten>Alla</option>
             </select>
             
 
-            <select id="antal" name="antal">
+            <select id="antal" name="antal" required>
                 <option value="" disabled selected hidden>Hur många ska spela?</option>
                 <option value="1">1 Spelare</option>
                 <option value="2">2 Spelare</option>
                 <option value="3">3 Spelare</option> 
+                <option value="6" selected hidden>Alla</option>
             </select> <br>
             <input type="submit" class="btn btn-primary" value="Sök">
         </form>
