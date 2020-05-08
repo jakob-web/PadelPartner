@@ -56,6 +56,8 @@
 
             {%if creator == True:%}
             <a href="http://localhost:8080/remove_match/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Ta bort match</button></a>
+            {%else:%}
+            <a href="http://localhost:8080/remove_booking/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Avboka Match</button></a>
             {%endif%}
           </div>
         </div>

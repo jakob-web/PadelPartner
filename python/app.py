@@ -118,8 +118,8 @@ def insert_match():
     if matchid[0] == None:
         matchid = 1
         print(matchid)  
-    sql = "insert into booking (matchid,username,creatorname) values (%s,%s,%s)"
-    val = matchid,session["username"],session["username"]
+    sql = "insert into booking (matchid,username,creatorname,booked) values (%s,%s,%s,%s)"
+    val = matchid,session["username"],session["username"],antal
     insert(sql, val)
     print(matchid, session["username"])
 
@@ -175,6 +175,24 @@ def my_game_info(matchid):
 def remove_match(matchid):
     update("delete from match where matchid = %s",[matchid])
     update("delete from booking where matchid = %s",[matchid])
+    return show_my_games()
+    
+@app.route('/remove_booking/<matchid>')
+def remove_booking(matchid):
+    print(matchid, session["username"])
+    sql = "select antal from match where matchid=%s AND skapare=%s"
+    val = matchid, session["username"]
+    insert(sql, val)
+    current_booking = fetchone(sql,val) 
+    print(current_booking)
+    sql = "update match set antal=(antal+%s) where matchid =%s"
+    val = current_booking,matchid    
+    print(current_booking,matchid)  
+    update(sql,val)
+    sql = "update match set booked=(booked-%s) where matchid =%s"
+    val = current_booking,matchid
+    update(sql,val)
+
     return show_my_games()
 
 @app.route('/show_past_chatt')
