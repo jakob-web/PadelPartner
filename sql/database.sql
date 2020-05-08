@@ -40,7 +40,7 @@ create table Match (
 create table booking (
     matchid integer,
     username varchar(50),
-    creatorName varchar(50),
+    creatorName varchar(50)
 );
 
 create table msg (
