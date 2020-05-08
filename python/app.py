@@ -6,7 +6,7 @@ import user_registration
 import user_login
 import profile
 import show_match
-from db_operations import fetchone, fetchmany, fetchall, insert
+from db_operations import fetchone, fetchmany, fetchall, insert, update
 from werkzeug.utils import secure_filename
 import os
 
@@ -255,7 +255,7 @@ def uploadpicture():
             sql = "update profile set img = %s where pid = %s"
             val = (image.filename, picturename,)
 
-            insert(sql, val)
+            update(sql, val)
             return redirect("/changeProfile")
 
     return render_template("uploadpicture.html")
