@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body id="container">
     <div class="card">
@@ -39,10 +40,16 @@
     <fieldset>
     {%for item in info:%}
      {%for pic in pics:%}
-        <form action="http://localhost:8080/profile" method="POST">
+
+     <!-- <form id="uploadpictureform" action="/uploadpicture" method=post enctype=multipart/form-data>
+      <input type=file name="image" id="image" onChange="previewpicture(event)">
+      <input type=submit value=Upload id="profilbildupload">
+
+    </form> -->
+        <form action="http://localhost:8080/profile" method="POST" enctype=multipart/form-data>
           <img src="{{pics[0]}}" id="profilbild">
-          <a href="http://localhost:8080/uploadpicture">Ändra profilbild</a>
-            
+          <input type=file name="image" id="image" onChange="previewpicture(event)">
+
             <label for="beskrivning" >Beskrivning:</label><br>
             <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required>{{item[1]}}</textarea> <br> <br>
             
@@ -64,7 +71,18 @@
 </div>
     {%endfor%}
     {%endfor%}
-</div> 
+  
+</div>
+<script>
+  var previewpicture = function(event) {
+var output = document.getElementById('profilbild'); //
+console.log(output)
+output.src = URL.createObjectURL(event.target.files[0]);
+output.onload = function() {
+  URL.revokeObjectURL(output.src) // free memory
+}
+};
+  </script> 
 <footer>
 </footer>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
