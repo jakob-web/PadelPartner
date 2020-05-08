@@ -253,7 +253,7 @@ def uploadpicture():
             image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
 
             sql = "update profile set img = %s where pid = %s"
-            val = (image.filename, picturename,)
+            val = ( "static/img/uploads/" + image.filename, picturename,)
 
             update(sql, val)
             return redirect("/changeProfile")
