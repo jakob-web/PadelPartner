@@ -295,3 +295,11 @@ li.list-group-item.active {
     background-color: red;
     color: white;
   }
+
+.booked_players > img {
+    width: 40px;
+    margin: 0px 5px;
+}
+.booked_players > #court {
+    width: 90px;
+}

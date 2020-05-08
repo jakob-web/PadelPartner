@@ -8,7 +8,7 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
-<body id="container">
+<body id="container" class="bookContainer">
   <div class="card">
       <header class="card-header">
           <img class="bild" id="b1" src="/static/padel.png">
@@ -39,22 +39,23 @@
       {%for game in match:%}
       <div class="card text-center">
           <div class="card-header">
-            Ort: {{game[0]}}
+            <h5 class="card-title">Skapad av: {{game[4]}}</h5>
+            <h6 class="card-text"><b>Ort: </b>{{game[0]}}</h6>
+            <p class="card-text"><b>Spelarnivå: </b>{{game[1]}}</p>
+            <p class="card-text"><b>Info: </b>{{game[3]}}</p>
           </div>
           <div class="card-body">
-            <h5 class="card-title">Skapare av match: {{game[4]}}</h5>
-            <p class="card-text">Info: {{game[3]}}</p>
-            <p class="card-text">Spelarnivå: {{game[1]}}</p>
-            <p class="card-text">Sökes: {{game[2]}}</p>
-            
+            <div class="booked_players">
+              <img src='/static/img/user (1).png'id="spelare1" class="players">
+              <img src='/static/img/user (1).png'id="spelare2" class="players">
+              <img src='/static/img/tennis-court.png'id="court">
+              <img src='/static/img/user (1).png'id="spelare3" class="players">
+              <img src='/static/img/user (1).png'id="spelare4" class="players">
+            </div>  
+          
             <form action="http://localhost:8080/show_chatt/{{game[5]}}#" method="POST">
-            <label for="antal" >Antal platser:</label>
-            <select id="antal" name="antal">
-            <option selected hidden >{{game[2]}}</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            </select><br>
+            <p class="card-text" hidden id="sökes">{{game[2]}}</p>
+            <p id="antal" selected hidden value="2"></p>
             <input type="submit" class="btn btn-primary" value="Boka">
           </div>
         </div>

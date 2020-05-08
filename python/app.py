@@ -150,18 +150,6 @@ def show_match_profile(matchid):
     matchid = matchid
     return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid))
 
-# Old my_games
-# @app.route('/my_games/')
-# def show_my_games():
-#     print(session["username"])
-#     game = []
-#     result = fetchall("select ort, klass, antal, skapare, matchid from match where skapare = %s", [session["username"]])
-    
-#     for record in result:
-#         game.append(record)
-#     print(game)
-#     return render_template("my_games.html", user = session["username"], matches = game)
-
 @app.route('/my_games/')
 def show_my_games():
     print(session["username"])
@@ -172,7 +160,7 @@ def show_my_games():
 @app.route('/my_games_info/<matchid>')
 def my_game_info(matchid):
     matchid = matchid
-    result = fetchall("select ort, klass, info, skapare, matchid from match where matchid = %s", [matchid])
+    result = fetchall("select ort, klass, info, skapare, matchid, antal from match where matchid = %s", [matchid])
     my_matches = []
     for record in result:
         my_matches.append(record)
