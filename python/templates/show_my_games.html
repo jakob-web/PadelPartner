@@ -40,7 +40,7 @@
       <div class="card text-center">
           <div class="card-header">
             <h5 class="card-title">Skapad av: {{match[3]}}</h5>
-            <h6 class="card-text"><b>Ort: </b>{{match[0]}}</h6>
+            <h6 class="card-text cap"><b>Ort: </b>{{match[0]}}</h6>
             <p class="card-text"><b>Spelarnivå: </b>{{match[1]}}</p>
             <p class="card-text"><b>Info: </b>{{match[2]}}</p>
             <p id="sökes" hidden>{{match[5]}}</p>
@@ -53,7 +53,7 @@
               <img src='/static/img/user (1).png'id="spelare3" class="players">
               <img src='/static/img/user (1).png'id="spelare4" class="players">
             </div>  
-            
+
             {%if creator == True:%}
             <a href="http://localhost:8080/remove_match/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Ta bort match</button></a>
             {%endif%}

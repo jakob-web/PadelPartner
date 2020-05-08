@@ -303,3 +303,11 @@ li.list-group-item.active {
 .booked_players > #court {
     width: 90px;
 }
+
+.card-header {
+    background-color: white;
+}
+
+.cap {
+    text-transform: capitalize;
+}
