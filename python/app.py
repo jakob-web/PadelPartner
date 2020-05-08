@@ -152,9 +152,7 @@ def show_match_profile(matchid):
 
 @app.route('/my_games/')
 def show_my_games():
-    print(session["username"])
     game = fetchall("select ort, klass, antal, skapare, match.matchid from (match join booking on match.matchid = booking.matchid) where booking.username = %s", [session["username"]])
-    print(game)
     return render_template("my_games.html", user = session["username"], matches = game)
 
 @app.route('/my_games_info/<matchid>')
@@ -180,18 +178,24 @@ def remove_match(matchid):
 @app.route('/remove_booking/<matchid>')
 def remove_booking(matchid):
     print(matchid, session["username"])
-    sql = "select antal from match where matchid=%s AND skapare=%s"
+    sql = "select booked from booking where matchid=%s AND username=%s"
     val = matchid, session["username"]
-    insert(sql, val)
     current_booking = fetchone(sql,val) 
     print(current_booking)
+
     sql = "update match set antal=(antal+%s) where matchid =%s"
-    val = current_booking,matchid    
-    print(current_booking,matchid)  
+    val = current_booking,matchid
+    print(current_booking,matchid)
     update(sql,val)
     sql = "update match set booked=(booked-%s) where matchid =%s"
     val = current_booking,matchid
     update(sql,val)
+
+    sql = "delete from booking where matchid=%s AND username=%s"
+    val = matchid,session["username"]
+    update(sql,val)
+
+
 
     return show_my_games()
 
@@ -209,16 +213,14 @@ def show_past_chatt():
 @app.route('/show_chatt/<matchid>', methods=['GET', 'POST'])
 def show_chatt(matchid):
     matchid = int(matchid)
-    print(matchid)
     antal = request.form["antal"]
     booked = fetchone("select booked from match where matchid = %s", [matchid])
-    print(booked[0])
     new_booked = int(antal) + booked[0]
     print(matchid, session["username"])
 
     creatorName = fetchone("select skapare from match where matchid = %s", [matchid])
-    sql = "insert into booking values(%s,%s,%s)"
-    val = matchid,session["username"],creatorName
+    sql = "insert into booking values(%s,%s,%s,%s)"
+    val = matchid,session["username"],creatorName,antal
     insert(sql, val)
 
     sql = "UPDATE match SET booked = %s WHERE matchid = %s;"
