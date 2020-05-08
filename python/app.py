@@ -214,19 +214,21 @@ def show_chatt(matchid):
     sökes = sökes[0] - int(antal)
     val = sökes,matchid
     update(sql, val)
+   
+    # Future chatt fnction
+    # def sessions():
+    #     return render_template('session.html')
 
-    def sessions():
-        return render_template('session.html')
+    # def messageReceived(methods=['GET', 'POST']):
+    #     print('message was received!!!')
 
-    def messageReceived(methods=['GET', 'POST']):
-        print('message was received!!!')
+    # @socketio.on('my event')
+    # def handle_my_custom_event(json, methods=['GET', 'POST']):
+    #     print('received my event: ' + str(json))
+    #     socketio.emit('my response', json, callback=messageReceived)
+    # return render_template('session.html')
 
-
-    @socketio.on('my event')
-    def handle_my_custom_event(json, methods=['GET', 'POST']):
-        print('received my event: ' + str(json))
-        socketio.emit('my response', json, callback=messageReceived)
-    return render_template('session.html')
+    return start_page()
 
 
 if __name__ == '__main__':
