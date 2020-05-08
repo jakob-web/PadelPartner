@@ -30,6 +30,7 @@ def update(query, val):
 
 def insert(query, val):
     dbExecute(query, "", val)
+    
 
 def dbExecute(query, fetch, val):
     connection = connectToDb()

@@ -33,7 +33,7 @@ def find_Game(ort):
 def show_Game(ort,klass,antal):
     print(ort,klass,antal)
     # check if creator name is username session, then don't show.
-    sql = "select ort, klass, antal, match.matchid, booked from(match join booking on match.matchid = booking.matchid) where ort = %s AND klass = %s AND antal = %s AND antal > 0;"
+    sql = "select ort, klass, antal, match.matchid, match.booked from(match join booking on match.matchid = booking.matchid) where ort = %s AND klass = %s AND antal = %s AND antal > 0;"
     val = ort, klass, antal
     games = fetchall(sql, val)
     return games
