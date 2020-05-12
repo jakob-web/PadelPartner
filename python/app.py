@@ -8,6 +8,7 @@ import profile
 import show_match
 from db_operations import fetchone, fetchmany, fetchall, insert, update
 from datetime import date
+from datetime import datetime
 from datetime import timedelta  
 
 
@@ -109,6 +110,7 @@ def create():
     dates = []
     for i in range (10):
         current = date.today() + timedelta(days=i)
+        current = current.strftime("%a, %d %b")
         dates.append(current)
         i+=1
         print(current)
