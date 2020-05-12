@@ -39,6 +39,21 @@
     <fieldset>
     {%for item in info:%}
      {%for pic in pics:%}
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+     <!-- <form id="uploadpictureform" action="/uploadpicture" method=post enctype=multipart/form-data>
+      <input type=file name="image" id="image" onChange="previewpicture(event)">
+      <input type=submit value=Upload id="profilbildupload">
+
+    </form> -->
+        <form action="http://localhost:8080/profile" method="POST" enctype=multipart/form-data>
+          <img src="{{pics[0]}}" id="profilbild">
+          <input type=file name="image" id="image" onChange="previewpicture(event)">
+
+=======
+>>>>>>> parent of 5173cf6... ej bra commit
         <form action="http://localhost:8080/profile" method="POST">
           <img src="static/img/uploads/{{pic[0]}}.jpg" id="profilbild">
           <a href="http://localhost:8080/uploadpicture">Ändra profilbild</a>
