@@ -1,29 +1,9 @@
 <!doctype html>
 <html>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  </head>
 <title>Upload new File</title>
 <h1>Upload new File</h1>
-<form id="uploadpictureform" action="/uploadpicture" method=post enctype=multipart/form-data>
+<form action="/uploadpicture" method=post enctype=multipart/form-data>
   <input type=file name="image" id="image">
   <input type=submit value=Upload>
 </form>
-<script>
-  $("#uploadpictureform").submit(function(){
-      var text = $(this).val();
-        $("#marcus").html("jquery funkar iallafall")
-        $.ajax({
-        url: "/testRoute",
-        type: "get",
-        data: {jsdata: text},
-        success: function(response) {
-          $("#marcus").html(response);
-        },
-        error: function(xhr) {
-          //Do Something to handle error
-        }
-      });
-  });
-  </script>
 </html>
