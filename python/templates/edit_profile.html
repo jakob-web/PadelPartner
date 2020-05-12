@@ -40,7 +40,6 @@
     <fieldset>
     {%for item in info:%}
      {%for pic in pics:%}
-<<<<<<< HEAD
 
      <!-- <form id="uploadpictureform" action="/uploadpicture" method=post enctype=multipart/form-data>
       <input type=file name="image" id="image" onChange="previewpicture(event)">
@@ -51,12 +50,6 @@
           <img src="{{pics[0]}}" id="profilbild">
           <input type=file name="image" id="image" onChange="previewpicture(event)">
 
-=======
-        <form action="http://localhost:8080/profile" method="POST">
-          <img src="static/img/uploads/{{pic[0]}}.jpg" id="profilbild">
-          <a href="http://localhost:8080/uploadpicture">Ändra profilbild</a>
-            
->>>>>>> parent of ba25ec5... nästan fixat
             <label for="beskrivning" >Beskrivning:</label><br>
             <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required>{{item[1]}}</textarea> <br> <br>
             
