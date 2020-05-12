@@ -44,24 +44,26 @@ def show_Game(ort,klass,kön):
 
 def show_Match_Profile(matchid):
     
-    cur.execute("select ort, klass, antal, info, skapare, matchid, kön from match where matchid = %s AND antal > 0", [matchid])
+    result = fetchall("select ort, klass, antal, info, skapare, matchid, kön from match where matchid = %s AND antal > 0", [matchid])
     
     match = []
-
-    for record in cur:
+    print(match)
+    for record in result:
         match.append(record)
+    
     return match
 
 def show_all_match(ort):
     print(ort)
-    cur.execute("select ort, klass, antal, match, kön, datum from match where ort = %s AND antal > 0", [ort])
+    result = fetchall("select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0", [ort])
     # sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0"
     # val = ort
     # result = fetchall(sql, val)
     games = []
-    for record in cur:
+    for record in result:
         games.append(record)
     print(games)
+
     return games
 
 def show_all_ranks(ort, klass):
