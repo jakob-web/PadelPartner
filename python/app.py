@@ -119,9 +119,7 @@ def create():
 
 @app.route('/insert_match', methods=['GET', 'POST'])
 def insert_match():
-    
-    ort = request.form["ort"]
-    klass = request.form["klass"]
+
     antal = request.form["antal"]
 
     show_match.create_Game(session["username"])
@@ -147,15 +145,16 @@ def show_matches():
     
     ort = request.form["ort"]
     klass = request.form["klass"]
-    antal = request.form["antal"]
-    if klass == "1" and antal !="6":
-        return render_template("find_match.html", games=show_match.show_all_players(ort, antal))
-    elif klass != "1" and antal =="6":
+    kön = request.form["kön"]
+    
+    if klass == "1" and kön !="6":
+        return render_template("find_match.html", games=show_match.show_all_players(ort, kön))
+    elif klass != "1" and kön =="6":
         return render_template("find_match.html", games=show_match.show_all_ranks(ort, klass))
-    elif klass == "1" and antal =="6":
+    elif klass == "1" and kön =="6":
         return render_template("find_match.html", games=show_match.show_all_match(ort))
     else:
-        return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
+        return render_template("find_match.html", games=show_match.show_Game(ort,klass,kön))
 
 @app.route('/showMatchProfile/<matchid>')
 def show_match_profile(matchid):    

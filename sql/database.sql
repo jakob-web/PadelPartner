@@ -34,6 +34,7 @@ create table Match (
     skapare varchar(100),
     booked int,
     datum varchar(20),
+    kön varchar(10),
     FOREIGN KEY (skapare) REFERENCES registration(username),
     PRIMARY KEY (matchID)
 );

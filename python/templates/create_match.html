@@ -42,10 +42,10 @@
 <form action="http://localhost:8080/insert_match" method="POST">
     <select id="ort" name="ort" required>
         <option value="" disabled selected hidden>Stad</option>
-        <option value="malmö">Malmö</option>
+        <option value="Malmö">Malmö</option>
         <option value="Helsingborg">Helsingborg</option>
-        <option value="lund">Lund</option>
-        <option value="lomma">Lomma</option>
+        <option value="Lund">Lund</option>
+        <option value="Lomma">Lomma</option>
     </select>
     <select id="antal" name="antal" required>
         <option value="" disabled selected hidden>Söker</option>
@@ -61,6 +61,14 @@
         <option value="D">D</option>
     </select>
     <br>
+    <select id="kön" name="kön" required>
+        <option value="" disabled selected hidden>Kön</option>
+        <option value="Herr">Herr</option>
+        <option value="Dam">Dam</option>
+        <option value="Mix">Mix</option>
+    </select>
+    <br>
+
     <select id="datum" name="datum" required>
         <option value="" disabled selected hidden>Datum</option>
         <option value="{{dates[0]}}">{{dates[0]}}</option>
