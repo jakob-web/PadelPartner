@@ -225,40 +225,11 @@ def allowed_image(filename):
 @app.route('/uploadpicture', methods=['GET', 'POST'])
 def uploadpicture():
 
-    name = fetchone("select pid from registration where username = %s", [session["username"]])
-    for something in name:
-        picturename = something
-
-    if request.method == "POST":
-
-        if request.files:
-
-            image = request.files["image"]
-
-            if image.filename == "":
-                print("image must have a filename")
-                return redirect(request.url)
-            
-            if not allowed_image(image.filename):
-                print("That image extension is not allowed")
-                return redirect(request.url)
-
-            else:
-                filename = secure_filename(image.filename)
-
-            print(image)
-            print(image.filename)
-            image.filename = str(picturename) + ".jpg"
-            print(image.filename)
-            image.save(os.path.join(app.config["IMAGE_UPLOADS"], image.filename))
-
-            sql = "update profile set img = %s where pid = %s"
-            val = ( "static/img/uploads/" + image.filename, picturename,)
-
-            update(sql, val)
-            return redirect("/changeProfile")
-
     return render_template("uploadpicture.html")
+
+@app.route('/testRoute', methods=['GET'])
+def uploadpictureok():
+    return "hejhejmarcus"
 
 
 
