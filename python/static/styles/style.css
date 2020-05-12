@@ -300,6 +300,11 @@ li.list-group-item.active {
     width: 40px;
     margin: 0px 5px;
 }
+.booked_overview > img {
+    width: 20px;
+    margin: 0px;
+}
+
 .booked_players > #court {
     width: 90px;
 }
@@ -310,4 +315,10 @@ li.list-group-item.active {
 
 .cap {
     text-transform: capitalize;
+}
+
+.booked_overview {
+    display: flex;
+    margin-left: 75%;    
+    margin-top: 20px;
 }
