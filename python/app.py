@@ -243,6 +243,11 @@ def show_chatt(matchid):
     val = sökes,matchid
     update(sql, val)
    
+@app.route('/about_us')
+def about_us():
+    
+    return render_template("about_us.html")
+
     # Future chatt fnction
     # def sessions():
     #     return render_template('session.html')
@@ -256,7 +261,7 @@ def show_chatt(matchid):
     #     socketio.emit('my response', json, callback=messageReceived)
     # return render_template('session.html')
 
-    return start_page()
+    #return start_page()
 
 app.config["IMAGE_UPLOADS"] = '/Users/marcusasker/Downloads/Grupp09/python/static/img/uploads'
 app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG", "GIF"]
