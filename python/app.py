@@ -260,6 +260,10 @@ def uploadpicture():
 
     return render_template("uploadpicture.html")
 
+@app.route('/testRoute', methods=['GET'])
+def uploadpictureok():
+    return "hejhejmarcus"
+
 
 
 if __name__ == '__main__':
