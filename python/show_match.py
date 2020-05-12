@@ -14,11 +14,12 @@ def create_Game(username):
     klass = request.form["klass"]
     antal = request.form["antal"]
     info = request.form["info"]
+    datum = request.form["datum"]
     username = request.form["username"]
 
-    sql = "insert into match(ort, klass, antal, info, skapare, booked) values(%s, %s, %s, %s, %s, %s)"
+    sql = "insert into match(ort, klass, antal, info, skapare, booked, datum) values(%s, %s, %s, %s, %s, %s, %s)"
     booked = 4 - int(antal)
-    val = ort, klass, antal, info, username, booked
+    val = ort, klass, antal, info, username, booked, datum
     cur.execute(sql, val)
     con.commit()
 

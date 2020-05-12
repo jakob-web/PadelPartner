@@ -7,6 +7,9 @@ import user_login
 import profile
 import show_match
 from db_operations import fetchone, fetchmany, fetchall, insert, update
+from datetime import date
+from datetime import timedelta  
+
 
 import psycopg2
 
@@ -103,7 +106,16 @@ def profil():
 
 @app.route('/createMatch')
 def create():
-    return render_template("create_match.html", username = session["username"])
+    dates = []
+    for i in range (10):
+        current = date.today() + timedelta(days=i)
+        dates.append(current)
+        i+=1
+        print(current)
+    
+    print(dates)
+    print(dates[0])
+    return render_template("create_match.html", username = session["username"], dates = dates)
 
 @app.route('/insert_match', methods=['GET', 'POST'])
 def insert_match():
@@ -123,7 +135,7 @@ def insert_match():
     insert(sql, val)
     print(matchid, session["username"])
 
-    return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
+    return start_page()
 
 
 @app.route('/show_games')
@@ -235,6 +247,8 @@ def show_chatt(matchid):
     val = sökes,matchid
     update(sql, val)
    
+
+    
     # Future chatt fnction
     # def sessions():
     #     return render_template('session.html')

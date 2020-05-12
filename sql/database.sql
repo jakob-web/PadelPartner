@@ -9,7 +9,7 @@ create table person (
 create table profile (
     img varchar(1500),
     info varchar(2000),
-    level varchar(1),
+    level varchar(2),
     ort varchar (50),
     age integer,
     pid integer,
@@ -33,6 +33,7 @@ create table Match (
     info varchar(1000),
     skapare varchar(100),
     booked int,
+    datum varchar(20),
     FOREIGN KEY (skapare) REFERENCES registration(username),
     PRIMARY KEY (matchID)
 );
@@ -71,5 +72,3 @@ CREATE SEQUENCE add_id OWNED BY none;
 ALTER TABLE Match ALTER COLUMN MatchID SET DEFAULT nextval('add_id');
 UPDATE Match
 SET matchID = nextval('add_id');
-
-alter table profile alter column level type varchar(2);      

@@ -93,7 +93,7 @@ label {
     margin-bottom: 0px;
 }
 
-input[type="text"],input[type="username"], input[type="password"], select[name="ort"], select[name="level"], select[name="antal"], select[name="klass"]{
+input[type="text"],input[type="username"], input[type="password"], select[name="ort"], select[name="level"], select[name="antal"], select[name="klass"],select[name="datum"]{
     height: 50px;
     margin: 5px 0px;
     width: 100%;
