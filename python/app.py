@@ -10,17 +10,9 @@ from db_operations import fetchone, fetchmany, fetchall, insert, update
 
 import psycopg2
 
-UPLOAD_FOLDER = '/Users/marcusasker/Downloads/Grupp09/python/static/img'
-ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 socketio = SocketIO(app)
-
-def allowed_file(filename):
-    return '.' in filename and \
-        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/start_page')
 def start_page():
@@ -257,21 +249,6 @@ def show_chatt(matchid):
     # return render_template('session.html')
 
     return start_page()
-
-app.config["IMAGE_UPLOADS"] = '/Users/marcusasker/Downloads/Grupp09/python/static/img/uploads'
-app.config["ALLOWED_IMAGE_EXTENSIONS"] = ["PNG", "JPG", "JPEG", "GIF"]
-
-def allowed_image(filename):
-    
-    if not "." in filename:
-        return False
-
-    ext = filename.rsplit(".", 1)[1]
-
-    if ext.upper() in app.config["ALLOWED_IMAGE_EXTENSIONS"]:
-        return True 
-    else:
-        return False
 
 @app.route('/uploadpicture', methods=['GET', 'POST'])
 def uploadpicture():

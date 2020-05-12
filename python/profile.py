@@ -6,7 +6,7 @@ import os
 
 import psycopg2
 
-UPLOAD_FOLDER = '/Users/marcusasker/Downloads/Grupp09/python/static/img/uploads'
+UPLOAD_FOLDER = 'python/static/img/uploads'
 ALLOWED_EXTENSIONS = ["PNG", "JPG", "JPEG", "GIF"]
 
 
@@ -36,9 +36,6 @@ def allowed_image(filename):
         return False
 
 def validatepicture():
-    name = fetchone("select pid from registration where username = %s", [session["username"]])
-    for something in name:
-        picturename = something
 
     if request.method == "POST":
         print("1")
