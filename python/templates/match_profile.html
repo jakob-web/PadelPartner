@@ -8,7 +8,7 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
-<body id="container">
+<body id="container" class="bookContainer">
   <div class="card">
       <header class="card-header">
           <img class="bild" id="b1" src="/static/padel.png">
@@ -22,10 +22,10 @@
         <ul class="list-group">
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/my_games">Mina matcher</a></li>
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
-
         </ul>
       </div>
     </div>
@@ -39,13 +39,24 @@
       {%for game in match:%}
       <div class="card text-center">
           <div class="card-header">
-            Ort: {{game[0]}}
+            <h5 class="card-title">Skapad av: {{game[4]}}</h5>
+            <h6 class="card-text cap"><b>Ort: </b>{{game[0]}}</h6>
+            <p class="card-text"><b>Spelarnivå: </b>{{game[1]}}</p>
+            <p class="card-text"><b>Info: </b>{{game[3]}}</p>
           </div>
           <div class="card-body">
-            <h5 class="card-title">Skapare av match: {{game[4]}}</h5>
-            <p class="card-text">Info: {{game[3]}}</p>
-            <p class="card-text">Spelarnivå: {{game[1]}}</p>
-            <a href="http://localhost:8080/show_chatt/{{game[5]}}#" class="btn btn-primary">Boka</a>
+            <div class="booked_players">
+              <img src='/static/img/user (1).png'id="spelare1" class="players">
+              <img src='/static/img/user (1).png'id="spelare2" class="players">
+              <img src='/static/img/tennis-court.png'id="court">
+              <img src='/static/img/user (1).png'id="spelare3" class="players">
+              <img src='/static/img/user (1).png'id="spelare4" class="players">
+            </div>  
+          
+            <form action="http://localhost:8080/show_chatt/{{game[5]}}#" method="POST">
+            <p class="card-text" hidden id="sökes">{{game[2]}}</p>
+            <input name="antal" id="antal" selected hidden value="2"></input>
+            <input type="submit" class="btn btn-primary" value="Boka">
           </div>
         </div>
       {%endfor%}

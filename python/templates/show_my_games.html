@@ -22,6 +22,7 @@
         <ul class="list-group">
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/my_games">Mina matcher</a></li>
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
           <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
@@ -39,16 +40,26 @@
       {%for match in my_matches:%}
       <div class="card text-center">
           <div class="card-header">
-            Ort: {{match[0]}}
+            <h5 class="card-title">Skapad av: {{match[3]}}</h5>
+            <h6 class="card-text cap"><b>Ort: </b>{{match[0]}}</h6>
+            <p class="card-text"><b>Spelarnivå: </b>{{match[1]}}</p>
+            <p class="card-text"><b>Info: </b>{{match[2]}}</p>
+            <p id="sökes" hidden>{{match[5]}}</p>
           </div>
           <div class="card-body">
-            <h5 class="card-title">Skapare av match: {{match[3]}}</h5>
-            <p class="card-text">Info: {{match[2]}}</p>
-            <p class="card-text">Spelarnivå: {{match[1]}}</p>
-            <p class="card-text">Ort: {{match[0]}}</p>
-            
-            
-            
+            <div class="booked_players">
+              <img src='/static/img/user (1).png'id="spelare1" class="players">
+              <img src='/static/img/user (1).png'id="spelare2" class="players">
+              <img src='/static/img/tennis-court.png'id="court">
+              <img src='/static/img/user (1).png'id="spelare3" class="players">
+              <img src='/static/img/user (1).png'id="spelare4" class="players">
+            </div>  
+
+            {%if creator == True:%}
+            <a href="http://localhost:8080/remove_match/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Ta bort match</button></a>
+            {%else:%}
+            <a href="http://localhost:8080/remove_booking/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Avboka Match</button></a>
+            {%endif%}
           </div>
         </div>
       {%endfor%}

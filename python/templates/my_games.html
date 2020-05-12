@@ -20,11 +20,12 @@
         <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
             <ul class="list-group">
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/my_games">Mina matcher</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/changeProfile">Redigera profil</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
+          <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
             </ul>
         </div>
         </div>
@@ -39,7 +40,7 @@
         <h3>Mina Matcher</h3>
     {%for match in matches:%}
     <a href="http://localhost:8080/my_games_info/{{match[4]}}#" class="list-group-item list-group-item-action">
-    <p class="left2">{{match[0]}}</p>
+    <p class="left2 cap">{{match[0]}}</p>
     <p class="middle">{{match[1]}}</p>
     <p class="right2">{{match[2]}}</p>
     <p class="right2">{{match[3]}}</p>
