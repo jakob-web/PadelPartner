@@ -21,15 +21,17 @@ def create_Game(username):
     sql = "insert into match(ort, klass, antal, info, skapare, booked, datum, kön) values(%s, %s, %s, %s, %s, %s, %s, %s)"
     booked = 4 - int(antal)
     val = ort, klass, antal, info, username, booked, datum, kön
+    
     cur.execute(sql, val)
     con.commit()
 
 def find_Game(ort):
-    cur.execute("select ort, klass, antal, matchid,kön from match where ort = %s", [ort])
+    cur.execute("select ort, klass, antal, matchid, kön from match where ort = %s", [ort])
     
     games = []
     for record in cur:
         games.append(record)
+    print(games)
     return games
 
 def show_Game(ort,klass,kön):
@@ -51,11 +53,13 @@ def show_Match_Profile(matchid):
     return match
 
 def show_all_match(ort):
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0"
-    val = (ort)
-    result = fetchall(sql, val)
+    print(ort)
+    cur.execute("select ort, klass, antal, match, kön, datum from match where ort = %s AND antal > 0", [ort])
+    # sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0"
+    # val = ort
+    # result = fetchall(sql, val)
     games = []
-    for record in result:
+    for record in cur:
         games.append(record)
     print(games)
     return games
