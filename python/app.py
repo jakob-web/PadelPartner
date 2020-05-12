@@ -235,6 +235,11 @@ def show_chatt(matchid):
     val = sökes,matchid
     update(sql, val)
    
+@app.route('/about_us')
+def about_us():
+    
+    return render_template("about_us.html")
+
     # Future chatt fnction
     # def sessions():
     #     return render_template('session.html')
@@ -248,7 +253,7 @@ def show_chatt(matchid):
     #     socketio.emit('my response', json, callback=messageReceived)
     # return render_template('session.html')
 
-    return start_page()
+    #return start_page()
 
 
 if __name__ == '__main__':
