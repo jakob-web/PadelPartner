@@ -40,7 +40,7 @@
     {%for item in info:%}
      {%for pic in pics:%}
         <form action="http://localhost:8080/profile" method="POST">
-          <img src="{{pics[0]}}" id="profilbild">
+          <img src="static/img/uploads/{{pic[0]}}.jpg" id="profilbild">
           <a href="http://localhost:8080/uploadpicture">Ändra profilbild</a>
             
             <label for="beskrivning" >Beskrivning:</label><br>
