@@ -109,7 +109,7 @@ def create():
     dates = []
     for i in range (10):
         current = date.today() + timedelta(days=i)
-        current = current.strftime("%a, %d %b")
+        current = current.strftime("%a, %d %b %Y")
         dates.append(current)
         i+=1
         print(current)
