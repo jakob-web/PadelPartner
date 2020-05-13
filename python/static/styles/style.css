@@ -321,4 +321,18 @@ li.list-group-item.active {
     display: flex;
     margin-left: 75%;    
     margin-top: 20px;
+    width: 30%;
 }
+
+.gender {
+    width: 30%;
+    float: right;
+    margin-bottom: 0px;
+    padding: 0;
+}
+
+.level {
+    margin: 0% 0% 0% 20%;
+    font-size: 200%;
+}
+

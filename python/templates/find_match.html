@@ -56,12 +56,12 @@
       {%for game in games:%}
       <h2 class="cap" id="city" hidden>{{game[0]}}</h2> 
       <!-- Use javascript to display City just once as a headline -->
-
+      
         <a href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
-        <p class="left2">{{game[5][0:-4]}}</p>
+        <p class="left2 align-bottom">{{game[5][0:-4]}}</p>
         <!-- Lägga till datum och tid (?) -->
-        <p class="left2">{{game[1]}}</p>
-        <p class=""> {{game[4]}}</p>
+        <p class="left2 level">{{game[1]}}</p>
+        <p class="gender"> {{game[4]}}</p>
         <p hidden>{{game[2]}}</p>
         <!-- Testa detta med javascript och lägg till booked klassen för att ändra bidlfärg -->
         <div class="booked_overview">
