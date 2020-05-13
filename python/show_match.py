@@ -1,7 +1,11 @@
 from flask import Flask, render_template, request, redirect
 import psycopg2
 from config import *
-from db_operations import fetchone, fetchmany, fetchall, insert
+from db_operations import fetchone, fetchmany, fetchall, insert, update
+from datetime import date
+from datetime import timedelta  
+from datetime import datetime  
+
 
 con = psycopg2.connect( 
     dbname=dbname, 
@@ -9,6 +13,31 @@ con = psycopg2.connect(
     password=password,
     host=host)
 cur = con.cursor()
+
+def check_date(): 
+    """
+    Converts database "datum" to same format as date.today() and compares if the date is expired.
+    If date expired = remove match from database.
+    """
+    current = date.today()
+    current = current.strftime("%a, %d %b %Y")
+    print(current)
+    current = datetime.strptime(str(current), "%a, %d %b %Y")
+    result = fetchall("select datum from match where matchid > %s", [0])
+    print(current)
+    
+    for record in result:
+        record = datetime.strptime(record[0], "%a, %d %b %Y")
+        print(record)
+        print(current)
+        if record < current:
+            print("delete")
+            print(record)
+            new_record = record.strftime("%a, %d %b %Y")
+            print(new_record)
+            update("delete from match where datum = %s",[new_record])
+
+
 def create_Game(username):
     ort = request.form["ort"]
     klass = request.form["klass"]
@@ -35,6 +64,7 @@ def find_Game(ort):
     return games
 
 def show_Game(ort,klass,kön):
+    check_date()
     print(ort,klass,kön)
     sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND klass = %s AND kön = %s AND antal > 0;"
     val = ort, klass, kön
@@ -43,7 +73,6 @@ def show_Game(ort,klass,kön):
   
 
 def show_Match_Profile(matchid):
-    
     result = fetchall("select ort, klass, antal, info, skapare, matchid, kön from match where matchid = %s AND antal > 0", [matchid])
     
     match = []
@@ -54,7 +83,7 @@ def show_Match_Profile(matchid):
     return match
 
 def show_all_match(ort):
-    print(ort)
+    check_date()
     result = fetchall("select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0", [ort])
     # sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0"
     # val = ort
@@ -62,11 +91,11 @@ def show_all_match(ort):
     games = []
     for record in result:
         games.append(record)
-    print(games)
 
     return games
 
 def show_all_ranks(ort, klass):
+    check_date()
     sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and klass = %s AND antal > 0"
     val = (ort, klass)
     result = fetchall(sql, val)
@@ -77,6 +106,7 @@ def show_all_ranks(ort, klass):
     return games
 
 def show_all_players(ort, kön):
+    check_date()
     print(kön)
     sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and kön = %s AND antal > 0"
     val = (ort, kön)

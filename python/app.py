@@ -21,6 +21,7 @@ socketio = SocketIO(app)
 def start_page():
     print(session.get("username"))
     print(session.get("logged_in"))
+
     if not session.get("logged_in"):
         print("No username found in session")
         return log_in()
@@ -112,10 +113,6 @@ def create():
         current = current.strftime("%a, %d %b %Y")
         dates.append(current)
         i+=1
-        print(current)
-    
-    print(dates)
-    print(dates[0])
     return render_template("create_match.html", username = session["username"], dates = dates)
 
 @app.route('/insert_match', methods=['GET', 'POST'])
@@ -164,6 +161,7 @@ def show_match_profile(matchid):
 
 @app.route('/my_games/')
 def show_my_games():
+    show_match.check_date()
     game = fetchall("select ort, klass, antal, skapare, match.matchid from (match join booking on match.matchid = booking.matchid) where booking.username = %s", [session["username"]])
     return render_template("my_games.html", user = session["username"], matches = game)
 
