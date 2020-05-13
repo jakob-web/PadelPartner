@@ -234,12 +234,8 @@ def show_chatt(matchid):
     sökes = sökes[0] - int(antal)
     val = sökes,matchid
     update(sql, val)
-   
-@app.route('/about_us')
-def about_us():
-    
-    return render_template("about_us.html")
 
+    
     # Future chatt fnction
     # def sessions():
     #     return render_template('session.html')
@@ -253,7 +249,12 @@ def about_us():
     #     socketio.emit('my response', json, callback=messageReceived)
     # return render_template('session.html')
 
-    #return start_page()
+    return start_page()
+   
+@app.route('/about_us')
+def about_us():
+    
+    return render_template("about_us.html")
 
 @app.route('/uploadpicture', methods=['GET', 'POST'])
 def uploadpicture():
