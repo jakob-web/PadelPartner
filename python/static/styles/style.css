@@ -335,4 +335,23 @@ li.list-group-item.active {
     margin: 0% 0% 0% 20%;
     font-size: 200%;
 }
+.matchlink {
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,.125);
+}
 
+.city {
+    margin: 0% 0% 0% 10%;
+}
+
+.antal_spelare {
+    float: right;
+    margin-bottom: 0px;
+    padding: 0;
+}
+
+.match_status {
+    float: right;
+    margin-top: 20px;
+    width: 10%;
+}

@@ -5,6 +5,23 @@ document.getElementById("backBtn").onclick = function (){
   goBack();
   }
 
+  if (document.body.classList.contains("myGames")) {
+  
+    len = document.querySelectorAll(".matchlink").length
+  
+    for (i=0; i<len; i++) {
+      // Gets every amount of sökes
+      sökes = document.querySelectorAll(".matchlink")[i].querySelectorAll(".sökes")[0].innerHTML
+      if(sökes == "None") {sökes = 4}
+      
+      document.querySelectorAll(".matchlink")[i].querySelectorAll(".antal_spelare")[0].innerHTML = 4-sökes +"/4"
+      
+      if (sökes == 0 || sökes < 0) {
+        document.querySelectorAll(".matchlink")[i].querySelectorAll(".match_status")[0].children[0].src= '/static/img/check.png';
+      }
+    }  
+    }
+  
 
 players = document.querySelectorAll(".players");
 // Fetches the amount of spots that are already booked
@@ -47,4 +64,21 @@ for (i=0; i<bookedSaved; i++) {
 }
 
 
+if (document.body.classList.contains("matchOverview")) {
+  
+  len = document.querySelectorAll(".matchlink").length
+
+  for (i=0; i<len; i++) {
+    // Gets every amount of sökes
+    sökes = document.querySelectorAll(".matchlink")[i].children[3].innerHTML
+    bookedSaved = 4-sökes;
+    players = document.querySelectorAll(".matchlink")[i].querySelectorAll(".players");
+    console.log(sökes)
+    for (x=0; x<bookedSaved; x++) {
+      // Få fram specifik list element
+      players[x].classList.add("bookedSaved")
+      players[x].src = '/static/img/user (2).png';
+  }
+  }
+}
 

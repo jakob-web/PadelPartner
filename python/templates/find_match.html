@@ -8,7 +8,7 @@
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
-<body id="container">
+<body id="container" class="matchOverview">
   <div class="card">
       <header class="card-header">
           <img class="bild" id="b1" src="/static/padel.png">
@@ -54,12 +54,12 @@
       <h2 class="cap" id="city" hidden>{{game[0]}}</h2> 
       <!-- Use javascript to display City just once as a headline -->
       
-        <a href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
+        <a class ="matchlink" href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
         <p class="left2 align-bottom">{{game[5][0:-4]}}</p>
         <!-- Lägga till datum och tid (?) -->
         <p class="left2 level">{{game[1]}}</p>
         <p class="gender"> {{game[4]}}</p>
-        <p hidden>{{game[2]}}</p>
+        <p id="sökes" hidden>{{game[2]}}</p>
         <!-- Testa detta med javascript och lägg till booked klassen för att ändra bidlfärg -->
         <div class="booked_overview">
         <img src='/static/img/user (1).png'id="spelare1" class="players">
@@ -76,6 +76,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="{{url_for('static', filename='js/app.js')}}"></script>  
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
 </body>
 </html>
