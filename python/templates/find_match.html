@@ -38,13 +38,10 @@
   <div class="container">
     <div class="row">
       <div class="col">
-        Rank
-      </div>
-      <div class="col-6">
-        Sökes:
-      </div>
-      <div class="col">
-        Ort:
+      
+        {%if games != []:%}
+        <h2  id="city">{{games[0][0]}}</h2>
+        {%endif%}
       </div>
     </div>
   </div>
