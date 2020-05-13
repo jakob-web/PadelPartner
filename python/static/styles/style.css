@@ -83,6 +83,14 @@ a:hover {
     transition-duration: 0.6s;
 }
 
+<<<<<<< HEAD
+=======
+img {
+    /* Temp lösning för lättar visuell överblick */
+    width: 100%;
+    text-align: center;
+}
+>>>>>>> parent of 4b5ac0f... lade till info im klasser
 
 label {
     margin-bottom: 0px;
@@ -307,6 +315,7 @@ li.list-group-item.active {
     text-transform: capitalize;
 }
 
+<<<<<<< HEAD
 .tooltip {
     color: black; 
     size: 100px;
@@ -321,4 +330,6 @@ li.list-group-item.active {
     height: 30px;
     width: 50%;
 }
+=======
+>>>>>>> parent of 4b5ac0f... lade till info im klasser
 .btn-primary
