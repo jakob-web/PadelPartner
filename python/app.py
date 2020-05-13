@@ -162,7 +162,7 @@ def show_match_profile(matchid):
 @app.route('/my_games/')
 def show_my_games():
     show_match.check_date()
-    game = fetchall("select ort, klass, antal, skapare, match.matchid from (match join booking on match.matchid = booking.matchid) where booking.username = %s", [session["username"]])
+    game = fetchall("select ort, klass, antal, skapare, match.matchid, datum, kön from (match join booking on match.matchid = booking.matchid) where booking.username = %s", [session["username"]])
     return render_template("my_games.html", user = session["username"], matches = game)
 
 @app.route('/my_games_info/<matchid>')
