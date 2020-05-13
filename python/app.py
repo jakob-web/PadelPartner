@@ -234,11 +234,6 @@ def show_chatt(matchid):
     sökes = sökes[0] - int(antal)
     val = sökes,matchid
     update(sql, val)
-   
-@app.route('/about_us')
-def about_us():
-    
-    return render_template("about_us.html")
 
     # Future chatt fnction
     # def sessions():
@@ -253,7 +248,14 @@ def about_us():
     #     socketio.emit('my response', json, callback=messageReceived)
     # return render_template('session.html')
 
-    #return start_page()
+    return start_page()
+   
+@app.route('/about_us')
+def about_us():
+    
+    return render_template("about_us.html")
+
+    
 
 @app.route('/uploadpicture', methods=['GET', 'POST'])
 def uploadpicture():
@@ -263,6 +265,27 @@ def uploadpicture():
 @app.route('/testRoute', methods=['GET'])
 def uploadpictureok():
     return "hejhejmarcus"
+
+@app.route('/creator_profile/<creator>')
+def creator_profile(creator):
+    
+    #img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", ["creator"])
+    
+ 
+    skapare = creator
+    profil = fetchall("select profile.img, profile.info, profile.level FROM((Match join registration on Match.skapare = registration.username)join profile on registration.pid = profile.pid) WHERE skapare = %s", [skapare])
+    print(profil)
+
+    
+        
+    #SELECT BOOK.Book_id, Book.Title, BORROWER.Card_no, BORROWER.Name FROM 
+    #(( BOOK join BOOK_LOANS on BOOK.Book_id = BOOK_LOANS.Book_id) 
+    #                           join BORROWER on BOOK_LOANS.Card_no = BORROWER.Card_no  where CURRENT_DATE > BOOK_LOANS.Due_date 
+    
+
+        #return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
+
+    return render_template("creator_profile.html", skapare = skapare, profil = profil)
 
 
 
