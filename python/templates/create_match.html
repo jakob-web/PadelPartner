@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+
 </head>
 <body id="container">
     <div class="card">
@@ -39,20 +40,20 @@
 <main> 
 <fieldset>
 <form action="http://localhost:8080/insert_match" method="POST">
-    <select id="ort" name="ort">
+    <select id="ort" name="ort" required>
         <option value="" disabled selected hidden>Stad</option>
-        <option value="malmö">Malmö</option>
+        <option value="Malmö">Malmö</option>
         <option value="Helsingborg">Helsingborg</option>
-        <option value="lund">Lund</option>
-        <option value="lomma">Lomma</option>
+        <option value="Lund">Lund</option>
+        <option value="Lomma">Lomma</option>
     </select>
-    <select id="antal" name="antal">
+    <select id="antal" name="antal" required>
         <option value="" disabled selected hidden>Söker</option>
         <option value="1">1 Spelare</option>
         <option value="2">2 Spelare</option>
         <option value="3">3 Spelare</option> 
     </select> <br>
-    <select id="klass" name="klass">
+    <select id="klass" name="klass" required>
         <option value="" disabled selected hidden>Nivå</option>
         <option value="A">A</option>
         <option value="B">B</option>
@@ -60,7 +61,29 @@
         <option value="D">D</option>
     </select>
     <br>
-    <textarea name="info" placeholder="Övrig relevant information" required></textarea> <br>
+    <select id="kön" name="kön" required>
+        <option value="" disabled selected hidden>Kön</option>
+        <option value="Herr">Herr</option>
+        <option value="Dam">Dam</option>
+        <option value="Mix">Mix</option>
+    </select>
+    <br>
+
+    <select id="datum" name="datum" required>
+        <option value="" disabled selected hidden>Datum</option>
+        <option value="{{dates[0]}}">{{dates[0]}}</option>
+        <option value="{{dates[1]}}">{{dates[1]}}</option>
+        <option value="{{dates[2]}}">{{dates[2]}}</option>
+        <option value="{{dates[3]}}">{{dates[3]}}</option>        
+        <option value="{{dates[4]}}">{{dates[4]}}</option>
+        <option value="{{dates[5]}}">{{dates[5]}}</option>
+        <option value="{{dates[6]}}">{{dates[6]}}</option>
+        <option value="{{dates[7]}}">{{dates[7]}}</option>        
+        <option value="{{dates[8]}}">{{dates[8]}}</option>
+        <option value="{{dates[9]}}">{{dates[9]}}</option>
+    </select>
+    <br>
+    <textarea name="info" placeholder="Information och tid" required></textarea>
     <br>
     <input type="hidden" id="username" name="username" value="{{username}}">
     <input type="submit" class="btn btn-primary" value="Skapa Match">
