@@ -238,8 +238,14 @@ def show_chatt(matchid):
     else:
         print("antal högre än 0:" + antal)
         booked = fetchone("select booked from match where matchid = %s", [matchid])
-        new_booked = int(antal) + booked[0]
-        print(matchid, session["username"])
+        def new_booked():
+            print(antal)
+            if (int(antal) + booked[0]) > 4:
+                return "4"
+            else:
+                return int(antal) + booked[0]
+
+            print(matchid, session["username"])
 
         creatorName = fetchone("select skapare from match where matchid = %s", [matchid])
         sql = "insert into booking values(%s,%s,%s,%s)"
@@ -247,7 +253,7 @@ def show_chatt(matchid):
         insert(sql, val)
 
         sql = "UPDATE match SET booked = %s WHERE matchid = %s;"
-        val = new_booked,matchid
+        val = new_booked(),matchid
         print(matchid, session["username"])
         update(sql, val)
         
@@ -289,7 +295,6 @@ def uploadpicture():
 @app.route('/testRoute', methods=['GET'])
 def uploadpictureok():
     return "hejhejmarcus"
-
 
 
 if __name__ == '__main__':
