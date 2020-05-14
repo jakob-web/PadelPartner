@@ -66,7 +66,7 @@ def find_Game(ort):
 def show_Game(ort,klass,kön):
     check_date()
     print(ort,klass,kön)
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND klass = %s AND kön = %s AND antal > 0;"
+    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND klass = %s AND kön = %s AND antal > 0 ORDER BY datum"
     val = ort, klass, kön
     games = fetchall(sql, val)
     return games
@@ -84,7 +84,7 @@ def show_Match_Profile(matchid):
 
 def show_all_match(ort):
     check_date()
-    result = fetchall("select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0", [ort])
+    result = fetchall("select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0 ORDER BY datum", [ort])
     # sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0"
     # val = ort
     # result = fetchall(sql, val)
@@ -96,7 +96,7 @@ def show_all_match(ort):
 
 def show_all_ranks(ort, klass):
     check_date()
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and klass = %s AND antal > 0"
+    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and klass = %s AND antal > 0 ORDER BY datum"
     val = (ort, klass)
     result = fetchall(sql, val)
     games = []
@@ -108,7 +108,7 @@ def show_all_ranks(ort, klass):
 def show_all_players(ort, kön):
     check_date()
     print(kön)
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and kön = %s AND antal > 0"
+    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and kön = %s AND antal > 0 ORDER BY datum"
     val = (ort, kön)
     result = fetchall(sql, val)
     games = []
