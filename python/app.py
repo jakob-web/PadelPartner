@@ -162,7 +162,7 @@ def show_match_profile(matchid):
 @app.route('/my_games/')
 def show_my_games():
     show_match.check_date()
-    game = fetchall("select ort, klass, antal, skapare, match.matchid, datum, kön from (match join booking on match.matchid = booking.matchid) where booking.username = %s", [session["username"]])
+    game = fetchall("select ort, klass, antal, skapare, match.matchid, datum, kön from (match join booking on match.matchid = booking.matchid) where booking.username = %s ORDER BY datum;", [session["username"]])
     return render_template("my_games.html", user = session["username"], matches = game)
 
 @app.route('/my_games_info/<matchid>')
@@ -224,43 +224,50 @@ def show_past_chatt():
 def show_chatt(matchid):
     matchid = int(matchid)
     antal = request.form["antal"]
-    booked = fetchone("select booked from match where matchid = %s", [matchid])
-    new_booked = int(antal) + booked[0]
-    print(matchid, session["username"])
+    print(antal)
+    if antal == "0":
+        flash("Var vänlig och boka en plats")
+        print("antal = 0" + antal)
+        return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid))
 
-    creatorName = fetchone("select skapare from match where matchid = %s", [matchid])
-    sql = "insert into booking values(%s,%s,%s,%s)"
-    val = matchid,session["username"],creatorName,antal
-    insert(sql, val)
+    else:
+        print("antal högre än 0:" + antal)
+        booked = fetchone("select booked from match where matchid = %s", [matchid])
+        new_booked = int(antal) + booked[0]
+        print(matchid, session["username"])
 
-    sql = "UPDATE match SET booked = %s WHERE matchid = %s;"
-    val = new_booked,matchid
-    print(matchid, session["username"])
-    update(sql, val)
+        creatorName = fetchone("select skapare from match where matchid = %s", [matchid])
+        sql = "insert into booking values(%s,%s,%s,%s)"
+        val = matchid,session["username"],creatorName,antal
+        insert(sql, val)
+
+        sql = "UPDATE match SET booked = %s WHERE matchid = %s;"
+        val = new_booked,matchid
+        print(matchid, session["username"])
+        update(sql, val)
+        
+        sql = "UPDATE match SET antal = %s WHERE matchid = %s;"
+        sökes = fetchone("select antal from match where matchid = %s", [matchid])
+        print(sökes[0])
+        sökes = sökes[0] - int(antal)
+        val = sökes,matchid
+        update(sql, val)
+
+        return start_page()
     
-    sql = "UPDATE match SET antal = %s WHERE matchid = %s;"
-    sökes = fetchone("select antal from match where matchid = %s", [matchid])
-    print(sökes[0])
-    sökes = sökes[0] - int(antal)
-    val = sökes,matchid
-    update(sql, val)
-   
+        
+        # Future chatt fnction
+        # def sessions():
+        #     return render_template('session.html')
 
-    
-    # Future chatt fnction
-    # def sessions():
-    #     return render_template('session.html')
+        # def messageReceived(methods=['GET', 'POST']):
+        #     print('message was received!!!')
 
-    # def messageReceived(methods=['GET', 'POST']):
-    #     print('message was received!!!')
-
-    # @socketio.on('my event')
-    # def handle_my_custom_event(json, methods=['GET', 'POST']):
-    #     print('received my event: ' + str(json))
-    #     socketio.emit('my response', json, callback=messageReceived)
-    # return render_template('session.html')
-
-    return start_page()
+        # @socketio.on('my event')
+        # def handle_my_custom_event(json, methods=['GET', 'POST']):
+        #     print('received my event: ' + str(json))
+        #     socketio.emit('my response', json, callback=messageReceived)
+        # return render_template('session.html')
 
 
 if __name__ == '__main__':
