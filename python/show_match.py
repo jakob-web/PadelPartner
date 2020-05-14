@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import psycopg2
 from config import *
 from db_operations import fetchone, fetchmany, fetchall, insert, update
@@ -38,6 +38,9 @@ def check_date():
             update("delete from match where datum = %s",[new_record])
 
 
+
+  
+
 def create_Game(username):
     ort = request.form["ort"]
     klass = request.form["klass"]
@@ -54,20 +57,13 @@ def create_Game(username):
     cur.execute(sql, val)
     con.commit()
 
-def find_Game(ort):
-    cur.execute("select ort, klass, antal, matchid, kön from match where ort = %s", [ort])
-    
-    games = []
-    for record in cur:
-        games.append(record)
-    print(games)
-    return games
+
 
 def show_Game(ort,klass,kön):
     check_date()
     print(ort,klass,kön)
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND klass = %s AND kön = %s AND antal > 0 ORDER BY datum"
-    val = ort, klass, kön
+    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND klass = %s AND kön = %s AND antal > 0 AND skapare != %s ORDER BY datum"
+    val = ort, klass, kön, session["username"]
     games = fetchall(sql, val)
     return games
   
@@ -84,10 +80,11 @@ def show_Match_Profile(matchid):
 
 def show_all_match(ort):
     check_date()
-    result = fetchall("select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0 ORDER BY datum", [ort])
-    # sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0"
-    # val = ort
-    # result = fetchall(sql, val)
+    
+    # result = fetchall("select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0", [ort])
+    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0 AND skapare != %s ORDER BY datum"
+    val = (ort, session["username"])
+    result = fetchall(sql, val)
     games = []
     for record in result:
         games.append(record)
@@ -96,8 +93,8 @@ def show_all_match(ort):
 
 def show_all_ranks(ort, klass):
     check_date()
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and klass = %s AND antal > 0 ORDER BY datum"
-    val = (ort, klass)
+    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and klass = %s AND antal > 0 AND skapare != %s ORDER BY datum"
+    val = (ort, klass,session["username"])
     result = fetchall(sql, val)
     games = []
     for record in result:
@@ -108,8 +105,8 @@ def show_all_ranks(ort, klass):
 def show_all_players(ort, kön):
     check_date()
     print(kön)
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and kön = %s AND antal > 0 ORDER BY datum"
-    val = (ort, kön)
+    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and kön = %s AND antal > 0 AND skapare != %s ORDER BY datum"
+    val = (ort, kön,session["username"])
     result = fetchall(sql, val)
     games = []
     for record in result:

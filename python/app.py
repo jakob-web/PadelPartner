@@ -17,6 +17,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 
+
+
 @app.route('/start_page')
 def start_page():
     print(session.get("username"))
@@ -134,8 +136,11 @@ def insert_match():
     return start_page()
 
 
+    
+
 @app.route('/show_games')
 def show_game():
+    
     return render_template("show_match.html")
 
 @app.route('/show_match', methods=['GET', 'POST'])
@@ -268,6 +273,13 @@ def show_chatt(matchid):
         #     print('received my event: ' + str(json))
         #     socketio.emit('my response', json, callback=messageReceived)
         # return render_template('session.html')
+
+
+    
+
+
+
+
 
 
 if __name__ == '__main__':
