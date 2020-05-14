@@ -42,7 +42,7 @@ def register():
 
         def insert_profile():
             sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
-            image = 'static/img/uploads/blank_profile.jpg'
+            image = 'static/img/uploads/blank_profile.png'
             val = (image, level, ort,)
             insert(sql,val)
 
