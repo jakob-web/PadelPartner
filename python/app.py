@@ -17,6 +17,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 
+
+
 @app.route('/start_page')
 def start_page():
     print(session.get("username"))
@@ -134,8 +136,11 @@ def insert_match():
     return start_page()
 
 
+    
+
 @app.route('/show_games')
 def show_game():
+    
     return render_template("show_match.html")
 
 @app.route('/show_match', methods=['GET', 'POST'])
@@ -162,6 +167,8 @@ def show_match_profile(matchid):
 @app.route('/my_games/')
 def show_my_games():
     show_match.check_date()
+   
+    
     game = fetchall("select ort, klass, antal, skapare, match.matchid, datum, kön from (match join booking on match.matchid = booking.matchid) where booking.username = %s", [session["username"]])
     return render_template("my_games.html", user = session["username"], matches = game)
 
@@ -261,6 +268,13 @@ def show_chatt(matchid):
     # return render_template('session.html')
 
     return start_page()
+
+
+    
+
+
+
+
 
 
 if __name__ == '__main__':
