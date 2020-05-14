@@ -269,23 +269,22 @@ def uploadpictureok():
 @app.route('/creator_profile/<creator>')
 def creator_profile(creator):
     
-    #img = fetchone("select img from(profile join registration on profile.pid = registration.pid) where username = %s", ["creator"])
+ 
     
  
     skapare = creator
-    profil = fetchall("select profile.img, profile.info, profile.level FROM((Match join registration on Match.skapare = registration.username)join profile on registration.pid = profile.pid) WHERE skapare = %s", [skapare])
+    profil = fetchall("select profile.info, profile.level, profile.age FROM((Match join registration on Match.skapare = registration.username)join profile on registration.pid = profile.pid) WHERE skapare = %s", [skapare])
+    img = fetchall("select profile.img FROM((Match join registration on Match.skapare = registration.username)join profile on registration.pid = profile.pid) WHERE skapare = %s", [skapare])
     print(profil)
+    print(img)
+
+    
 
     
         
-    #SELECT BOOK.Book_id, Book.Title, BORROWER.Card_no, BORROWER.Name FROM 
-    #(( BOOK join BOOK_LOANS on BOOK.Book_id = BOOK_LOANS.Book_id) 
-    #                           join BORROWER on BOOK_LOANS.Card_no = BORROWER.Card_no  where CURRENT_DATE > BOOK_LOANS.Due_date 
-    
+ 
 
-        #return render_template("welcome.html", picture = img, user = session["username"], profileInfo = profileInfo, personName = personName)
-
-    return render_template("creator_profile.html", skapare = skapare, profil = profil)
+    return render_template("creator_profile.html", skapare = skapare, profil = profil, img = img)
 
 
 

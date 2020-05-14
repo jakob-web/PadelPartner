@@ -39,14 +39,14 @@
   </div>
 <main>
   <div class="text-center">
- 
-    <img src="{{profil[1][0]}}" id="profilbild">
+    
+    <img src="../{{img[0][0]}}" id="profilbild">
 
-  </div>
+</div>
   <div>
     <ul class="list-group">
    
-    <li class="list-group-item active"><p class="profilnamn">{{skapare}}</p></li>
+      <li class="list-group-item active"><p class="profilnamn">{{skapare}}</p></li>
 
       
     <p>
@@ -57,10 +57,37 @@
     </p>
     <div class="collapse" id="collapseExample">
       <div class="card card-body">
+        {% if ( (profil[0][0] == None) and 
+          (profil[0][2] == None) ) %}
+          {%print("1")%}
+            <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profil[0][1]}}</p></li>
+            <li class="list-group-item"><p class="left">Ålder:</p><p class="right">Ej tillagd</p></li>
+            <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
+          
         
-        <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profil[1][2]}}</p></li>
-        <li class="list-group-item"><p class="left">Ålder:</p><p class="right">28</p></li>
-        <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profil[1][1]}}</p></li>
+        {%elif profil[0][2] == None :%}
+        {%print("2")%}
+          
+         
+          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right"></p>{{profil[0][1]}}</li>
+          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">Ej tillagd</p></li>
+          <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profil[0][0]}}</p></li>
+        
+        {%elif profil[0][0] == None :%}
+        {%print("3")%}
+          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profil[0][1]}}</p></li>
+          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profil[0][2]}}</p></li>
+          <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
+        
+          
+
+        {%else%}
+        {%print("4")%}
+          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profil[0][1]}}</p></li>
+          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profil[0][2]}}</p></li>
+          <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profil[0][0]}}</p></li>
+        {%endif%}
+        
         
         <br>
       </div>
