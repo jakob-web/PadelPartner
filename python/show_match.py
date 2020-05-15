@@ -78,18 +78,44 @@ def show_Match_Profile(matchid):
     
     return match
 
+
+
 def show_all_match(ort):
     check_date()
     
     # result = fetchall("select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0", [ort])
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0 AND skapare != %s ORDER BY datum"
+    # sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0 AND skapare != %s ORDER BY datum"
+    sql = "select DISTINCT ort,klass,antal,match.matchid,kön,datum,username from (match join booking on match.matchid = booking.matchid) WHERE ort = %s AND antal > 0 AND skapare != %s ORDER BY datum"
+
     val = (ort, session["username"])
     result = fetchall(sql, val)
-    games = []
-    for record in result:
-        games.append(record)
 
-    return games
+    games = []
+    games2 = []
+    matchid = []
+    print(result)
+    for record in result:
+        print("recods username:" + record[6])
+        if record[6] != session["username"]:
+            print("if correct" + record[6])
+            games.append(record)
+        else:
+            print("if not correct" + record[6] + "adds" + str(record[3]))
+            matchid.append(record[3])
+            continue
+    print(games)
+    for record in games:
+        print(record[3])
+        if record[3] in matchid:
+            print("ta bort match" + str(record))
+        else:
+            matchid.append(record[3])
+            print(str(record[3]) + "not in" + str(games2))
+            games2.append(record)
+            continue
+    print(games2)
+    return games2
+    
 
 def show_all_ranks(ort, klass):
     check_date()
