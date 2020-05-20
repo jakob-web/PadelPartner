@@ -150,14 +150,8 @@ def show_matches():
     klass = request.form["klass"]
     kön = request.form["kön"]
     
-    if klass == "1" and kön !="6":
-        return render_template("find_match.html", games=show_match.show_all_players(ort, kön))
-    elif klass != "1" and kön =="6":
-        return render_template("find_match.html", games=show_match.show_all_ranks(ort, klass))
-    elif klass == "1" and kön =="6":
-        return render_template("find_match.html", games=show_match.show_all_match(ort))
-    else:
-        return render_template("find_match.html", games=show_match.show_Game(ort,klass,kön))
+    games = show_match.main_show(ort,klass,kön)
+    return render_template("find_match.html", games=games)
 
 @app.route('/showMatchProfile/<matchid>')
 def show_match_profile(matchid):    
