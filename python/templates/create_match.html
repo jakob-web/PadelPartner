@@ -40,19 +40,21 @@
 <main> 
 <fieldset>
 <form action="http://localhost:8080/insert_match" method="POST">
-    <select id="ort" name="ort" required>
+    <select id="ort" name="ort" required ><i class="arrow down"></i>
         <option value="" disabled selected hidden>Stad</option>
         <option value="Malmö">Malmö</option>
         <option value="Helsingborg">Helsingborg</option>
         <option value="Lund">Lund</option>
         <option value="Lomma">Lomma</option>
     </select>
+    <label class="hjalptext">Var vill du spela?..</label>
     <select id="antal" name="antal" required>
         <option value="" disabled selected hidden>Söker</option>
         <option value="1">1 Spelare</option>
         <option value="2">2 Spelare</option>
         <option value="3">3 Spelare</option> 
     </select> <br>
+    <label class="hjalptext">Hur många spelare söker du?..</label>
     <select id="klass" name="klass" required>
         <option value="" disabled selected hidden>Nivå</option>
         <option value="A">A</option>
@@ -60,6 +62,7 @@
         <option value="C">C</option>
         <option value="D">D</option>
     </select>
+    <label class="hjalptext">Vilken nivå vill du spela på?..</label>
     <br>
     <select id="kön" name="kön" required>
         <option value="" disabled selected hidden>Kön</option>
@@ -67,6 +70,7 @@
         <option value="Dam">Dam</option>
         <option value="Mix">Mix</option>
     </select>
+    <label class="hjalptext">Vilka vill du spela med?..</label>
     <br>
 
     <select id="datum" name="datum" required>
