@@ -7,6 +7,9 @@ import user_login
 import profile
 import show_match
 from db_operations import fetchone, fetchmany, fetchall, insert, update
+from datetime import date
+from datetime import timedelta  
+
 
 import psycopg2
 
@@ -14,10 +17,13 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
 
+
+
 @app.route('/start_page')
 def start_page():
     print(session.get("username"))
     print(session.get("logged_in"))
+
     if not session.get("logged_in"):
         print("No username found in session")
         return log_in()
@@ -103,13 +109,17 @@ def profil():
 
 @app.route('/createMatch')
 def create():
-    return render_template("create_match.html", username = session["username"])
+    dates = []
+    for i in range (10):
+        current = date.today() + timedelta(days=i)
+        current = current.strftime("%a, %d %b %Y")
+        dates.append(current)
+        i+=1
+    return render_template("create_match.html", username = session["username"], dates = dates)
 
 @app.route('/insert_match', methods=['GET', 'POST'])
 def insert_match():
-    
-    ort = request.form["ort"]
-    klass = request.form["klass"]
+
     antal = request.form["antal"]
 
     show_match.create_Game(session["username"])
@@ -123,11 +133,14 @@ def insert_match():
     insert(sql, val)
     print(matchid, session["username"])
 
-    return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
+    return start_page()
 
+
+    
 
 @app.route('/show_games')
 def show_game():
+    
     return render_template("show_match.html")
 
 @app.route('/show_match', methods=['GET', 'POST'])
@@ -135,15 +148,16 @@ def show_matches():
     
     ort = request.form["ort"]
     klass = request.form["klass"]
-    antal = request.form["antal"]
-    if klass == "1" and antal !="6":
-        return render_template("find_match.html", games=show_match.show_all_players(ort, antal))
-    elif klass != "1" and antal =="6":
+    kön = request.form["kön"]
+    
+    if klass == "1" and kön !="6":
+        return render_template("find_match.html", games=show_match.show_all_players(ort, kön))
+    elif klass != "1" and kön =="6":
         return render_template("find_match.html", games=show_match.show_all_ranks(ort, klass))
-    elif klass == "1" and antal =="6":
+    elif klass == "1" and kön =="6":
         return render_template("find_match.html", games=show_match.show_all_match(ort))
     else:
-        return render_template("find_match.html", games=show_match.show_Game(ort,klass,antal))
+        return render_template("find_match.html", games=show_match.show_Game(ort,klass,kön))
 
 @app.route('/showMatchProfile/<matchid>')
 def show_match_profile(matchid):    
@@ -152,7 +166,8 @@ def show_match_profile(matchid):
 
 @app.route('/my_games/')
 def show_my_games():
-    game = fetchall("select ort, klass, antal, skapare, match.matchid from (match join booking on match.matchid = booking.matchid) where booking.username = %s", [session["username"]])
+    show_match.check_date()
+    game = fetchall("select ort, klass, antal, skapare, match.matchid, datum, kön from (match join booking on match.matchid = booking.matchid) where booking.username = %s ORDER BY datum;", [session["username"]])
     return render_template("my_games.html", user = session["username"], matches = game)
 
 @app.route('/my_games_info/<matchid>')
@@ -214,19 +229,42 @@ def show_past_chatt():
 def show_chatt(matchid):
     matchid = int(matchid)
     antal = request.form["antal"]
-    booked = fetchone("select booked from match where matchid = %s", [matchid])
-    new_booked = int(antal) + booked[0]
-    print(matchid, session["username"])
+    print(antal)
+    if antal == "0":
+        flash("Var vänlig och boka en plats")
+        print("antal = 0" + antal)
+        return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid))
 
-    creatorName = fetchone("select skapare from match where matchid = %s", [matchid])
-    sql = "insert into booking values(%s,%s,%s,%s)"
-    val = matchid,session["username"],creatorName,antal
-    insert(sql, val)
+    else:
+        print("antal högre än 0:" + antal)
+        booked = fetchone("select booked from match where matchid = %s", [matchid])
+        def new_booked():
+            print(antal)
+            if (int(antal) + booked[0]) > 4:
+                return "4"
+            else:
+                return int(antal) + booked[0]
 
-    sql = "UPDATE match SET booked = %s WHERE matchid = %s;"
-    val = new_booked,matchid
-    print(matchid, session["username"])
-    update(sql, val)
+            print(matchid, session["username"])
+
+        creatorName = fetchone("select skapare from match where matchid = %s", [matchid])
+        sql = "insert into booking values(%s,%s,%s,%s)"
+        val = matchid,session["username"],creatorName,antal
+        insert(sql, val)
+
+        sql = "UPDATE match SET booked = %s WHERE matchid = %s;"
+        val = new_booked(),matchid
+        print(matchid, session["username"])
+        update(sql, val)
+        
+        sql = "UPDATE match SET antal = %s WHERE matchid = %s;"
+        sökes = fetchone("select antal from match where matchid = %s", [matchid])
+        print(sökes[0])
+        sökes = sökes[0] - int(antal)
+        val = sökes,matchid
+        update(sql, val)
+
+        return start_page()
     
     sql = "UPDATE match SET antal = %s WHERE matchid = %s;"
     sökes = fetchone("select antal from match where matchid = %s", [matchid])
@@ -285,7 +323,6 @@ def creator_profile(creator):
  
 
     return render_template("creator_profile.html", skapare = skapare, profil = profil, img = img)
-
 
 
 if __name__ == '__main__':

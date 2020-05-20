@@ -83,20 +83,17 @@ a:hover {
     transition-duration: 0.6s;
 }
 
-<<<<<<< HEAD
-=======
 img {
     /* Temp lösning för lättar visuell överblick */
     width: 100%;
     text-align: center;
 }
->>>>>>> parent of 4b5ac0f... lade till info im klasser
 
 label {
     margin-bottom: 0px;
 }
 
-input[type="text"],input[type="username"], input[type="password"], select[name="ort"], select[name="level"], select[name="antal"], select[name="klass"]{
+input[type="text"],input[type="username"], input[type="password"], select[name="ort"], select[name="level"], select[name="antal"], select[name="klass"],select[name="datum"],select[name="kön"]{
     height: 50px;
     margin: 5px 0px;
     width: 100%;
@@ -303,6 +300,11 @@ li.list-group-item.active {
     width: 40px;
     margin: 0px 5px;
 }
+.booked_overview > img {
+    width: 20px;
+    margin: 0px;
+}
+
 .booked_players > #court {
     width: 90px;
 }
@@ -344,3 +346,41 @@ li.list-group-item.active {
     font-size: 18px;
   }
 .btn-primary
+.booked_overview {
+    display: flex;
+    margin-left: 75%;    
+    margin-top: 20px;
+    width: 30%;
+}
+
+.gender {
+    width: 30%;
+    float: right;
+    margin-bottom: 0px;
+    padding: 0;
+}
+
+.level {
+    margin: 0% 0% 0% 20%;
+    font-size: 200%;
+}
+.matchlink {
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,.125);
+}
+
+.city {
+    margin: 0% 0% 0% 10%;
+}
+
+.antal_spelare {
+    float: right;
+    margin-bottom: 0px;
+    padding: 0;
+}
+
+.match_status {
+    float: right;
+    margin-top: 20px;
+    width: 10%;
+}
