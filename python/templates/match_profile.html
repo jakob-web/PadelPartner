@@ -39,7 +39,9 @@
       {%for game in match:%}
       <div class="card text-center">
           <div class="card-header">
-            <h5 class="card-title">Skapad av: {{game[4]}}</h5>
+            {%for user in my_matches:%}
+            <h5 class="card-title">Skapad av: <a href="http://localhost:8080/creator_profile/{{user[3]}}">{{game[4]}}</a></h5>
+            {%endfor%}
             <h6 class="card-text cap"><b>Ort: </b>{{game[0]}}</h6>
             <p class="card-text"><b>Spelarnivå: </b>{{game[1]}}</p>
             <p class="card-text"><b>Info: </b>{{game[3]}}</p>

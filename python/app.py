@@ -162,7 +162,11 @@ def show_matches():
 @app.route('/showMatchProfile/<matchid>')
 def show_match_profile(matchid):    
     matchid = matchid
-    return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid))
+    result = fetchall("select ort, klass, info, skapare, matchid, antal from match where matchid = %s", [matchid])
+    my_matches = []
+    for record in result:
+        my_matches.append(record)
+    return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid), my_matches = my_matches)
 
 @app.route('/my_games/')
 def show_my_games():
@@ -306,21 +310,11 @@ def uploadpictureok():
 
 @app.route('/creator_profile/<creator>')
 def creator_profile(creator):
-    
- 
-    
- 
     skapare = creator
     profil = fetchall("select profile.info, profile.level, profile.age FROM((Match join registration on Match.skapare = registration.username)join profile on registration.pid = profile.pid) WHERE skapare = %s", [skapare])
     img = fetchall("select profile.img FROM((Match join registration on Match.skapare = registration.username)join profile on registration.pid = profile.pid) WHERE skapare = %s", [skapare])
     print(profil)
     print(img)
-
-    
-
-    
-        
- 
 
     return render_template("creator_profile.html", skapare = skapare, profil = profil, img = img)
 
