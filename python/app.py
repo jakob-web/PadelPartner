@@ -129,7 +129,7 @@ def insert_match():
         matchid = 1
         print(matchid)  
     sql = "insert into booking (matchid,username,creatorname,booked) values (%s,%s,%s,%s)"
-    val = matchid,session["username"],session["username"],antal
+    val = matchid,session["username"],session["username"],players
     insert(sql, val)
     print(matchid, session["username"])
 
@@ -147,7 +147,7 @@ def show_game():
 def show_matches():
     
     location = request.form["location"]
-    level = request.form["class"]
+    level = request.form["level"]
     gender = request.form["gender"]
     
     if level == "1" and gender !="6":

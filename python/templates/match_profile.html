@@ -57,7 +57,7 @@
           
             <form action="http://localhost:8080/show_chatt/{{game[5]}}#" method="POST">
             <p class="card-text" hidden id="sökes">{{game[2]}}</p>
-            <input name="antal" id="antal" selected hidden value="0"></input>
+            <input name="players" id="antal" selected hidden value="0"></input>
             {% for message in get_flashed_messages() %}
             <p class="alert-error" >{{ message }}</p>
             {% endfor %}

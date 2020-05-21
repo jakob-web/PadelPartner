@@ -23,7 +23,7 @@ def check_date():
     current = current.strftime("%a, %d %b %Y")
     print(current)
     current = datetime.strptime(str(current), "%a, %d %b %Y")
-    result = fetchall("select datum from match where matchid > %s", [0])
+    result = fetchall("select date from match where matchid > %s", [0])
     print(current)
     
     for record in result:
@@ -35,7 +35,7 @@ def check_date():
             print(record)
             new_record = record.strftime("%a, %d %b %Y")
             print(new_record)
-            update("delete from match where datum = %s",[new_record])
+            update("delete from match where date = %s",[new_record])
 
 
 
@@ -51,7 +51,7 @@ def create_Game(username):
     username = request.form["username"]
 
     sql = "insert into match(location, level, players, info, creator, booked, date, gender) values(%s, %s, %s, %s, %s, %s, %s, %s)"
-    booked = 4 - int(level)
+    booked = 4 - int(players)
     val = location, level, players, info, username, booked, date, gender
     
     cur.execute(sql, val)
