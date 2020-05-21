@@ -40,20 +40,20 @@
 <main> 
 <fieldset>
 <form action="http://localhost:8080/insert_match" method="POST">
-    <select id="ort" name="ort" required>
+    <select class="form-input" id="ort" name="ort" required>
         <option value="" disabled selected hidden>Stad</option>
         <option value="Malmö">Malmö</option>
         <option value="Helsingborg">Helsingborg</option>
         <option value="Lund">Lund</option>
         <option value="Lomma">Lomma</option>
     </select>
-    <select id="antal" name="antal" required>
+    <select class="form-input" id="antal" name="antal" required>
         <option value="" disabled selected hidden>Söker</option>
         <option value="1">1 Spelare</option>
         <option value="2">2 Spelare</option>
         <option value="3">3 Spelare</option> 
     </select> <br>
-    <select id="klass" name="klass" required>
+    <select class="form-input" id="klass" name="klass" required>
         <option value="" disabled selected hidden>Nivå</option>
         <option value="A">A</option>
         <option value="B">B</option>
@@ -61,7 +61,7 @@
         <option value="D">D</option>
     </select>
     <br>
-    <select id="kön" name="kön" required>
+    <select class="form-input" id="kön" name="kön" required>
         <option value="" disabled selected hidden>Kön</option>
         <option value="Herr">Herr</option>
         <option value="Dam">Dam</option>
@@ -69,7 +69,7 @@
     </select>
     <br>
 
-    <select id="datum" name="datum" required>
+    <select class="form-input" id="datum" name="datum" required>
         <option value="" disabled selected hidden>Datum</option>
         <option value="{{dates[0]}}">{{dates[0]}}</option>
         <option value="{{dates[1]}}">{{dates[1]}}</option>

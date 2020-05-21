@@ -51,24 +51,24 @@
       <div class="card card-body">
         {% if ( (profil[0][0] == None) and 
           (profil[0][2] == None) ) %}
-            <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profil[0][1]}}</p></li>
-            <li class="list-group-item"><p class="left">Ålder:</p><p class="right">Ej tillagd</p></li>
+            <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right">{{profil[0][1]}}</p></li>
+            <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">Ej tillagd</p></li>
             <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
           
         {%elif profil[0][2] == None :%}
           
-          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right"></p>{{profil[0][1]}}</li>
-          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">Ej tillagd</p></li>
+          <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right"></p>{{profil[0][1]}}</li>
+          <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">Ej tillagd</p></li>
           <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profil[0][0]}}</p></li>
         
         {%elif profil[0][0] == None :%}
-          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profil[0][1]}}</p></li>
-          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profil[0][2]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right">{{profil[0][1]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">{{profil[0][2]}}</p></li>
           <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
 
         {%else%}
-          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profil[0][1]}}</p></li>
-          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profil[0][2]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right">{{profil[0][1]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">{{profil[0][2]}}</p></li>
           <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profil[0][0]}}</p></li>
         {%endif%}
         <button type="button" class="btn btn-primary btn-lg btn-block" id="backBtn">Tillbaka</button>
@@ -79,7 +79,6 @@
   
     </ul>
   </div>
-
 
 </main>
     
