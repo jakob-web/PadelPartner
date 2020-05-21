@@ -49,7 +49,7 @@ def validatepicture():
                 return redirect(request.url)
             
             if not allowed_image(image.filename):
-                print("BAJSBAJBASJASBASJJS")
+                print("Hello")
                 print(image.filename)
                 print("That image extension is not allowed")
                 return redirect(request.url)

@@ -13,8 +13,8 @@ def register():
     """
     Receives User registration information from a form and creates Person,Profile % registartion in the database.
     """
-    förnamn = request.form["fNamn"]
-    efternamn = request.form["eNamn"]
+    fName = request.form["fName"]
+    lName = request.form["lName"]
     email = request.form["email"]
     gender = request.form["gender"]
 
@@ -23,7 +23,7 @@ def register():
     password = hash_password(password)
 
     level = request.form["level"]
-    ort = request.form["ort"]
+    location = request.form["location"]
 
     username_list = fetchall("select username from registration", "")
     username_list = ("".join(str(username_list)))
@@ -31,8 +31,8 @@ def register():
     if username not in username_list:
         def insert_person():
             sql = "insert into person(name, email, gender) values(%s,%s,%s)"
-            namn = förnamn + " " + efternamn
-            val = (namn, email, gender,)
+            name = fName + " " + lName
+            val = (name, email, gender,)
             insert(sql,val)
 
         def insert_registration():
@@ -41,9 +41,9 @@ def register():
             insert(sql,val)
 
         def insert_profile():
-            sql = "insert into profile(img, level, ort) values(%s, %s, %s)"
+            sql = "insert into profile(img, level, location) values(%s, %s, %s)"
             image = 'static/img/uploads/blank_profile.png'
-            val = (image, level, ort,)
+            val = (image, level, location)
             insert(sql,val)
 
         insert_person()

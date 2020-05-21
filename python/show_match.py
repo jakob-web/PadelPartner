@@ -42,34 +42,34 @@ def check_date():
   
 
 def create_Game(username):
-    ort = request.form["ort"]
-    klass = request.form["klass"]
-    antal = request.form["antal"]
+    location = request.form["location"]
+    level = request.form["level"]
+    players = request.form["players"]
     info = request.form["info"]
-    datum = request.form["datum"]
-    kön = request.form["kön"]
+    date = request.form["date"]
+    gender = request.form["gender"]
     username = request.form["username"]
 
-    sql = "insert into match(ort, klass, antal, info, skapare, booked, datum, kön) values(%s, %s, %s, %s, %s, %s, %s, %s)"
-    booked = 4 - int(antal)
-    val = ort, klass, antal, info, username, booked, datum, kön
+    sql = "insert into match(location, level, players, info, creator, booked, date, gender) values(%s, %s, %s, %s, %s, %s, %s, %s)"
+    booked = 4 - int(level)
+    val = location, level, players, info, username, booked, date, gender
     
     cur.execute(sql, val)
     con.commit()
 
 
 
-def show_Game(ort,klass,kön):
+def show_Game(location,level,gender):
     check_date()
-    print(ort,klass,kön)
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND klass = %s AND kön = %s AND antal > 0 AND skapare != %s ORDER BY datum"
-    val = ort, klass, kön, session["username"]
+    print(location,level,gender)
+    sql = "select location, level, players, matchid, gender, date from match where location = %s AND level = %s AND gender = %s AND players > 0 AND creator != %s ORDER BY date"
+    val = location, level, gender, session["username"]
     games = fetchall(sql, val)
     return games
   
 
 def show_Match_Profile(matchid):
-    result = fetchall("select ort, klass, antal, info, skapare, matchid, kön from match where matchid = %s AND antal > 0", [matchid])
+    result = fetchall("select location, level, players, info, creator, matchid, gender from match where matchid = %s AND players > 0", [matchid])
     
     match = []
     print(match)
@@ -78,12 +78,12 @@ def show_Match_Profile(matchid):
     
     return match
 
-def show_all_match(ort):
+def show_all_match(location):
     check_date()
     
-    # result = fetchall("select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0", [ort])
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s AND antal > 0 AND skapare != %s ORDER BY datum"
-    val = (ort, session["username"])
+    # result = fetchall("select location, level, players, matchid, gender, date from match where location = %s AND players > 0", [location])
+    sql = "select location, level, players, matchid, gender, date from match where location = %s AND players > 0 AND creator != %s ORDER BY date"
+    val = (location, session["username"])
     result = fetchall(sql, val)
     games = []
     for record in result:
@@ -91,10 +91,10 @@ def show_all_match(ort):
 
     return games
 
-def show_all_ranks(ort, klass):
+def show_all_ranks(location, level):
     check_date()
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and klass = %s AND antal > 0 AND skapare != %s ORDER BY datum"
-    val = (ort, klass,session["username"])
+    sql = "select location, level, players, matchid, gender, date from match where location = %s and level = %s AND players > 0 AND creator != %s ORDER BY date"
+    val = (location, level,session["username"])
     result = fetchall(sql, val)
     games = []
     for record in result:
@@ -102,11 +102,11 @@ def show_all_ranks(ort, klass):
     print(games)
     return games
 
-def show_all_players(ort, kön):
+def show_all_players(location, gender):
     check_date()
-    print(kön)
-    sql = "select ort, klass, antal, matchid, kön, datum from match where ort = %s and kön = %s AND antal > 0 AND skapare != %s ORDER BY datum"
-    val = (ort, kön,session["username"])
+    print(gender)
+    sql = "select location, level, players, matchid, gender, date from match where location = %s and gender = %s AND players > 0 AND creator != %s ORDER BY date"
+    val = (location, gender,session["username"])
     result = fetchall(sql, val)
     games = []
     for record in result:

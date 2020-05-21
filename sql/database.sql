@@ -10,7 +10,7 @@ create table profile (
     img varchar(1500),
     info varchar(2000),
     level varchar(2),
-    ort varchar (50),
+    location varchar (50),
     age integer,
     pid integer,
     PRIMARY KEY (pid),
@@ -27,15 +27,15 @@ create table registration (
 
 create table Match (
     matchID integer,
-    ort varchar(50),
-    klass varchar(10), 
-    antal integer,
+    location varchar(50),
+    level varchar(10), 
+    players integer,
     info varchar(1000),
-    skapare varchar(100),
+    creator varchar(100),
     booked int,
-    datum varchar(20),
-    kön varchar(10),
-    FOREIGN KEY (skapare) REFERENCES registration(username),
+    date varchar(20),
+    gender varchar(10),
+    FOREIGN KEY (creator) REFERENCES registration(username),
     PRIMARY KEY (matchID)
 );
 
