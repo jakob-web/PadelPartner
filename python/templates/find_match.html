@@ -8,7 +8,7 @@
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
-<body id="container" class="matchOverview">
+<body id="container" class="match-overview">
   <div class="card">
       <header class="card-header">
           <img class="bild" id="b1" src="/static/padel.png">
@@ -55,17 +55,17 @@
       <!-- Use javascript to display City just once as a headline -->
       
         <a class ="matchlink" href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
-        <p class="left2 align-bottom">{{game[5][0:-4]}}</p>
+        <p class="float-left align-bottom">{{game[5][0:-4]}}</p>
         <!-- Lägga till datum och tid (?) -->
-        <p class="left2 level">{{game[1]}}</p>
+        <p class="float-left level">{{game[1]}}</p>
         <p class="gender"> {{game[4]}}</p>
         <p id="sökes" hidden>{{game[2]}}</p>
         <!-- Testa detta med javascript och lägg till booked klassen för att ändra bidlfärg -->
-        <div class="booked_overview">
-        <img src='/static/img/user (1).png'id="spelare1" class="players">
-        <img src='/static/img/user (1).png'id="spelare2" class="players">
-        <img src='/static/img/user (1).png'id="spelare3" class="players">
-        <img src='/static/img/user (1).png'id="spelare4" class="players">
+        <div class="booked-overview">
+        <img src='/static/img/user (1).png'id="spelare1" class="players" href="https://www.flaticon.com/authors/freepik">
+        <img src='/static/img/user (1).png'id="spelare2" class="players" href="https://www.flaticon.com/authors/freepik" >
+        <img src='/static/img/user (1).png'id="spelare3" class="players" href="https://www.flaticon.com/authors/freepik" >
+        <img src='/static/img/user (1).png'id="spelare4" class="players" href="https://www.flaticon.com/authors/freepik" >
         </div>
         </a>
       {%endfor%}

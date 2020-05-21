@@ -5,7 +5,19 @@ document.getElementById("backBtn").onclick = function (){
   goBack();
   }
 
-  if (document.body.classList.contains("myGames")) {
+  if (document.body.classList.contains("edit-profile")) {
+    var previewpicture = function(event) {
+    var output = document.getElementById('profilBild'); //
+      console.log(output)
+      output.src = URL.createObjectURL(event.target.files[0]);
+      output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+      }
+      };
+  }
+
+
+  if (document.body.classList.contains("my-games")) {
   
     len = document.querySelectorAll(".matchlink").length
   
@@ -14,10 +26,10 @@ document.getElementById("backBtn").onclick = function (){
       sökes = document.querySelectorAll(".matchlink")[i].querySelectorAll(".sökes")[0].innerHTML
       if(sökes == "None") {sökes = 4}
       
-      document.querySelectorAll(".matchlink")[i].querySelectorAll(".antal_spelare")[0].innerHTML = 4-sökes +"/4"
+      document.querySelectorAll(".matchlink")[i].querySelectorAll(".antal-spelare")[0].innerHTML = 4-sökes +"/4"
       
       if (sökes == 0 || sökes < 0) {
-        document.querySelectorAll(".matchlink")[i].querySelectorAll(".match_status")[0].children[0].src= '/static/img/check.png';
+        document.querySelectorAll(".matchlink")[i].querySelectorAll(".match-status")[0].children[0].src= '/static/img/check.png';
       }
     }  
     }
@@ -52,7 +64,7 @@ const change = function() {
   }
 }
 
-if (document.body.classList.contains("bookContainer")) {
+if (document.body.classList.contains("book-container")) {
   for (i=0; i<4; i++) {
     players[i].onclick = change
   }
@@ -64,7 +76,7 @@ for (i=0; i<bookedSaved; i++) {
 }
 
 
-if (document.body.classList.contains("matchOverview")) {
+if (document.body.classList.contains("match-overview")) {
   
   len = document.querySelectorAll(".matchlink").length
 

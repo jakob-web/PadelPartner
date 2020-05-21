@@ -93,7 +93,7 @@ label {
     margin-bottom: 0px;
 }
 
-input[type="text"],input[type="username"], input[type="password"], select[name="ort"], select[name="level"], select[name="antal"], select[name="klass"],select[name="datum"],select[name="kön"]{
+.form-input{
     height: 50px;
     margin: 5px 0px;
     width: 100%;
@@ -137,13 +137,13 @@ textarea {
     border-color: #A9C8EF;
 }
 
-.left {
+.float-left {
     float: left;
     font-weight: bold;
     font-size: 20px;
 }
 
-.right {
+.float-right {
     float: right;
     font-size: 20px;
 }
@@ -178,7 +178,6 @@ textarea {
 .hamburger {
     font-size: 100px;
 }
-/* TODO Create customized mobile friendly radiobuttons with JS?  */
 
 .switch {
     position: relative;
@@ -187,14 +186,14 @@ textarea {
     height: 40px;
     margin-top: 5%;
   }
-  
-  .switch input { 
+
+.switch input { 
     opacity: 0;
     width: 0;
     height: 0;
   }
   
-  .slider {
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -204,9 +203,9 @@ textarea {
     background-color: rgba(143, 143, 143, 0.692);
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 30px;
@@ -216,30 +215,30 @@ textarea {
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked + .slider {
     background-color: rgb(0, 192, 16);
     color: rgba(255, 255, 255, 0.76);
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus + .slider {
     box-shadow: 0 0 1px rgb(0, 192, 16);
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked + .slider:before {
     -webkit-transform: translateX(100px);
     -ms-transform: translateX(100px);
     transform: translateX(110px);
-  }
-  
-  .slider.round {
+}
+
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
+}
 
 
 .col {
@@ -252,18 +251,6 @@ textarea {
     background-color: #A9C8EF;
 }
 
-.left2 {
-    float: left;
-    font-size: 20px;
-    color: black;
-}
-
-.right2 {
-    float: right;
-    font-size: 20px;
-    text-transform: capitalize;
-
-}
 
 .middle {
     display: inline-block;
@@ -296,16 +283,16 @@ li.list-group-item.active {
     color: white;
   }
 
-.booked_players > img {
+.booked-players > img {
     width: 40px;
     margin: 0px 5px;
 }
-.booked_overview > img {
+.booked-overview > img {
     width: 20px;
     margin: 0px;
 }
 
-.booked_players > #court {
+.booked-players > #court {
     width: 90px;
 }
 
@@ -317,19 +304,8 @@ li.list-group-item.active {
     text-transform: capitalize;
 }
 
-.tooltip {
-    color: black; 
-    size: 100px;
-}
-
 #iphone {
     width: 100%;
-    
-}
-
-.bottomnav{
-    height: 30px;
-    width: 50%;
 }
 
 .button {
@@ -345,8 +321,8 @@ li.list-group-item.active {
     display: inline-block;
     font-size: 18px;
   }
-.btn-primary
-.booked_overview {
+
+.booked-overview {
     display: flex;
     margin-left: 75%;    
     margin-top: 20px;
@@ -373,13 +349,13 @@ li.list-group-item.active {
     margin: 0% 0% 0% 10%;
 }
 
-.antal_spelare {
+.antal-spelare {
     float: right;
     margin-bottom: 0px;
     padding: 0;
 }
 
-.match_status {
+.match-status {
     float: right;
     margin-top: 20px;
     width: 10%;

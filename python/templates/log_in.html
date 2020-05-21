@@ -23,9 +23,9 @@
     {% endfor %}
     <fieldset class="formular">
         <label for="userName">Användarnamn</label><br>
-        <input type="userName" id="userName" name="userName" required value= {{username}}><br>
+        <input class="form-input"  type="userName" id="userName" name="userName" required value= {{username}}><br>
         <label for="pwd">Lösenord</label><br>
-        <input type="password" id="pwd" name="pwd" minlength="8" required><br>
+        <input class="form-input" type="password" id="pwd" name="pwd" minlength="8" required><br>
         <input type="submit" class="btn btn-primary" value="Logga in">
     </fieldset>
     </form>

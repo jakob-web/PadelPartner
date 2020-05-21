@@ -124,19 +124,14 @@ def insert_match():
 
     show_match.create_Game(session["username"])
     matchid = fetchone("select max(matchid) from match where matchid > %s", "0")
-    print(matchid)
     if matchid[0] == None:
         matchid = 1
-        print(matchid)  
     sql = "insert into booking (matchid,username,creatorname,booked) values (%s,%s,%s,%s)"
     val = matchid,session["username"],session["username"],antal
     insert(sql, val)
-    print(matchid, session["username"])
 
     return start_page()
 
-
-    
 
 @app.route('/show_games')
 def show_game():
@@ -196,15 +191,12 @@ def remove_match(matchid):
     
 @app.route('/remove_booking/<matchid>')
 def remove_booking(matchid):
-    print(matchid, session["username"])
     sql = "select booked from booking where matchid=%s AND username=%s"
     val = matchid, session["username"]
     current_booking = fetchone(sql,val) 
-    print(current_booking)
 
     sql = "update match set antal=(antal+%s) where matchid =%s"
     val = current_booking,matchid
-    print(current_booking,matchid)
     update(sql,val)
     sql = "update match set booked=(booked-%s) where matchid =%s"
     val = current_booking,matchid
@@ -213,9 +205,6 @@ def remove_booking(matchid):
     sql = "delete from booking where matchid=%s AND username=%s"
     val = matchid,session["username"]
     update(sql,val)
-
-
-
     return show_my_games()
 
 @app.route('/show_past_chatt')
@@ -225,25 +214,20 @@ def show_past_chatt():
     val = session["username"], session["username"]
     insert(sql, val)
     messages = fetchall(sql, val)
-    print(messages)
     return render_template("messages.html", user = session["username"], messages = messages)
-
 
 @app.route('/show_chatt/<matchid>', methods=['GET', 'POST'])
 def show_chatt(matchid):
     matchid = int(matchid)
     antal = request.form["antal"]
-    print(antal)
     if antal == "0":
         flash("Var vänlig och boka en plats")
         print("antal = 0" + antal)
         return render_template("match_profile.html", match = show_match.show_Match_Profile(matchid))
 
     else:
-        print("antal högre än 0:" + antal)
         booked = fetchone("select booked from match where matchid = %s", [matchid])
         def new_booked():
-            print(antal)
             if (int(antal) + booked[0]) > 4:
                 return "4"
             else:
@@ -258,12 +242,10 @@ def show_chatt(matchid):
 
         sql = "UPDATE match SET booked = %s WHERE matchid = %s;"
         val = new_booked(),matchid
-        print(matchid, session["username"])
         update(sql, val)
         
         sql = "UPDATE match SET antal = %s WHERE matchid = %s;"
         sökes = fetchone("select antal from match where matchid = %s", [matchid])
-        print(sökes[0])
         sökes = sökes[0] - int(antal)
         val = sökes,matchid
         update(sql, val)
@@ -272,7 +254,6 @@ def show_chatt(matchid):
     
     sql = "UPDATE match SET antal = %s WHERE matchid = %s;"
     sökes = fetchone("select antal from match where matchid = %s", [matchid])
-    print(sökes[0])
     sökes = sökes[0] - int(antal)
     val = sökes,matchid
     update(sql, val)
@@ -289,33 +270,26 @@ def show_chatt(matchid):
     #     print('received my event: ' + str(json))
     #     socketio.emit('my response', json, callback=messageReceived)
     # return render_template('session.html')
-
     return start_page()
    
 @app.route('/about_us')
 def about_us():
-    
     return render_template("about_us.html")
-
-    
 
 @app.route('/uploadpicture', methods=['GET', 'POST'])
 def uploadpicture():
-
     return render_template("uploadpicture.html")
 
 @app.route('/testRoute', methods=['GET'])
 def uploadpictureok():
     return "hejhejmarcus"
+    #TODO ? 
 
 @app.route('/creator_profile/<creator>')
 def creator_profile(creator):
     skapare = creator
     profil = fetchall("select profile.info, profile.level, profile.age FROM((Match join registration on Match.skapare = registration.username)join profile on registration.pid = profile.pid) WHERE skapare = %s", [skapare])
     img = fetchall("select profile.img FROM((Match join registration on Match.skapare = registration.username)join profile on registration.pid = profile.pid) WHERE skapare = %s", [skapare])
-    print(profil)
-    print(img)
-
     return render_template("creator_profile.html", skapare = skapare, profil = profil, img = img)
 
 
