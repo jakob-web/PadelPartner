@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, flash
 from os import listdir
 from db_operations import fetchone, update
 from werkzeug.utils import secure_filename
 import os
-
+import user_login
+import user_registration
 import psycopg2
 
 UPLOAD_FOLDER = 'python/static/img/uploads'
@@ -49,7 +50,7 @@ def validatepicture():
                 return redirect(request.url)
             
             if not allowed_image(image.filename):
-                print("BAJSBAJBASJASBASJJS")
+                
                 print(image.filename)
                 print("That image extension is not allowed")
                 return redirect(request.url)
@@ -61,3 +62,24 @@ def validatepicture():
             image.save(os.path.join(UPLOAD_FOLDER, image.filename))
 
             return "static/img/uploads/" + str(image.filename)
+
+def change_password(password,new_password):
+    
+    cred = fetchone("select password from registration where username=%s", [session["username"]])
+    stored_password = cred[0]
+    user_login.verify_password(stored_password, password)
+
+    if user_login.verify_password(stored_password, password) == True:
+        new_password = user_registration.hash_password(new_password)
+        sql = "update registration set password = %s WHERE username = %s"
+        val = new_password, session["username"]
+        update(sql,val)
+        print("update")
+        return True
+        
+    else:
+        flash("Fel lösenord")
+        return False
+
+
+    

@@ -318,6 +318,20 @@ def creator_profile(creator):
 
     return render_template("creator_profile.html", skapare = skapare, profil = profil, img = img)
 
+@app.route('/change_password/')
+def new_password():
+    return render_template("change_password.html")
+
+@app.route('/new_password', methods=['GET', 'POST'])
+def check_password():
+    password = request.form["pwd"]
+    new_password = request.form["new_pwd"]
+    result = profile.change_password(password, new_password)
+    
+    if result == True:
+        return start_page()
+    elif result == False:
+        return render_template("change_password.html")
 
 if __name__ == '__main__':
     app.debug = True
