@@ -311,7 +311,7 @@ def uploadpictureok():
 @app.route('/creator_profile/<creator>')
 def creator_profile(creator):
     creator = creator
-    profil = fetchall("select profile.info, profile.level, profile.age FROM((Match join registration on Match.creator = registration.username)join profile on registration.pid = profile.pid) WHERE creator = %s", [creator])
+    profil = fetchall("select profile.info, profile.level, profile.age, profile.location FROM((Match join registration on Match.creator = registration.username)join profile on registration.pid = profile.pid) WHERE creator = %s", [creator])
     img = fetchall("select profile.img FROM((Match join registration on Match.creator = registration.username)join profile on registration.pid = profile.pid) WHERE creator = %s", [creator])
     print(profil)
     print(img)

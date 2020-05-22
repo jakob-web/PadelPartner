@@ -47,8 +47,17 @@
             
           
             <label for="beskrivning" >Beskrivning:</label><br>
-            <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required>{{item[1]}}</textarea> <br> <br>
+            <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" >{{item[1]}}</textarea> <br> <br>
             
+            <label for="Nivå" >Ort:</label>
+            <select id="location" name="location">
+            <option selected hidden >{{item[3]}}</option>
+            <option value="Malmö">Malmö</option>
+            <option value="Helsingborg">Helsingborg</option>
+            <option value="Lund">Lund</option>
+            <option value="Lomma">Lomma</option>
+            </select>
+
             <label for="Nivå" >Nivå:</label>
             <select id="level" name="level">
             <option selected hidden >{{item[2]}}</option>
@@ -59,7 +68,7 @@
             </select><br>
 
             <label for="age">Ålder:</label>
-            <input type="text" id="age" name="age" value={{item[4]}} required>
+            <input type="text" id="age" name="age" value={{item[4]}}>
             <input type="submit" class="btn btn-primary" value="Uppdatera">
         </form>
     </fieldset>

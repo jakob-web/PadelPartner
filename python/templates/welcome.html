@@ -57,12 +57,40 @@
     </p>
     <div class="collapse" id="collapseExample">
       <div class="card card-body">
-        {%for info in profileInfo:%}
-        <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{info[2]}}</p></li>
-        <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{info[3]}}</p></li>
-        <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{info[4]}}</p></li>
-        <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{info[1]}}</p></li>
-        {%endfor%}
+        {% if ( (profileInfo[0][4] == None) and 
+          (profileInfo[0][1] == None) ) %}
+            <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profileInfo[0][2]}}</p></li>
+            <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
+            <li class="list-group-item"><p class="left">Ålder:</p><p class="right">Ej tillagd</p></li>
+            <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
+          
+        {%elif profileInfo[0][4] == None :%}
+          
+          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right"></p>{{profileInfo[0][2]}}</li>
+          <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
+          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">Ej tillagd</p></li>
+          <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profileInfo[0][1]}}</p></li>
+        
+        {%elif profileInfo[0][1] == None :%}
+          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profileInfo[0][2]}}</p></li>
+          <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
+          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profileInfo[0][4]}}</p></li>
+          <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
+
+        {%else%}
+          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profileInfo[0][2]}}</p></li>
+          <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
+          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profileInfo[0][4]}}</p></li>
+          <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profileInfo[0][1]}}</p></li>
+        {%endif%}
+      
+        
+        <!-- <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profileInfo[0][2]}}</p></li>
+        <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
+        <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profileInfo[0][4]}}</p></li>
+        <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profileInfo[0][1]}}</p></li> -->
+        
+        
         <br>
         <a class="button" href="http://localhost:8080/changeProfile">Redigera profil</a>
       </div>
