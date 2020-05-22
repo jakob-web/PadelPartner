@@ -21,7 +21,7 @@ body {
 
 .card-header {
     width: 100%;
-    padding: 5%;
+    
     position: relative;
 }
 
@@ -33,14 +33,14 @@ body {
 }
 .btn-primary {
     color: white;
-    background-color: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
     border: #A9C8EF;
     text-align: center;
     margin: 5% auto 10% auto;
     padding-left: 10%;
     padding-right: 10%;
-    font-size: 120%;
+    font-size: 150%;
 }
 input[type="submit"] {
     width: 80%;
@@ -135,8 +135,8 @@ textarea {
 }
 
 #name {
-    background-color: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
 }
 
 .left {
@@ -153,15 +153,14 @@ textarea {
 .profilename {
     font-size: 30px;
     margin: 0px;
-    background-color: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
-    color: white;
+    color: grey;
     text-transform: capitalize;
+    font-family: 'Open Sans', sans-serif;
 }
 #container > div:nth-child(4) > ul > li.list-group-item.active {
-    background-color: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
+    background-color: white;
     padding: 2%;
+    border-color: grey;
 }
 
 #marker {
@@ -249,14 +248,14 @@ textarea {
 
 .col {
     font-size: 30px;
-    background: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
 }
 
 .col-6 {
     font-size: 30px;
-    background: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
 }
 
 .left2 {
@@ -280,18 +279,18 @@ textarea {
 }
 
 #container > div.pos-f-t > nav {
-    background-color: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%)!important;
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%)!important;
 }
 
 #navbarToggleExternalContent > div {
-    background-color: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%)!important;
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%)!important;
 }
 
 li.list-group-item.active {
-    background-color: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
+    background-color: white;
+    border-color: grey;
 }
 
 #backBtn {
@@ -317,11 +316,14 @@ li.list-group-item.active {
 .booked_players > #court {
     width: 90px;
 }
+.card {
+    border: 0px;
+}
 
 .card-header {
     
-    background-color: rgb(1,21,83);
-    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
 }
 
 .cap {
@@ -424,6 +426,12 @@ li.list-group-item.active {
 
     font-family: 'Open Sans', sans-serif;
     color: whitesmoke;
+    font-size: 27px;
     
+}
+
+#Header_guide {
+    color: grey;
+    font-family: 'Open Sans', sans-serif;
 }
 
