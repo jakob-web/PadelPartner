@@ -207,17 +207,17 @@ def remove_booking(matchid):
     update(sql,val)
     return show_my_games()
 
-@app.route('/show_past_chatt')
-def show_past_chatt():
-    messages = []
-    sql = "select writer,message,date from msg WHERE writer = %s OR reciever = %s"
-    val = session["username"], session["username"]
-    insert(sql, val)
-    messages = fetchall(sql, val)
-    return render_template("messages.html", user = session["username"], messages = messages)
+# @app.route('/show_past_chatt')
+# def show_past_chatt():
+#     messages = []
+#     sql = "select writer,message,date from msg WHERE writer = %s OR reciever = %s"
+#     val = session["username"], session["username"]
+#     insert(sql, val)
+#     messages = fetchall(sql, val)
+#     return render_template("messages.html", user = session["username"], messages = messages)
 
-@app.route('/show_chatt/<matchid>', methods=['GET', 'POST'])
-def show_chatt(matchid):
+@app.route('/book_game/<matchid>', methods=['GET', 'POST'])
+def booking_game(matchid):
     matchid = int(matchid)
     antal = request.form["antal"]
     if antal == "0":
