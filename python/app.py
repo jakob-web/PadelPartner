@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, send
 from flask import flash
 import main
 import user_registration
@@ -207,14 +207,14 @@ def remove_booking(matchid):
     update(sql,val)
     return show_my_games()
 
-# @app.route('/show_past_chatt')
-# def show_past_chatt():
-#     messages = []
-#     sql = "select writer,message,date from msg WHERE writer = %s OR reciever = %s"
-#     val = session["username"], session["username"]
-#     insert(sql, val)
-#     messages = fetchall(sql, val)
-#     return render_template("messages.html", user = session["username"], messages = messages)
+@app.route('/show_past_chatt')
+def show_past_chatt():
+    messages = []
+    sql = "select writer,message,date from msg WHERE writer = %s OR reciever = %s"
+    val = session["username"], session["username"]
+    insert(sql, val)
+    messages = fetchall(sql, val)
+    return render_template("messages.html", user = session["username"], messages = messages)
 
 @app.route('/book_game/<matchid>', methods=['GET', 'POST'])
 def booking_game(matchid):
@@ -258,18 +258,6 @@ def booking_game(matchid):
     val = sökes,matchid
     update(sql, val)
 
-    # Future chatt fnction
-    # def sessions():
-    #     return render_template('session.html')
-
-    # def messageReceived(methods=['GET', 'POST']):
-    #     print('message was received!!!')
-
-    # @socketio.on('my event')
-    # def handle_my_custom_event(json, methods=['GET', 'POST']):
-    #     print('received my event: ' + str(json))
-    #     socketio.emit('my response', json, callback=messageReceived)
-    # return render_template('session.html')
     return start_page()
    
 @app.route('/about_us')
@@ -306,6 +294,28 @@ def check_password():
         return start_page()
     elif result == False:
         return render_template("change_password.html")
+
+
+    # Future chatt fnction
+@app.route('/show_chatt')
+def show_chats():
+    return render_template("session.html")
+    
+@socketio.on('message')
+def handleMessage(msg):
+    print('Message: ' + msg)
+    send(msg, broadcast=True)
+
+
+
+
+# @socketio.on('message')
+# def handleMessage(msg):
+# 	print('Message: ' + msg)
+# 	send(msg, broadcast=True)
+
+
+
 
 if __name__ == '__main__':
     app.debug = True
