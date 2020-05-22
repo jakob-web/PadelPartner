@@ -2,6 +2,7 @@ body {
     text-align: center;
     color: black;
     height: 100vh;
+    background-color: whitesmoke;
 }
 
 .bild {
@@ -28,11 +29,12 @@ body {
     font-family: 'Bangers', cursive;
     position: relative;
     font-size: 250%;
-    color: black;
+    color: white;
 }
 .btn-primary {
-    color: black;
-    background-color: #A9C8EF;
+    color: white;
+    background-color: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
     border: #A9C8EF;
     text-align: center;
     margin: 5% auto 10% auto;
@@ -133,8 +135,8 @@ textarea {
 }
 
 #name {
-    background-color: #A9C8EF;
-    border-color: #A9C8EF;
+    background-color: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
 }
 
 .left {
@@ -151,12 +153,14 @@ textarea {
 .profilename {
     font-size: 30px;
     margin: 0px;
-    background-color: #A9C8EF;
-    color: black;
+    background-color: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
+    color: white;
     text-transform: capitalize;
 }
 #container > div:nth-child(4) > ul > li.list-group-item.active {
-    background-color: #A9C8EF;
+    background-color: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
     padding: 2%;
 }
 
@@ -177,6 +181,7 @@ textarea {
 
 .hamburger {
     font-size: 100px;
+    color: white;
 }
 /* TODO Create customized mobile friendly radiobuttons with JS?  */
 
@@ -244,12 +249,14 @@ textarea {
 
 .col {
     font-size: 30px;
-    background-color: #A9C8EF;
+    background: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
 }
 
 .col-6 {
     font-size: 30px;
-    background-color: #A9C8EF;
+    background: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
 }
 
 .left2 {
@@ -273,16 +280,18 @@ textarea {
 }
 
 #container > div.pos-f-t > nav {
-    background-color: #A9C8EF!important;
+    background-color: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%)!important;
 }
 
 #navbarToggleExternalContent > div {
-    background-color: #A9C8EF!important;
+    background-color: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%)!important;
 }
 
 li.list-group-item.active {
-    border-color: #A9C8EF;
-    background-color: #A9C8EF;
+    background-color: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
 }
 
 #backBtn {
@@ -310,7 +319,9 @@ li.list-group-item.active {
 }
 
 .card-header {
-    background-color: white;
+    
+    background-color: rgb(1,21,83);
+    background: linear-gradient(90deg, rgba(1,21,83,1) 0%, rgba(102,157,189,1) 100%);
 }
 
 .cap {
@@ -384,3 +395,35 @@ li.list-group-item.active {
     margin-top: 20px;
     width: 10%;
 }
+
+#check_Games {
+    height: 50px;
+    width: 50px;
+    margin: 15px 1px 10px 5px;
+    display: flex;
+    float: left;
+}
+
+.guide {
+    width: 70%;
+    text-align: left;
+    margin: auto;
+    padding: 20px 2px 20px 25px;
+    display: flex;
+    float: left;
+    font-family: 'Open Sans', sans-serif;
+}
+.comp_guide {
+    width: 70%;
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+    color: lightslategrey;
+}
+
+.guide_overview {
+
+    font-family: 'Open Sans', sans-serif;
+    color: whitesmoke;
+    
+}
+

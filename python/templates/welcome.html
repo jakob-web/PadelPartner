@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body id="container">
   <div class="card">
@@ -101,22 +103,27 @@
   </div>
 
   <div id="accordion">
-    <h1>Kom igång</h1>
+    <h1>Guide för att:</h1>
     
        
       <div class="card">
         <div class="card-header" id="headingTwo">
           <h5 class="mb-0">
             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Skapa match
+              <h1 class="guide_overview">Hitta matcher</h1>
             </button>
           </h5>
         </div>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
           <div class="card-body">
-              <img src="../static/img/Skapa_match.png" alt="stad printscreen" id="iphone"  height="600px" width="100px">
-
-              I menyn finner du ”Skapa match”. Därifrån navigeras du till en sida för att skapa en match efter önskat resultat utifrån staden du/ni vill spela i, nivån du/ni eftersöker, hur många ni är samt en kort beskrivning om vem ni är eller annat intressant som kan locka spelare att ansluta till er match. Därefter sparas matchen och ni kan invänta spelare som kan hitta den. 
+              <img src="../static/img/Hitta_match.png" alt="stad printscreen" id="iphone"  height="600px" width="100px">
+              <img src="../static/img/check.png" alt="check" id="check_Games">
+              <h3 class="guide">Kan knappast vara smidigare att hitta matcher</h3>
+              <p class="comp_guide">... Allt du behöver göra? Under fliken <bold>Hitta match</bold> i menyn, filtrera efter staden du vill spela i, nivån & ifall du vill spela med män, kvinnor eller mix.</p>
+              <img src="../static/img/check.png" alt="check" id="check_Games">
+              <h3 class="guide">Väger mellan två nivåer? Obrydd om vilket kön du lirar med?</h3> 
+              <p class="comp_guide">... filtrera enbart på ort &: välj & vraka!</p>
+               
           </div>
         </div>
       </div>
@@ -124,14 +131,20 @@
         <div class="card-header" id="headingThree">
           <h5 class="mb-0">
             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                Hitta match
+              <h1 class="guide_overview">Skapa match</h1>
             </button>
           </h5>
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
           <div class="card-body">
-              <img src="../static/img/Hitta_match.png" alt="stad printscreen" id="iphone"  height="600px" width="150px">
-              I menyn finner du ”Hitta match”. Därifrån navigeras du till en sida där du filtrerar efter önskat resultat utifrån staden du vill spela i, nivån du/ni spelar på samt hur många ni är. Därefter visas resultaten.
+              <img src="../static/img/Skapa_match.png" alt="stad printscreen" id="iphone"  height="600px" width="150px">
+            <img src="../static/img/check.png" alt="check" id="check_Games">
+            <h3 class="guide">Inga tillgängliga matcher? Skapa en!</h3>
+            <p class="comp_guide">... under <bold>Skapa match</bold> & invänta taggade padel-lirare som vill lira med just dig/er. Ps. som skapare är det din profil som syns utåt, make it count!</p>
+            <img src="../static/img/check.png" alt="check" id="check_Games">
+            <h3 class="guide">Marknadsför er!</h3> 
+            <p class="comp_guide">... som skapare väljer du ort, antal spelare som eftersöks, nivå, kön, datum för match & viktigast av allt: tid & info. Var inte rädda för att marknadsföra er i denna ruta!</p>
+              
           </div>
         </div>
       </div>
@@ -140,14 +153,19 @@
       <div class="card-header" id="headingFour">
         <h5 class="mb-0">
           <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-              Mina matcher
+            <h1 class="guide_overview">Se mina matcher</h1>
           </button>
         </h5>
       </div>
       <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
         <div class="card-body">
             <img src="../static/img/Mina_matcher.png" alt="stad printscreen" id="iphone"  height="600px" width="150px">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            <img src="../static/img/check.png" alt="check" id="check_Games">
+            <h3 class="guide">Skaffa dig en överblick</h3>
+            <p class="comp_guide">... som skapare av match så väl som bokad på en match kan du under <strong>Mina matcher</strong> få en överblick</p>
+            <img src="../static/img/check.png" alt="check" id="check_Games">
+            <h3 class="guide">Ångra enkelt </h3> 
+            <p class="comp_guide">... som skapare eller inbokad på en match kan du under <strong>Mina matcher</strong>, med ett smidigt knapptryck  ångra tillagd match eller bokning</p>
         </div>
       </div>
     </div>
