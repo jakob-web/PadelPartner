@@ -296,6 +296,10 @@ li.list-group-item.active {
     width: 90px;
 }
 
+.log-in > .card {
+    height: 100vh;
+}
+
 .card-header {
     background-color: white;
 }
@@ -356,7 +360,27 @@ li.list-group-item.active {
 }
 
 .match-status {
-    float: right;
-    margin-top: 20px;
     width: 10%;
+}
+
+.matchlink {
+    display: flex;
+    line-height: 50px;
+}
+
+.flex-grow-1 {
+    width: 50%;
+}
+
+.flex-grow-2 {
+    flex-grow: 2;
+}
+
+.checkbox {
+    width: 40px;
+}
+
+.matchlink p {
+    font-size: 16px;
+    color: black;
 }
