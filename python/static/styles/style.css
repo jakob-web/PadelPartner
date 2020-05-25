@@ -344,7 +344,7 @@ li.list-group-item.active {
 .button {
     background-color: #A9C8EF;
     border-radius: 2%;
-    width: 50%;
+    width: 70%;
     margin: auto;
     border: none;
     color: white;
@@ -455,3 +455,30 @@ li.list-group-item.active {
 #headingFour {
     margin-bottom: 105px;
 }
+.hjalptext {
+    float: left;
+    color: grey;
+    font-style: italic;
+    font-size: 15px;
+}
+
+select {
+    width: 100%;
+    border: none;
+    background-color: #f1f1f1;
+}
+
+.liten-knapp {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border-radius: 10%;
+    margin: auto;
+    border: none;
+    color: #A9C8EF;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+}
+
