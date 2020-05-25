@@ -53,17 +53,42 @@
               <img src='/static/img/tennis-court.png'id="court" alt="Padelcourt icon">
               <img src='/static/img/user (1).png'id="spelare3" class="players" alt="User icon">
               <img src='/static/img/user (1).png'id="spelare4" class="players" alt="User icon">
-            </div>  
+          </div>
+            
+            
 
             {%if creator == True:%}
             <a href="http://localhost:8080/remove_match/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Ta bort match</button></a>
             {%else:%}
             <a href="http://localhost:8080/remove_booking/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Avboka Match</button></a>
             {%endif%}
-          </div>
+         </div>
+             <fieldset>
+            <form action="http://localhost:8080/make_comment/{{match[4]}}" method="POST">
+              
+              <textarea name="comment" id="comment" placeholder="Skriv ditt meddelande här..." required></textarea>
+              <input type="hidden" id="username" name="username" value="{{username}}">
+              <input type="submit" class="btn btn-primary" value="Skicka">
+            </form>
+            </fieldset>
+            <h5 id="comment-header">Kommentar</h5>
+            
+            <div id="comment_box">
+            {%for comment in comments:%}
+            <li id="listcomment">
+              <h6 class="writer">{{comment[1]}}</h6>
+              <p class="msg">{{comment[0]}}</p>
+            </li>
+            {%endfor%}
+            </div>
+            </div>
+            </div
+
+
         </div>
       {%endfor%}
       <button type="button" class="btn btn-primary btn-lg btn-block" id="backBtn">Tillbaka</button>
+
   </main>
 <footer>
 </footer>
