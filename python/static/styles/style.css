@@ -293,6 +293,10 @@ li.list-group-item.active {
     border-color: grey;
 }
 
+#backBtn {
+    margin: 10px auto auto auto;
+    width: 80%;
+}
 
 .alert-error {
     padding: 8px;
@@ -431,27 +435,3 @@ li.list-group-item.active {
     font-family: 'Open Sans', sans-serif;
 }
 
-#button123 {
-    font-size: 35px;
-    color: white;
-    text-align: left;
-    margin-left: 0.5px;
-}
-
-.navbar-brand {
-
-    width: 20%;
-    
-
-}
-
-#container > footer > nav {
-    
-    background-color: whitesmoke;
-    background: whitesmoke;
-}
-
-
-#headingFour {
-    margin-bottom: 105px;
-}
