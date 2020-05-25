@@ -56,6 +56,10 @@ def editProfile(username):
         val = (level, img, info, age, asd)
         update(sql, val)
 
+    for item in oldpic:
+        print(str(item.rsplit('/')[3]))
+        os.remove(str(item.rsplit('/')[3]))
+        print("bild borttagen")
  
 
 def allowed_image(filename):
@@ -97,5 +101,3 @@ def validatepicture(username):
             image.save(os.path.join(UPLOAD_FOLDER, image.filename))
 
             return "static/img/uploads/" + str(image.filename)
-        else:
-            return 
