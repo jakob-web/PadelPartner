@@ -1,4 +1,4 @@
-dbname ="padel9"
-user ="oscarkindvall"
-password ="Magdajava66"
+dbname ="newpadelpartner"
+user ="postgres"
+password ="postgre"
 host ="127.0.0.1"
