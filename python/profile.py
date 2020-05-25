@@ -57,7 +57,7 @@ def editProfile(username):
         update(sql, val)
 
     for item in oldpic:
-        if os.path.exists(str(item))
+        if os.path.exists(str(item)):
             os.remove(str(item.rsplit('/')[3]))
             print("bild borttagen")
  
