@@ -293,10 +293,6 @@ li.list-group-item.active {
     border-color: grey;
 }
 
-#backBtn {
-    margin: 10px auto auto auto;
-    width: 80%;
-}
 
 .alert-error {
     padding: 8px;
@@ -348,7 +344,7 @@ li.list-group-item.active {
 .button {
     background-color: #A9C8EF;
     border-radius: 2%;
-    width: 50%;
+    width: 70%;
     margin: auto;
     border: none;
     color: white;
@@ -433,5 +429,56 @@ li.list-group-item.active {
 #Header_guide {
     color: grey;
     font-family: 'Open Sans', sans-serif;
+}
+
+#button123 {
+    font-size: 35px;
+    color: white;
+    text-align: left;
+    margin-left: 0.5px;
+}
+
+.navbar-brand {
+
+    width: 20%;
+    
+
+}
+
+#container > footer > nav {
+    
+    background-color: whitesmoke;
+    background: whitesmoke;
+}
+
+
+#headingFour {
+    margin-bottom: 105px;
+}
+.hjalptext {
+    float: left;
+    color: grey;
+    font-style: italic;
+    font-size: 15px;
+}
+
+select {
+    width: 100%;
+    border: none;
+    background-color: #f1f1f1;
+}
+
+.liten-knapp {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border-radius: 10%;
+    margin: auto;
+    border: none;
+    color: #A9C8EF;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
 }
 
