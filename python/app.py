@@ -179,9 +179,9 @@ def my_game_info(matchid):
         
     #Checks if skapare = username
     if my_matches[0][3] == session["username"]:
-        return render_template("show_my_games.html", user = session["username"], my_matches = my_matches, creator = True)
+        return render_template("show_my_games.html", user = session["username"], my_matches = my_matches, creator = True, comments = show_comment(matchid))
     else:
-        return render_template("show_my_games.html", user = session["username"], my_matches = my_matches)
+        return render_template("show_my_games.html", user = session["username"], my_matches = my_matches, comments = show_comment(matchid))
 
 @app.route('/remove_match/<matchid>')
 def remove_match(matchid):
@@ -296,15 +296,37 @@ def check_password():
         return render_template("change_password.html")
 
 
-    # Future chatt fnction
-@app.route('/show_chatt')
-def show_chats():
-    return render_template("session.html")
+@app.route('/make_comment/<matchid>', methods=['GET', 'POST'])
+def new_comment(matchid):
+    comment = request.form["comment"]
+    matchid = matchid
+    sql = "insert into msg(writer, message, matchid) VALUES (%s, %s, %s)"
+    val = session["username"], comment, matchid
+    insert(sql, val)
+    return my_game_info(matchid)
+
+def show_comment(matchid):
+    print("hej")
+    matchid = matchid
+    result = fetchall("select message, writer, matchid from msg where matchid = %s ORDER BY date DESC", [matchid])
+    print(result)
+    comments = []
+    for record in result:
+        print(record)
+        comments.append(record)
+    print(comments)
+    return comments
+
+
+# Future chatt fnction
+# @app.route('/show_chatt')
+# def show_chats():
+#     return render_template("session.html")
     
-@socketio.on('message')
-def handleMessage(msg):
-    print('Message: ' + msg)
-    send(msg, broadcast=True)
+# @socketio.on('message')
+# def handleMessage(msg):
+#     print('Message: ' + msg)
+#     send(msg, broadcast=True)
 
 
 

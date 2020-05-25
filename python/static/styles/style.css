@@ -391,3 +391,33 @@ li.list-group-item.active {
     font-size: 28px !important;
 }
 
+}
+.writer {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+}
+#comment_box {
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    
+    width: 100%;
+}
+#comment {
+    width: 90%;
+    height: 100px;
+}
+#listcomment{
+    list-style: none;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    
+}
+.msg{
+    padding: 10px;
+    text-align: center;
+}
+#comment-header {
+    padding:10px;
+    font-weight: bold;
+    font-size: 25px;
+}
