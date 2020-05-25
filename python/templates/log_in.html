@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
-<body id="container">
+<body id="container" class="log-in">
     <div class="card">
     <header class="card-header">
-        <img class="bild" id="b1" src="/static/padel.png">
+        <img class="bild" id="b1" src="/static/padel.png" alt="Padelracket icon">
         <a id="slogan" href="http://localhost:8080/">PadelPartner</a>
-        <img class="bild" id ="b2" src="/static/handshake.png">
+        <img class="bild" id ="b2" src="/static/handshake.png" alt="Handshake icon"> 
     </header>
 <main>    
     <div class="card-body">
@@ -23,9 +23,9 @@
     {% endfor %}
     <fieldset class="formular">
         <label for="userName">Användarnamn</label><br>
-        <input type="userName" id="userName" name="userName" required value= {{username}}><br>
+        <input class="form-input"  type="userName" id="userName" name="userName" required value= {{username}}><br>
         <label for="pwd">Lösenord</label><br>
-        <input type="password" id="pwd" name="pwd" minlength="8" required><br>
+        <input class="form-input" type="password" id="pwd" name="pwd" minlength="8" required><br>
         <input type="submit" class="btn btn-primary" value="Logga in">
     </fieldset>
     </form>

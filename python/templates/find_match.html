@@ -55,19 +55,21 @@
       <h2 class="cap" id="city" hidden>{{game[0]}}</h2> 
       <!-- Use javascript to display City just once as a headline -->
       
-        <a class ="matchlink" href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
-        <p class="left2 align-bottom">{{game[5][0:-4]}}</p>
-        <!-- Lägga till datum och tid (?) -->
-        <p class="left2 level">{{game[1]}}</p>
-        <p class="gender"> {{game[4]}}</p>
+        <a class ="matchlink overiew-link" href="http://localhost:8080/showMatchProfile/{{game[3]}}#" class="list-group-item list-group-item-action">
         <p id="sökes" hidden>{{game[2]}}</p>
-        <!-- Testa detta med javascript och lägg till booked klassen för att ändra bidlfärg -->
-        <div class="booked_overview">
-        <img src='/static/img/user (1).png'id="spelare1" class="players">
-        <img src='/static/img/user (1).png'id="spelare2" class="players">
-        <img src='/static/img/user (1).png'id="spelare3" class="players">
-        <img src='/static/img/user (1).png'id="spelare4" class="players">
+        <div class="flex-grow-1">
+          <p class="float-left">{{game[5][0:-4]}}</p>
+          <p class="float-left level">{{game[1]}}</p>
         </div>
+        <div class="match-status flex-grow-6">
+          <p class="gender"> {{game[4]}}</p>
+          <div class="booked-overview float-right">
+          <img src='/static/img/user (1).png'id="spelare1" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon">
+          <img src='/static/img/user (1).png'id="spelare2" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+          <img src='/static/img/user (1).png'id="spelare3" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+          <img src='/static/img/user (1).png'id="spelare4" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+          </div>
+        </div>   
         </a>
       {%endfor%}
       {%endif%}

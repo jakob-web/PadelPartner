@@ -8,12 +8,12 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
-<body id="container" class="myGames">
+<body id="container" class="my-games">
     <div class="card">
         <header class="card-header">
-            <img class="bild" id="b1" src="/static/padel.png">
+            <img class="bild" id="b1" src="/static/padel.png" alt="Padelracket icon">
             <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
-            <img class="bild" id ="b2" src="/static/handshake.png">
+            <img class="bild" id ="b2" src="/static/handshake.png" alt="Handshake icon">
         </header>
     </div>
     <!-- <div class="pos-f-t">
@@ -39,27 +39,32 @@
         </nav>
     </div>
     <main> 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Mina Matcher</h3>
+            </div>
+        </div>
+    </div>
     <div class="list-group">
-        <h3>Mina Matcher</h3>
-        <!-- TODO add "visit game" button (?) -->
         {%if match == []:%}
         <p>Inga bokade matcher</p>
         {%else:%}
             {%for match in matches:%}
-            <a href="http://localhost:8080/my_games_info/{{match[4]}}#" class="list-group-item list-group-item-action matchlink">
-            <p class="left2 align-bottom">{{match[5][0:-4]}}</p>
-            <p class="left2 city">{{match[0]}}</p>
-            <!-- <p class="middle">{{match[1]}}</p> -->
-            <!-- <p class="right2">{{match[3]}}</p> -->
-            <!-- <p class="gender">{{match[6]}}</p> -->
-            <p class="sökes" hidden>{{match[2]}}</p>
-            <div class="match_status">
-                <img src='/static/img/uncheck.png'id="spelare4" class="players">
+            <a href="http://localhost:8080/my_games_info/{{match[4]}}#" class="list-group-item list-group-item-action overiew-link matchlink">
+
+            <!-- JS uses this value for calculating the amount of players booked to "match-status" -->
+            <p class="sökes" hidden>{{match[2]}}</p> 
+            <div class="flex-grow-1">
+                <p class="float-left" >{{match[5][0:-4]}}  &ensp;  {{match[0]}}</p>
+            </div>
+            <div class="match-status flex-grow-2">
+                <img src='/static/img/uncheck.png' class="checkbox" href="https://www.flaticon.com/authors/freepik" alt="Checkbox icon">
+                <p class="antal-spelare float-right"></p>
             </div>   
-            <p class="antal_spelare"></p>
          
         </a>
-        {%endfor%}
+            {%endfor%}
         {%endif%}
 
         </div>
@@ -79,11 +84,9 @@
       </nav>
    
 </footer>
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='js/app.js')}}"></script>
-
 </body>
 </html>

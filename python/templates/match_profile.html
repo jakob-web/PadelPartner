@@ -11,9 +11,9 @@
 <body id="container" class="bookContainer">
     <div class="card">
         <header class="card-header">
-            <img class="bild" id="b1" src="/static/padel.png">
+            <img class="bild" id="b1" src="/static/padel.png" href="https://www.flaticon.com/authors/freepik">
             <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
-            <img class="bild" id ="b2" src="/static/handshake.png">
+            <img class="bild" id ="b2" src="/static/handshake.png" href="https://www.flaticon.com/authors/freepik">
         </header>
     </div>
     <!-- <div class="pos-f-t">
@@ -48,17 +48,18 @@
             <p class="card-text"><b>Info: </b>{{game[3]}}</p>
           </div>
           <div class="card-body">
-            <div class="booked_players">
-              <img src='/static/img/user (1).png'id="spelare1" class="players">
-              <img src='/static/img/user (1).png'id="spelare2" class="players">
-              <img src='/static/img/tennis-court.png'id="court">
-              <img src='/static/img/user (1).png'id="spelare3" class="players">
-              <img src='/static/img/user (1).png'id="spelare4" class="players">
+            <div class="booked-players">
+              <img src='/static/img/user (1).png'id="spelare1" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+              <img src='/static/img/user (1).png'id="spelare2" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+              <img src='/static/img/tennis-court.png'id="court" href="https://www.flaticon.com/authors/freepik" alt="Padelcourt icon" >
+              <img src='/static/img/user (1).png'id="spelare3" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+              <img src='/static/img/user (1).png'id="spelare4" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
             </div>  
           
-            <form action="http://localhost:8080/show_chatt/{{game[5]}}#" method="POST">
+            <form action="http://localhost:8080/book_game/{{game[5]}}#" method="POST">
             <p class="card-text" hidden id="sökes">{{game[2]}}</p>
-            <input name="players" id="antal" selected hidden value="0"></input>
+            <input class="form-input" name="players" id="antal" selected hidden value="0"></input>
+            <!--ändra antal i js till players-->
             {% for message in get_flashed_messages() %}
             <p class="alert-error" >{{ message }}</p>
             {% endfor %}

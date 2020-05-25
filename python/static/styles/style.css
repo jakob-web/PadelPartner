@@ -21,14 +21,14 @@ body {
 
 .card-header {
     width: 100%;
-    
+    padding: 2%;
     position: relative;
 }
 
 #slogan {
     font-family: 'Bangers', cursive;
     position: relative;
-    font-size: 250%;
+    font-size: 235%;
     color: white;
 }
 .btn-primary {
@@ -95,7 +95,7 @@ label {
     margin-bottom: 0px;
 }
 
-input[type="text"],input[type="username"], input[type="password"], select[name="location"], select[name="level"], select[name="players"], select[name="level"],select[name="date"],select[name="gender"]{
+.form-input{
     height: 50px;
     margin: 5px 0px;
     width: 100%;
@@ -139,13 +139,13 @@ textarea {
     background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
 }
 
-.left {
+.float-left {
     float: left;
     font-weight: bold;
     font-size: 20px;
 }
 
-.right {
+.float-right {
     float: right;
     font-size: 20px;
 }
@@ -182,7 +182,6 @@ textarea {
     font-size: 100px;
     color: white;
 }
-/* TODO Create customized mobile friendly radiobuttons with JS?  */
 
 .switch {
     position: relative;
@@ -191,14 +190,14 @@ textarea {
     height: 40px;
     margin-top: 5%;
   }
-  
-  .switch input { 
+
+.switch input { 
     opacity: 0;
     width: 0;
     height: 0;
   }
   
-  .slider {
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -208,9 +207,9 @@ textarea {
     background-color: rgba(143, 143, 143, 0.692);
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 30px;
@@ -220,30 +219,30 @@ textarea {
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked + .slider {
     background-color: rgb(0, 192, 16);
     color: rgba(255, 255, 255, 0.76);
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus + .slider {
     box-shadow: 0 0 1px rgb(0, 192, 16);
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked + .slider:before {
     -webkit-transform: translateX(100px);
     -ms-transform: translateX(100px);
     transform: translateX(110px);
-  }
-  
-  .slider.round {
+}
+
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
+}
 
 
 .col {
@@ -258,18 +257,6 @@ textarea {
     background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
 }
 
-.left2 {
-    float: left;
-    font-size: 20px;
-    color: black;
-}
-
-.right2 {
-    float: right;
-    font-size: 20px;
-    text-transform: capitalize;
-
-}
 
 .middle {
     display: inline-block;
@@ -300,20 +287,24 @@ li.list-group-item.active {
     color: white;
   }
 
-.booked_players > img {
-    width: 40px;
-    margin: 0px 5px;
+.booked-players > img {
+    width: 12%;
+    margin: 0px 3px;
 }
-.booked_overview > img {
+.booked-overview > img {
     width: 20px;
     margin: 0px;
 }
 
-.booked_players > #court {
+.booked-players > #court {
     width: 90px;
 }
 .card {
     border: 0px;
+}
+
+.log-in > .card {
+    height: 100vh;
 }
 
 .card-header {
@@ -326,19 +317,8 @@ li.list-group-item.active {
     text-transform: capitalize;
 }
 
-.tooltip {
-    color: black; 
-    size: 100px;
-}
-
 #iphone {
     width: 100%;
-    
-}
-
-.bottomnav{
-    height: 30px;
-    width: 50%;
 }
 
 .button {
@@ -354,17 +334,15 @@ li.list-group-item.active {
     display: inline-block;
     font-size: 18px;
   }
-.btn-primary
-.booked_overview {
+
+.booked-overview {
     display: flex;
-    margin-left: 75%;    
-    margin-top: 20px;
-    width: 30%;
+    margin-top: 15px;
 }
 
 .gender {
     width: 30%;
-    float: right;
+    float: left;
     margin-bottom: 0px;
     padding: 0;
 }
@@ -374,7 +352,7 @@ li.list-group-item.active {
     font-size: 200%;
 }
 .matchlink {
-    padding: 15px;
+    padding: 5px;
     border: 1px solid rgba(0,0,0,.125);
 }
 
@@ -382,15 +360,13 @@ li.list-group-item.active {
     margin: 0% 0% 0% 10%;
 }
 
-.antal_spelare {
+.antal-spelare {
     float: right;
     margin-bottom: 0px;
     padding: 0;
 }
 
-.match_status {
-    float: right;
-    margin-top: 20px;
+.match-status {
     width: 10%;
 }
 
@@ -482,3 +458,64 @@ select {
     font-size: 30px;
 }
 
+.overiew-link {
+    display: flex;
+    line-height: 50px;
+}
+
+.flex-grow-1 {
+    width: 50%;
+}
+
+.flex-grow-2 {
+    flex-grow: 2;
+}
+
+.flex-grow-6 {
+    flex-grow: 6;
+}
+
+.checkbox {
+    width: 40px;
+}
+
+.overiew-link p {
+    font-size: 16px;
+    color: black;
+}
+
+.flex-grow-1 > .level {
+    margin: 0px 15% 0px 15%;
+    font-size: 28px !important;
+}
+
+
+.writer {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    padding-top: 10px;
+}
+#comment_box {
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    
+    width: 100%;
+}
+#comment {
+    width: 90%;
+    height: 100px;
+}
+#listcomment{
+    list-style: none;
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    
+}
+.msg{
+    padding: 10px;
+    text-align: center;
+}
+#comment-header {
+    padding:10px;
+    font-weight: bold;
+    font-size: 25px;
+}

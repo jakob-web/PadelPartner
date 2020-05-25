@@ -11,9 +11,9 @@
 <body id="container">
     <div class="card">
         <header class="card-header">
-            <img class="bild" id="b1" src="/static/padel.png">
+            <img class="bild" id="b1" src="/static/padel.png" alt="Padelracket icon">
             <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
-            <img class="bild" id ="b2" src="/static/handshake.png">
+            <img class="bild" id ="b2" src="/static/handshake.png" alt="Handshake icon">
             <button onclick="goBack()">go back</button>
         </header>
     <div class="card-body">
@@ -24,13 +24,13 @@
         {% for message in get_flashed_messages() %}
         <p class="alert-error" >{{ message }}</p>
         {% endfor %}
-        <input type="text" name="fName" id="fName" class="margin20" value="" placeholder="Förnamn" required> <br>
-        <input type="text" name="lName" id="lName" class="margin20" value="" placeholder="Efternamn" required> <br>
-        <input type="text" name="email" id="email" class="margin20" value="" placeholder="Email" required> <br>
+        <input type="text"  class="form-input" name="fName" id="fName" class="margin20" value="" placeholder="Förnamn" required> <br>
+        <input type="text"  class="form-input" name="lName" id="lName" class="margin20" value="" placeholder="Efternamn" required> <br>
+        <input type="text"  class="form-input" name="email" id="email" class="margin20" value="" placeholder="Email" required> <br>
 
-        <input type="userName" id="userName" name="userName" autocomplete="nope" placeholder="Användarnamn" >
-        <input type="password" id="pwd" name="pwd" minlength="8" placeholder="Lösenord (minst 8 tecken)" autocomplete="new-password"><br>
-        <select id="location" name="location" required>
+        <input type="userName"  class="form-input" id="userName" name="userName" autocomplete="nope" placeholder="Användarnamn" >
+        <input type="password"  class="form-input" id="pwd" name="pwd" minlength="8" placeholder="Lösenord (minst 8 tecken)" autocomplete="new-password"><br>
+        <select id="location"  class="form-input" name="location" required>
             <option value="" disabled selected hidden>Stad</option>
             <option value="Malmö">Malmö</option>
             <option value="Helsingborg">Helsingborg</option>
@@ -39,7 +39,7 @@
         </select>
         <br>
        
-        <select id="level" name="level" required>
+        <select class="form-input" id="level" name="level" required>
             <option value="" disabled selected hidden>Nivå</option>
             <option value="A">A</option>
             <option value="B">B</option>

@@ -12,9 +12,9 @@
 <body id="container">
        <div class="card">
         <header class="card-header">
-            <img class="bild" id="b1" src="/static/padel.png">
+            <img class="bild" id="b1" src="/static/padel.png" alt="Padelracket icon">
             <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
-            <img class="bild" id ="b2" src="/static/handshake.png">
+            <img class="bild" id ="b2" src="/static/handshake.png" alt="Handshake icon">
         </header>
     </div>
     <!-- <div class="pos-f-t">
@@ -39,20 +39,20 @@
 <main> 
 <fieldset>
 <form action="http://localhost:8080/insert_match" method="POST">
-    <select id="location" name="location" required>
+    <select class="form-input" id="location" name="location" required>
         <option value="" disabled selected hidden>Stad</option>
         <option value="Malmö">Malmö</option>
         <option value="Helsingborg">Helsingborg</option>
         <option value="Lund">Lund</option>
         <option value="Lomma">Lomma</option>
     </select>
-    <select id="players" name="players" required>
+    <select class="form-input" id="players" name="players" required>
         <option value="" disabled selected hidden>Söker</option>
         <option value="1">1 Spelare</option>
         <option value="2">2 Spelare</option>
         <option value="3">3 Spelare</option> 
     </select> <br>
-    <select id="level" name="level" required>
+    <select class="form-input" id="level" name="level" required>
         <option value="" disabled selected hidden>Nivå</option>
         <option value="A">A</option>
         <option value="B">B</option>
@@ -61,7 +61,7 @@
     </select>
     <label class="hjalptext">Vilken nivå vill du spela på?..</label>
     <br>
-    <select id="gender" name="gender" required>
+    <select class="form-input" id="gender" name="gender" required>
         <option value="" disabled selected hidden>Kön</option>
         <option value="Herr">Herr</option>
         <option value="Dam">Dam</option>
@@ -70,7 +70,7 @@
     <label class="hjalptext">Vilka vill du spela med?..</label>
     <br>
 
-    <select id="date" name="date" required>
+    <select class="form-input" id="date" name="date" required>
         <option value="" disabled selected hidden>Datum</option>
         <option value="{{dates[0]}}">{{dates[0]}}</option>
         <option value="{{dates[1]}}">{{dates[1]}}</option>

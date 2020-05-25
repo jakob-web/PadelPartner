@@ -48,6 +48,7 @@ create table booking (
 
 create table msg (
     writer varchar(50),
+    matchID int, 
     reciever varchar(50),
     message varchar(3000),
     date timestamp DEFAULT CURRENT_TIMESTAMP
@@ -74,3 +75,4 @@ CREATE SEQUENCE add_id OWNED BY none;
 ALTER TABLE Match ALTER COLUMN MatchID SET DEFAULT nextval('add_id');
 UPDATE Match
 SET matchID = nextval('add_id');
+

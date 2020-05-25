@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, send
 from flask import flash
 import main
 import user_registration
@@ -124,19 +124,14 @@ def insert_match():
 
     show_match.create_Game(session["username"])
     matchid = fetchone("select max(matchid) from match where matchid > %s", "0")
-    print(matchid)
     if matchid[0] == None:
         matchid = 1
-        print(matchid)  
     sql = "insert into booking (matchid,username,creatorname,booked) values (%s,%s,%s,%s)"
     val = matchid,session["username"],session["username"],players
     insert(sql, val)
-    print(matchid, session["username"])
 
     return start_page()
 
-
-    
 
 @app.route('/show_games')
 def show_game():
@@ -150,14 +145,8 @@ def show_matches():
     level = request.form["level"]
     gender = request.form["gender"]
     
-    if level == "1" and gender !="6":
-        return render_template("find_match.html", games=show_match.show_all_players(location, gender))
-    elif level != "1" and gender =="6":
-        return render_template("find_match.html", games=show_match.show_all_ranks(location, level))
-    elif level == "1" and gender =="6":
-        return render_template("find_match.html", games=show_match.show_all_match(location))
-    else:
-        return render_template("find_match.html", games=show_match.show_Game(location,level,gender))
+    games = show_match.main_show(location,level,gender)
+    return render_template("find_match.html", games=games)
 
 @app.route('/showMatchProfile/<matchid>')
 def show_match_profile(matchid):    
@@ -184,9 +173,9 @@ def my_game_info(matchid):
         
     #Checks if creator = username
     if my_matches[0][3] == session["username"]:
-        return render_template("show_my_games.html", user = session["username"], my_matches = my_matches, creator = True)
+        return render_template("show_my_games.html", user = session["username"], my_matches = my_matches, creator = True, comments = show_comment(matchid))
     else:
-        return render_template("show_my_games.html", user = session["username"], my_matches = my_matches)
+        return render_template("show_my_games.html", user = session["username"], my_matches = my_matches, comments = show_comment(matchid))
 
 @app.route('/remove_match/<matchid>')
 def remove_match(matchid):
@@ -196,15 +185,12 @@ def remove_match(matchid):
     
 @app.route('/remove_booking/<matchid>')
 def remove_booking(matchid):
-    print(matchid, session["username"])
     sql = "select booked from booking where matchid=%s AND username=%s"
     val = matchid, session["username"]
     current_booking = fetchone(sql,val) 
-    print(current_booking)
 
     sql = "update match set players=(players+%s) where matchid =%s"
     val = current_booking,matchid
-    print(current_booking,matchid)
     update(sql,val)
     sql = "update match set booked=(booked-%s) where matchid =%s"
     val = current_booking,matchid
@@ -213,9 +199,6 @@ def remove_booking(matchid):
     sql = "delete from booking where matchid=%s AND username=%s"
     val = matchid,session["username"]
     update(sql,val)
-
-
-
     return show_my_games()
 
 @app.route('/show_past_chatt')
@@ -225,12 +208,10 @@ def show_past_chatt():
     val = session["username"], session["username"]
     insert(sql, val)
     messages = fetchall(sql, val)
-    print(messages)
     return render_template("messages.html", user = session["username"], messages = messages)
 
-
-@app.route('/show_chatt/<matchid>', methods=['GET', 'POST'])
-def show_chatt(matchid):
+@app.route('/book_game/<matchid>', methods=['GET', 'POST'])
+def booking_game(matchid):
     matchid = int(matchid)
     players = request.form["players"]
     print(players)
@@ -258,7 +239,6 @@ def show_chatt(matchid):
 
         sql = "UPDATE match SET booked = %s WHERE matchid = %s;"
         val = new_booked(),matchid
-        print(matchid, session["username"])
         update(sql, val)
         
         sql = "UPDATE match SET players = %s WHERE matchid = %s;"
@@ -277,31 +257,14 @@ def show_chatt(matchid):
     val = searching,matchid
     update(sql, val)
 
-    # Future chatt fnction
-    # def sessions():
-    #     return render_template('session.html')
-
-    # def messageReceived(methods=['GET', 'POST']):
-    #     print('message was received!!!')
-
-    # @socketio.on('my event')
-    # def handle_my_custom_event(json, methods=['GET', 'POST']):
-    #     print('received my event: ' + str(json))
-    #     socketio.emit('my response', json, callback=messageReceived)
-    # return render_template('session.html')
-
     return start_page()
    
 @app.route('/about_us')
 def about_us():
-    
     return render_template("about_us.html")
-
-    
 
 @app.route('/uploadpicture', methods=['GET', 'POST'])
 def uploadpicture():
-
     return render_template("uploadpicture.html")
 
 @app.route('/testRoute', methods=['GET'])
@@ -317,6 +280,64 @@ def creator_profile(creator):
     print(img)
 
     return render_template("creator_profile.html", creator = creator, profil = profil, img = img)
+
+@app.route('/change_password/')
+def new_password():
+    return render_template("change_password.html")
+
+@app.route('/new_password', methods=['GET', 'POST'])
+def check_password():
+    password = request.form["pwd"]
+    new_password = request.form["new_pwd"]
+    result = profile.change_password(password, new_password)
+    
+    if result == True:
+        return start_page()
+    elif result == False:
+        return render_template("change_password.html")
+
+
+@app.route('/make_comment/<matchid>', methods=['GET', 'POST'])
+def new_comment(matchid):
+    comment = request.form["comment"]
+    matchid = matchid
+    sql = "insert into msg(writer, message, matchid) VALUES (%s, %s, %s)"
+    val = session["username"], comment, matchid
+    insert(sql, val)
+    return my_game_info(matchid)
+
+def show_comment(matchid):
+    print("hej")
+    matchid = matchid
+    result = fetchall("select message, writer, matchid from msg where matchid = %s ORDER BY date DESC", [matchid])
+    print(result)
+    comments = []
+    for record in result:
+        print(record)
+        comments.append(record)
+    print(comments)
+    return comments
+
+
+# Future chatt fnction
+# @app.route('/show_chatt')
+# def show_chats():
+#     return render_template("session.html")
+    
+# @socketio.on('message')
+# def handleMessage(msg):
+#     print('Message: ' + msg)
+#     send(msg, broadcast=True)
+
+
+
+
+# @socketio.on('message')
+# def handleMessage(msg):
+# 	print('Message: ' + msg)
+# 	send(msg, broadcast=True)
+
+
 
 
 if __name__ == '__main__':
