@@ -18,7 +18,7 @@
           <img class="bild" id ="b2" src="/static/handshake.png">
       </header>
   </div>
-  <div class="pos-f-t">
+  <!-- <div class="pos-f-t">
     <div class="collapse" id="navbarToggleExternalContent">
       <div class="bg-dark p-4">
         <ul class="list-group">
@@ -38,7 +38,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
     </nav>
-  </div>
+  </div> -->
 <main>
   <div class="text-center">
     {%for item in picture:%}
@@ -170,15 +170,17 @@
       </div>
     </div>
   </div>
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-      <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-    </a>
-  </nav>  
+ 
 
 </main>
     
 <footer>
+  <nav class="navbar fixed-bottom navbar-light bg-light">
+    <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png'></a>
+    <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
+    <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
+    <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
+  </nav>
 </footer>
 
 

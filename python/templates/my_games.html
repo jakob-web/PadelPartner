@@ -16,7 +16,7 @@
             <img class="bild" id ="b2" src="/static/handshake.png">
         </header>
     </div>
-    <div class="pos-f-t">
+    <!-- <div class="pos-f-t">
         <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
             <ul class="list-group">
@@ -28,11 +28,14 @@
                 <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
             </ul>
         </div>
-        </div>
+        </div> -->
         <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
+        <div class="button123">
+            <button type="button" id="backBtn"><p> &larr;</p></button>
+        </div>
         </nav>
     </div>
     <main> 
@@ -60,11 +63,21 @@
         {%endif%}
 
         </div>
-          <button type="button" class="btn btn-primary btn-lg btn-block" id="backBtn">Tillbaka</button>
-
+         
+       
     </main>
+   
 </div> 
+
 <footer>
+    
+      <nav class="navbar fixed-bottom">
+        <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png'></a>
+        <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
+        <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
+        <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
+      </nav>
+   
 </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

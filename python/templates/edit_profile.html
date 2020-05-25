@@ -10,32 +10,27 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body id="container">
-    <div class="card">
+       <div class="card">
         <header class="card-header">
             <img class="bild" id="b1" src="/static/padel.png">
             <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
             <img class="bild" id ="b2" src="/static/handshake.png">
         </header>
     </div>
-    <div class="pos-f-t">
-      <div class="collapse" id="navbarToggleExternalContent">
+    <!-- <div class="pos-f-t">
+        <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
-          <ul class="list-group">
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/my_games">Mina matcher</a></li>
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/about_us">Om oss</a></li>
-            <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
-          </ul>
+            <ul class="list-group">
+                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
+                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
+                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/my_games">Mina matcher</a></li>
+                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
+                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/about_us">Om oss</a></li>
+                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
+            </ul>
         </div>
-      </div>
-      <nav class="navbar navbar-dark bg-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </nav>
-    </div>
+        </div> -->
+        
 <div class="card-body">
 <main> 
     <fieldset>
@@ -78,6 +73,12 @@
     {%endfor%}
 </div> 
 <footer>
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png'></a>
+        <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
+        <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
+        <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
+      </nav>
 </footer>
 <script>
   var previewpicture = function(event) {
