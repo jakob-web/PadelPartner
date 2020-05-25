@@ -317,9 +317,14 @@ li.list-group-item.active {
 }
 
 .card-header {
+    color: white;
     
     background-color: rgb(49, 51, 56);
     background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
+}
+.card-header > a {
+    color: white;
+    font-size: 40px;
 }
 
 .cap {
@@ -431,16 +436,12 @@ li.list-group-item.active {
     font-family: 'Open Sans', sans-serif;
 }
 
-#button123 {
-    font-size: 35px;
-    color: white;
-    text-align: left;
-    margin-left: 0.5px;
-}
+
 
 .navbar-brand {
 
     width: 20%;
+    margin-bottom: 15px;
     
 
 }
@@ -482,3 +483,16 @@ select {
     font-size: 30px;
 }
 
+#backBtn {
+    font-size: 45px; 
+    color: white;
+    margin: 2% 90% 1% 1%;
+    
+
+
+}
+
+.navbar-back {
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
+}
