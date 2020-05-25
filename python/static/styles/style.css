@@ -20,14 +20,14 @@ body {
 
 .card-header {
     width: 100%;
-    padding: 5%;
+    padding: 2%;
     position: relative;
 }
 
 #slogan {
     font-family: 'Bangers', cursive;
     position: relative;
-    font-size: 250%;
+    font-size: 235%;
     color: black;
 }
 .btn-primary {
@@ -284,8 +284,8 @@ li.list-group-item.active {
   }
 
 .booked-players > img {
-    width: 40px;
-    margin: 0px 5px;
+    width: 12%;
+    margin: 0px 3px;
 }
 .booked-overview > img {
     width: 20px;
@@ -328,14 +328,12 @@ li.list-group-item.active {
 
 .booked-overview {
     display: flex;
-    margin-left: 75%;    
-    margin-top: 20px;
-    width: 30%;
+    margin-top: 15px;
 }
 
 .gender {
     width: 30%;
-    float: right;
+    float: left;
     margin-bottom: 0px;
     padding: 0;
 }
@@ -345,7 +343,7 @@ li.list-group-item.active {
     font-size: 200%;
 }
 .matchlink {
-    padding: 15px;
+    padding: 5px;
     border: 1px solid rgba(0,0,0,.125);
 }
 
@@ -375,6 +373,10 @@ li.list-group-item.active {
     flex-grow: 2;
 }
 
+.flex-grow-6 {
+    flex-grow: 6;
+}
+
 .checkbox {
     width: 40px;
 }
@@ -383,3 +385,9 @@ li.list-group-item.active {
     font-size: 16px;
     color: black;
 }
+
+.flex-grow-1 > .level {
+    margin: 0px 15% 0px 15%;
+    font-size: 28px !important;
+}
+

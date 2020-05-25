@@ -29,7 +29,7 @@ document.getElementById("backBtn").onclick = function (){
       document.querySelectorAll(".matchlink")[i].querySelectorAll(".antal-spelare")[0].innerHTML = 4-sökes +"/4"
       
       if (sökes == 0 || sökes < 0) {
-        document.querySelectorAll(".matchlink")[i].querySelectorAll(".match-status")[0].children[0].src= '/static/img/check.png';
+        document.querySelectorAll(".matchlink")[i].querySelectorAll(".match-status")[0].children[0].src= '/static/img/check-box.png';
       }
     }  
     }
