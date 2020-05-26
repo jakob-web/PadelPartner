@@ -23,6 +23,7 @@
     <main> 
     <fieldset>
         <form action="http://localhost:8080/show_match" method="POST">
+                <label class="hjalptext">Vilken stad vill du spela i?..</label>
                 <select id="location" name="location" required>
                 <option value="" disabled selected hidden>Stad</option>
                 <option value="Malmö">Malmö</option>
@@ -31,6 +32,7 @@
                 <option value="Lomma">Lomma</option>
             </select>
             
+            <label class="hjalptext">Vilken nivå vill du spela på?..</label>
             <select id="level" name="level" required>
                 <option value="" disabled selected hidden>Nivå</option>
                 <option value="A">A</option>
@@ -40,7 +42,7 @@
                 <option value="1"selected hidden>Alla</option>
             </select>
             
-
+            <label class="hjalptext">Vilka vill du spela med?..</label>
             <select id="gender" name="gender" required>
                 <option value="" disabled selected hidden>Kön</option>
                 <option value="Herr">Herr</option>
