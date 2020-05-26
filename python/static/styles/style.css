@@ -41,6 +41,7 @@ body {
     padding-left: 10%;
     padding-right: 10%;
     font-size: 150%;
+    font-family:'Open Sans', sans-serif;
 }
 input[type="submit"] {
     width: 80%;
@@ -440,7 +441,7 @@ li.list-group-item.active {
 
 .navbar-brand {
 
-    width: 20%;
+    width: 10%;
     margin-bottom: 15px;
     
 
@@ -450,11 +451,16 @@ li.list-group-item.active {
     
     background-color: whitesmoke;
     background: whitesmoke;
+    margin-top: 1000px;
+    
 }
 
 
 #headingFour {
-    margin-bottom: 105px;
+    margin-bottom: 50px;
+}
+#collapseFour {
+    margin-bottom: 100px;
 }
 .hjalptext {
     float: left;
@@ -487,9 +493,10 @@ select {
     font-size: 45px; 
     color: white;
     margin: 2% 90% 1% 1%;
-    
 
-
+}
+#button-logout {
+    margin-bottom: 100px;
 }
 
 .navbar-back {
