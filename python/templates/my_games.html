@@ -23,27 +23,25 @@
     <div class="list-group">
         <h3>Mina Matcher</h3>
         <!-- TODO add "visit game" button (?) -->
-        {%if match == []:%}
-        <p>Inga bokade matcher</p>
+        {%if matches == []:%}
+            <p>Inga bokade matcher</p>
         {%else:%}
             {%for match in matches:%}
-            <a href="http://localhost:8080/my_games_info/{{match[4]}}#" class="list-group-item list-group-item-action matchlink">
-            <p class="left2 align-bottom">{{match[5][0:-4]}}</p>
-            <p class="left2 city">{{match[0]}}</p>
-            <!-- <p class="middle">{{match[1]}}</p> -->
-            <!-- <p class="right2">{{match[3]}}</p> -->
-            <!-- <p class="gender">{{match[6]}}</p> -->
-            <p class="sökes" hidden>{{match[2]}}</p>
-            <div class="match_status">
-                <img src='/static/img/uncheck.png'id="spelare4" class="players">
-            </div>   
-            <p class="antal_spelare"></p>
-         
-        </a>
+                <a href="http://localhost:8080/my_games_info/{{match[4]}}#" class="list-group-item list-group-item-action matchlink">
+                <p class="left2 align-bottom">{{match[5][0:-4]}}</p>
+                <p class="left2 city">{{match[0]}}</p>
+                <!-- <p class="middle">{{match[1]}}</p> -->
+                <!-- <p class="right2">{{match[3]}}</p> -->
+                <!-- <p class="gender">{{match[6]}}</p> -->
+                <p class="sökes" hidden>{{match[2]}}</p>
+                <div class="match_status">
+                    <img src='/static/img/uncheck.png'id="spelare4" class="players">
+                </div>   
+                <p class="antal_spelare"></p>
+                </a>
         {%endfor%}
         {%endif%}
-
-        </div>
+    </div>
          
        
     </main>
