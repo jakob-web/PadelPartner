@@ -348,10 +348,11 @@ li.list-group-item.active {
 }
 
 .button {
-    background-color: #A9C8EF;
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
     border-radius: 2%;
     width: 70%;
-    margin: auto;
+    margin: auto auto 100px auto;
     border: none;
     color: white;
     padding: 13px 30px;
