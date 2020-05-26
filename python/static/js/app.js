@@ -1,13 +1,15 @@
 const goBack = function() {
     window.history.back();
   }
-document.getElementById("backBtn").onclick = function (){
-  goBack();
-  }
+
+  if (document.body.classList.contains("back-btn")) {
+    document.getElementById("backBtn").onclick = function (){
+      goBack();
+  }}
 
   if (document.body.classList.contains("edit-profile")) {
     var previewpicture = function(event) {
-    var output = document.getElementById('profilBild'); //
+    var output = document.getElementById('profilbild'); //
       console.log(output)
       output.src = URL.createObjectURL(event.target.files[0]);
       output.onload = function() {
@@ -18,14 +20,12 @@ document.getElementById("backBtn").onclick = function (){
 
 
   if (document.body.classList.contains("my-games")) {
-  
     len = document.querySelectorAll(".matchlink").length
   
     for (i=0; i<len; i++) {
       // Gets every amount of sökes
       sökes = document.querySelectorAll(".matchlink")[i].querySelectorAll(".sökes")[0].innerHTML
       if(sökes == "None") {sökes = 4}
-      
       document.querySelectorAll(".matchlink")[i].querySelectorAll(".antal-spelare")[0].innerHTML = 4-sökes +"/4"
       
       if (sökes == 0 || sökes < 0) {
