@@ -417,6 +417,8 @@ li.list-group-item.active {
 #Header_guide {
     color: grey;
     font-family: 'Open Sans', sans-serif;
+    font-size: 27px;
+    padding: 10px;
 }
 
 
@@ -435,11 +437,6 @@ li.list-group-item.active {
     background: whitesmoke;
     margin-top: 1000px;
     height: 10vh;
-}
-
-
-#headingFour {
-    margin-bottom: 50px;
 }
 #collapseFour {
     margin-bottom: 100px;
@@ -556,13 +553,32 @@ select {
     -webkit-transform: rotate(45deg);
   }
 
-  #click-profile {
-      font-size:30px;
-      border: 7px outset grey;
-      border-width: 50%;
-      width: 50%;
-      text-align: center;
-      border-radius: 10%;
-      margin: auto;
-      margin-bottom: 8px;
-  }
+#click-profile {
+    font-size:30px;
+    border: 7px outset grey;
+    border-width: 50%;
+    width: 50%;
+    text-align: center;
+    border-radius: 10%;
+    margin: auto;
+    margin-bottom: 8px;
+}
+
+#vision {
+    width: 90%;
+    border-radius: 15%;
+    margin-bottom: 20px;
+}
+
+.vision-title {
+    padding: 10px;
+    color: grey;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.vision-text {
+    text-align: center;
+    padding: 0px 20px;
+    font-family: 'Open Sans', sans-serif;
+}
