@@ -41,6 +41,7 @@ body {
     padding-left: 10%;
     padding-right: 10%;
     font-size: 150%;
+    font-family:'Open Sans', sans-serif;
 }
 input[type="submit"] {
     width: 80%;
@@ -308,9 +309,14 @@ li.list-group-item.active {
 }
 
 .card-header {
+    color: white;
     
     background-color: rgb(49, 51, 56);
     background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
+}
+.card-header > a {
+    color: white;
+    font-size: 40px;
 }
 
 .cap {
@@ -322,10 +328,11 @@ li.list-group-item.active {
 }
 
 .button {
-    background-color: #A9C8EF;
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
     border-radius: 2%;
     width: 70%;
-    margin: auto;
+    margin: auto auto 100px auto;
     border: none;
     color: white;
     padding: 13px 30px;
@@ -407,16 +414,12 @@ li.list-group-item.active {
     font-family: 'Open Sans', sans-serif;
 }
 
-#button123 {
-    font-size: 35px;
-    color: white;
-    text-align: left;
-    margin-left: 0.5px;
-}
+
 
 .navbar-brand {
 
-    width: 20%;
+    width: 10%;
+    margin-bottom: 15px;
     
 
 }
@@ -425,11 +428,16 @@ li.list-group-item.active {
     
     background-color: whitesmoke;
     background: whitesmoke;
+    margin-top: 1000px;
+    
 }
 
 
 #headingFour {
-    margin-bottom: 105px;
+    margin-bottom: 50px;
+}
+#collapseFour {
+    margin-bottom: 100px;
 }
 .hjalptext {
     float: left;
@@ -518,4 +526,18 @@ select {
     padding:10px;
     font-weight: bold;
     font-size: 25px;
+}
+#backBtn {
+    font-size: 45px; 
+    color: white;
+    margin: 2% 90% 1% 1%;
+
+}
+#button-logout {
+    margin-bottom: 100px;
+}
+
+.navbar-back {
+    background-color: rgb(49, 51, 56);
+    background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
 }
