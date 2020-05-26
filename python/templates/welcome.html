@@ -41,28 +41,28 @@
       <div class="card card-body">
         {% if ( (profileInfo[0][4] == None) and 
           (profileInfo[0][1] == None) ) %}
-            <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profileInfo[0][2]}}</p></li>
-            <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
-            <li class="list-group-item"><p class="left">Ålder:</p><p class="right">Ej tillagd</p></li>
+            <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right">{{profileInfo[0][2]}}</p></li>
+            <li class="list-group-item"><p class="float-left">Ort:</p><p class="float-right">{{profileInfo[0][3]}}</p></li>
+            <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">Ej tillagd</p></li>
             <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
           
         {%elif profileInfo[0][4] == None :%}
           
-          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right"></p>{{profileInfo[0][2]}}</li>
-          <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
-          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">Ej tillagd</p></li>
+          <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right"></p>{{profileInfo[0][2]}}</li>
+          <li class="list-group-item"><p class="float-left">Ort:</p><p class="float-right">{{profileInfo[0][3]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">Ej tillagd</p></li>
           <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profileInfo[0][1]}}</p></li>
         
         {%elif profileInfo[0][1] == None :%}
-          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profileInfo[0][2]}}</p></li>
-          <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
-          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profileInfo[0][4]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right">{{profileInfo[0][2]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Ort:</p><p class="float-right">{{profileInfo[0][3]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">{{profileInfo[0][4]}}</p></li>
           <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
 
         {%else%}
-          <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profileInfo[0][2]}}</p></li>
-          <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
-          <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profileInfo[0][4]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right">{{profileInfo[0][2]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Ort:</p><p class="float-right">{{profileInfo[0][3]}}</p></li>
+          <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">{{profileInfo[0][4]}}</p></li>
           <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profileInfo[0][1]}}</p></li>
         {%endif%}
       
