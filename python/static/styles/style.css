@@ -23,6 +23,7 @@ body {
     width: 100%;
     padding: 2%;
     position: relative;
+    border-radius: 0px!important;
 }
 
 #slogan {
