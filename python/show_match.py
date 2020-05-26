@@ -97,7 +97,7 @@ def create_Game(username):
 
 def show_Game(location,level,gender):
     check_date()
-    sql = "select DISTINCT location,level,players,match.matchid,gender,date,username from (match join booking on match.matchid = booking.matchid) where location = %s AND level = %s AND gender = %s AND players > 0 AND skapare != %s ORDER BY date"
+    sql = "select DISTINCT location,level,players,match.matchid,gender,date,username from (match join booking on match.matchid = booking.matchid) where location = %s AND level = %s AND gender = %s AND players > 0 AND creator != %s ORDER BY date"
     val = location, level, gender, session["username"]
     games = fetchall(sql, val)
     return games
@@ -115,7 +115,7 @@ def show_Match_Profile(matchid):
 
 def show_all_match(location):
     check_date()
-    sql = "select DISTINCT location,level,players,match.matchid,gender,date,username from (match join booking on match.matchid = booking.matchid) WHERE location = %s AND players > 0 AND skapare != %s ORDER BY date"
+    sql = "select DISTINCT location,level,players,match.matchid,gender,date,username from (match join booking on match.matchid = booking.matchid) WHERE location = %s AND players > 0 AND creator != %s ORDER BY date"
 
     val = (location, session["username"])
     result = fetchall(sql, val)
@@ -128,7 +128,7 @@ def show_all_match(location):
 
 def show_all_ranks(location, level):
     check_date()
-    sql = "select DISTINCT location,level,players,match.matchid,gender,date,username from (match join booking on match.matchid = booking.matchid) where location = %s and level = %s AND players > 0 AND skapare != %s ORDER BY date"
+    sql = "select DISTINCT location,level,players,match.matchid,gender,date,username from (match join booking on match.matchid = booking.matchid) where location = %s and level = %s AND players > 0 AND creator != %s ORDER BY date"
     val = (location, level,session["username"])
     result = fetchall(sql, val)
     games = []
@@ -139,7 +139,7 @@ def show_all_ranks(location, level):
 def show_all_players(location, gender):
     check_date()
     print(gender)
-    sql = "select DISTINCT location,level,players,match.matchid,gender,date,username from (match join booking on match.matchid = booking.matchid) where location = %s and gender = %s AND players > 0 AND skapare != %s ORDER BY date"
+    sql = "select DISTINCT location,level,players,match.matchid,gender,date,username from (match join booking on match.matchid = booking.matchid) where location = %s and gender = %s AND players > 0 AND creator != %s ORDER BY date"
     val = (location, gender,session["username"])
     result = fetchall(sql, val)
     games = []
