@@ -9,27 +9,13 @@
   <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body id="container">
-   <div class="card">
-        <header class="card-header">
-            <img class="bild" id="b1" src="/static/padel.png">
-            <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
-            <img class="bild" id ="b2" src="/static/handshake.png">
-        </header>
-    </div>
-    <!-- <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-            <ul class="list-group">
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/my_games">Mina matcher</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/about_us">Om oss</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
-            </ul>
-        </div>
-        </div> -->
-        
+  
+  <nav class="navbar-back">
+      
+       
+    <button type="button" id="backBtn">&larr;</button>
+
+  </nav>
 <main>
   <div class="text-center">
     
@@ -68,7 +54,7 @@
           <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profil[0][2]}}</p></li>
           <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profil[0][0]}}</p></li>
         {%endif%}
-        <button type="button" class="btn btn-primary btn-lg btn-block" id="backBtn">Tillbaka</button>
+        
         <br>
       </div>
     </div>
