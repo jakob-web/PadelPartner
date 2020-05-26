@@ -162,6 +162,7 @@ textarea {
     background-color: white;
     padding: 2%;
     border-color: grey;
+
 }
 
 #marker {
@@ -177,6 +178,7 @@ textarea {
 
 #last {
     height: 145px;
+    margin-bottom: 60px;
 }
 
 .hamburger {
@@ -550,4 +552,15 @@ select {
     padding: 3px;
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+  }
+
+  #click-profile {
+      font-size:30px;
+      border: 7px outset grey;
+      border-width: 50%;
+      width: 50%;
+      text-align: center;
+      border-radius: 10%;
+      margin: auto;
+      margin-bottom: 8px;
   }

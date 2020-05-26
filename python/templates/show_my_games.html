@@ -18,8 +18,8 @@
       {%for match in my_matches:%}
       <div class="card text-center">
           <div class="card-header">
-            <a href="http://localhost:8080/creator_profile/{{match[3]}}"><h5 class="card-title">{{match[3]}}</h5></a>
-            <h6 class="card-text cap"><b>Ort: </b>{{match[0]}}</h6>
+            <a href="http://localhost:8080/creator_profile/{{match[3]}}"><h5 id="click-profile">{{match[3]}}</h5></a>
+            <p class="card-text"><b>Ort: </b>{{match[0]}}</p>
             <p class="card-text"><b>Spelarnivå: </b>{{match[1]}}</p>
             <p class="card-text"><b>Info: </b>{{match[2]}}</p>
             <p id="sökes" hidden>{{match[5]}}</p>
