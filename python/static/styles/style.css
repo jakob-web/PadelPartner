@@ -70,7 +70,8 @@ input[type="submit"] {
 }
 
 .card-body {
-    height: 100%;
+    height: auto;
+    margin-bottom: 20px;
 }
 #container > div > div > form > fieldset > legend {
     margin-bottom: 1%;
@@ -335,7 +336,7 @@ li.list-group-item.active {
     background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
     border-radius: 2%;
     width: 70%;
-    margin: auto auto 100px auto;
+    margin: auto auto 50px auto;
     border: none;
     color: white;
     padding: 13px 30px;
@@ -433,7 +434,7 @@ li.list-group-item.active {
     background-color: whitesmoke;
     background: whitesmoke;
     margin-top: 1000px;
-    
+    height: 10vh;
 }
 
 
