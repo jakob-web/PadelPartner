@@ -7,6 +7,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
   <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+  
 </head>
 <body id="container">
     <div class="card">
@@ -15,20 +18,7 @@
             <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
             <img class="bild" id ="b2" src="/static/handshake.png">
         </header>
-    </div>
-    <!-- <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-            <ul class="list-group">
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/my_games">Mina matcher</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/about_us">Om oss</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
-            </ul>
-        </div>
-        </div> -->
+    </div>      
         
   <main>
     <div id="accordion">
@@ -47,7 +37,82 @@
             </div>
           </div>
         </div>
+        <div id="accordion">
+          <h1 id="Header_guide">Guide för att:</h1>
         
+          
+             
+            <div class="card">
+              <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <h1 class="guide_overview">Hitta matcher</h1>
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    <img src="../static/img/Hitta_match.png" alt="stad printscreen" id="iphone"  height="600px" width="100px">
+                    <img src="../static/img/check.png" alt="check" id="check_Games">
+                    <h3 class="guide">Kan knappast vara smidigare att hitta matcher</h3>
+                    <p class="comp_guide">... Allt du behöver göra? Under fliken <bold>Hitta match</bold> i menyn, filtrera efter staden du vill spela i, nivån & ifall du vill spela med män, kvinnor eller mix.</p>
+                    <img src="../static/img/check.png" alt="check" id="check_Games">
+                    <h3 class="guide">Väger mellan två nivåer? Obrydd om vilket kön du lirar med?</h3> 
+                    <p class="comp_guide">... filtrera enbart på ort &: välj & vraka!</p>
+                     
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <h1 class="guide_overview">Skapa match</h1>
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                    <img src="../static/img/Skapa_match.png" alt="stad printscreen" id="iphone"  height="600px" width="150px">
+                  <img src="../static/img/check.png" alt="check" id="check_Games">
+                  <h3 class="guide">Inga tillgängliga matcher? Skapa en!</h3>
+                  <p class="comp_guide">... under <bold>Skapa match</bold> & invänta taggade padel-lirare som vill lira med just dig/er. Ps. som skapare är det din profil som syns utåt, make it count!</p>
+                  <img src="../static/img/check.png" alt="check" id="check_Games">
+                  <h3 class="guide">Marknadsför er!</h3> 
+                  <p class="comp_guide">... som skapare väljer du ort, antal spelare som eftersöks, nivå, kön, datum för match & viktigast av allt: tid & info. Var inte rädda för att marknadsföra er i denna ruta!</p>
+                    
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingFour">
+              <h5 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  <h1 class="guide_overview">Se mina matcher</h1>
+                </button>
+                
+              </h5>
+            </div>
+            
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+              <div class="card-body">
+                  <img src="../static/img/Mina_matcher.png" alt="stad printscreen" id="iphone"  height="600px" width="150px">
+                  <img src="../static/img/check.png" alt="check" id="check_Games">
+                  <h3 class="guide">Skaffa dig en överblick</h3>
+                  <p class="comp_guide">... som skapare av match så väl som bokad på en match kan du under <strong>Mina matcher</strong> få en överblick</p>
+                  <img src="../static/img/check.png" alt="check" id="check_Games">
+                  <h3 class="guide">Ångra enkelt </h3> 
+                  <p class="comp_guide">... som skapare eller inbokad på en match kan du under <strong>Mina matcher</strong>, med ett smidigt knapptryck  ångra tillagd match eller bokning</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+    
+  <div id="button-logout"> 
+    <a class="btn-primary"  href="http://localhost:8080/logout">Logga ut</a></li>
+  </div> 
        
     
   </main>
@@ -57,6 +122,7 @@
       <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
       <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
       <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
+      <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png'></a>
     </nav>
   </footer>
   <script src="{{url_for('static', filename='js/app.js')}}"></script>
