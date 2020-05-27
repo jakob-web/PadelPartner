@@ -38,7 +38,7 @@
      {%for pic in pics:%}
         <form action="http://localhost:8080/profile" method="POST" enctype=multipart/form-data>
           <img src="{{pics[0]}}" id="profilbild">
-          <input type=file name="image" id="image" onChange="previewpicture(event)">
+          <input id="choose-file" type=file name="image" id="image" onChange="previewpicture(event)">
             <label for="beskrivning" >Beskrivning:</label><br>
             <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required>{{item[1]}}</textarea> <br> <br>
             
