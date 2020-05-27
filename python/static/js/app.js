@@ -82,7 +82,7 @@ if (document.body.classList.contains("match-overview")) {
 
   for (i=0; i<len; i++) {
     // Gets every amount of sökes
-    sökes = document.querySelectorAll(".matchlink")[i].children[3].innerHTML
+    sökes = document.querySelectorAll(".matchlink")[i].firstElementChild.innerHTML;
     bookedSaved = 4-sökes;
     players = document.querySelectorAll(".matchlink")[i].querySelectorAll(".players");
     console.log(sökes)
