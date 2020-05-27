@@ -9,32 +9,13 @@
     <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
 </head>
 <body id="container" class="book-container back-btn">
-    <div class="card">
-        <header class="card-header">
-            <img class="bild" id="b1" src="/static/padel.png" href="https://www.flaticon.com/authors/freepik">
-            <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
-            <img class="bild" id ="b2" src="/static/handshake.png" href="https://www.flaticon.com/authors/freepik">
-        </header>
-    </div>
-    <!-- <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-            <ul class="list-group">
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/my_games">Mina matcher</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/about_us">Om oss</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
-            </ul>
-        </div>
-        </div> -->
-        <nav class="navbar navbar-dark bg-dark">
-          <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button> -->
-          <button type="button" id="backBtn"> &larr;</button>
-          </nav>
+   
+  <nav class="navbar-back">
+      
+       
+    <button type="button" id="backBtn">&larr;</button>
+
+  </nav>
       </div>
   <main>
       {%for game in match:%}

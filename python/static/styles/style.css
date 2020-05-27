@@ -78,7 +78,7 @@ input[type="submit"] {
 }
 
 a {
-    color: black;
+    color: white;
     font-weight: bold;
 }
 a:hover {
@@ -437,6 +437,7 @@ li.list-group-item.active {
     background: whitesmoke;
     margin-top: 1000px;
     height: 10vh;
+    margin-bottom: auto;
 }
 #collapseFour {
     margin-bottom: 100px;
@@ -590,4 +591,8 @@ select {
 .level-btn {
     text-decoration: none;
     color: white;
+}
+
+#skapamatch {
+    margin-bottom: 100px;
 }
