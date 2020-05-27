@@ -24,7 +24,7 @@ const goBack = function() {
   
     for (i=0; i<len; i++) {
       // Gets every amount of sökes
-      sökes = document.querySelectorAll(".matchlink")[i].querySelectorAll(".sökes")[0].innerHTML
+      sökes = document.querySelectorAll(".matchlink")[i].firstElementChild.innerHTML;
       if(sökes == "None") {sökes = 4}
       document.querySelectorAll(".matchlink")[i].querySelectorAll(".antal-spelare")[0].innerHTML = 4-sökes +"/4"
       
