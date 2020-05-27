@@ -30,10 +30,9 @@
     {%for string in personName:%}
     <li class="list-group-item active"><p class="profilename">{{string}}</p></li>
     {%endfor%}
-      
-      <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Min info
-      </a
+    </a
     <div class="collapse" id="collapseExample">
       <div class="card card-body">
         {% if ( (profileInfo[0][4] == None) and 
