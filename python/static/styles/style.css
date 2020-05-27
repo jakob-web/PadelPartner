@@ -38,7 +38,7 @@ body {
     background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
     border: #A9C8EF;
     text-align: center;
-    margin: 5% auto 5% auto;
+    margin: 5% auto 20% auto;
     padding-left: 10%;
     padding-right: 10%;
     font-size: 150%;
@@ -180,7 +180,7 @@ textarea {
 
 #last {
     height: auto;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 .hamburger {
@@ -336,7 +336,7 @@ li.list-group-item.active {
     background: linear-gradient(90deg, rgba(49,51,56,1) 0%, rgba(102,157,189,1) 100%);
     border-radius: 2%;
     width: 70%;
-    margin: auto auto 100px auto;
+    margin: 20px auto 20px auto;
     border: none;
     color: white;
     padding: 13px 30px;
@@ -424,7 +424,7 @@ li.list-group-item.active {
 
 
 .navbar-brand {
-
+    
     width: 10%;
     margin-bottom: 35px;
     
@@ -435,9 +435,12 @@ li.list-group-item.active {
     
     background-color: whitesmoke;
     background: whitesmoke;
-    margin-top: 1000px;
+    margin-top: 10000px;
     height: 10vh;
     margin-bottom: auto;
+}
+#navbar-matches{
+    height:14vh !important;
 }
 #collapseFour {
     margin-bottom: 100px;
@@ -595,4 +598,8 @@ select {
 
 #skapamatch {
     margin-bottom: 100px;
+}
+
+#redigera {
+    margin-bottom: 80px;
 }
