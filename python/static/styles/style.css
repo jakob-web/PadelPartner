@@ -582,3 +582,12 @@ select {
     padding: 0px 20px;
     font-family: 'Open Sans', sans-serif;
 }
+
+#arrow {
+    margin-top: -13px;
+}
+
+.level-btn {
+    text-decoration: none;
+    color: white;
+}
