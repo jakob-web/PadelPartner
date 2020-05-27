@@ -22,7 +22,9 @@
       <div class="card text-center">
           <div class="card-header">
             {%for user in my_matches:%}
-            <h5 class="card-title">Skapad av: <a href="http://localhost:8080/creator_profile/{{user[3]}}">{{game[4]}}</a></h5>
+            <!-- <h5 class="card-title">Skapad av: <a href="http://localhost:8080/creator_profile/{{user[3]}}">{{game[4]}}</a></h5> -->
+            <h3>Skapad av:</h3>
+            <a href="http://localhost:8080/creator_profile/{{user[3]}}"><h5 id="click-profile">{{game[4]}}</h5></a>
             {%endfor%}
             <h6 class="card-text cap"><b>Ort: </b>{{game[0]}}</h6>
             <p class="card-text"><b>Spelarnivå: </b>{{game[1]}}</p>
