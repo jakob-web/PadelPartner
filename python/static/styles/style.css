@@ -583,11 +583,11 @@ select {
     font-family: 'Open Sans', sans-serif;
 }
 
-#choose-file {
-    padding: 30px;
-    margin-bottom: 10px;
+#arrow {
+    margin-top: -13px;
 }
 
-#skapamatch {
-    margin-bottom: 80px;
+.level-btn {
+    text-decoration: none;
+    color: white;
 }
