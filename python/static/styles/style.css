@@ -591,3 +591,7 @@ select {
     text-decoration: none;
     color: white;
 }
+
+#skapamatch {
+    margin-bottom: 100px;
+}
