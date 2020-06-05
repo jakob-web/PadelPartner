@@ -538,6 +538,7 @@ select {
     font-size: 45px; 
     color: white;
     margin: 2% 90% 1% 1%;
+    background-color: dimgrey;
 
 }
 #button-logout {
