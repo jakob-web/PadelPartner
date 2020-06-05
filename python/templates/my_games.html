@@ -1,73 +1,63 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PadelPartner</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
-</head>
-<body id="container" class="my-games">
-    <div class="card">
-        <header class="card-header">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>PadelPartner</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+   </head>
+   <body id="container" class="my-games">
+      <div class="card">
+         <header class="card-header">
             <img class="bild" id="b1" src="/static/padel.png" alt="Padelracket icon">
             <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
             <img class="bild" id ="b2" src="/static/handshake.png" alt="Handshake icon">
-        </header>
-    </div>
-  
-        
-    </div>
-    <main> 
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h3>Mina Matcher</h3>
+         </header>
+      </div>
+      </div>
+      <main>
+         <div class="container">
+            <div class="row">
+               <div class="col">
+                  <h3>Mina Matcher</h3>
+               </div>
             </div>
-        </div>
-    </div>
-    <div class="list-group">
-        {%if matches == []:%}
-        <p>Inga bokade matcher</p>
-        {%else:%}
+         </div>
+         <div class="list-group">
+            {%if matches == []:%}
+            <p>Inga bokade matcher</p>
+            {%else:%}
             {%for match in matches:%}
             <a href="http://localhost:8080/my_games_info/{{match[4]}}#" class="list-group-item list-group-item-action overiew-link matchlink">
-
-            <!-- JS uses this value for calculating the amount of players booked to "match-status" -->
-            <p class="sökes" hidden>{{match[2]}}</p> 
-            <div class="flex-grow-1">
-                <p class="float-left" >{{match[5][0:-4]}}  &ensp;  {{match[0]}}</p>
-            </div>
-            <div class="match-status flex-grow-2">
-                <img src='/static/img/uncheck.png' class="checkbox" href="https://www.flaticon.com/authors/freepik" alt="Checkbox icon">
-                <p class="antal-spelare float-right"></p>
-            </div>   
-         
-        </a>
+               <!-- JS uses this value for calculating the amount of players booked to "match-status" -->
+               <p class="sökes" hidden>{{match[2]}}</p>
+               <div class="flex-grow-1">
+                  <p class="float-left" >{{match[5][0:-4]}}  &ensp;  {{match[0]}}</p>
+               </div>
+               <div class="match-status flex-grow-2">
+                  <img src='/static/img/uncheck.png' class="checkbox" href="https://www.flaticon.com/authors/freepik" alt="Checkbox icon">
+                  <p class="antal-spelare float-right"></p>
+               </div>
+            </a>
             {%endfor%}
-        {%endif%}
-
-        </div>
-         
-       
-    </main>
-   
-</div> 
-
-<footer>
-    <nav class="navbar fixed-bottom navbar-light bg-light">
-        <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png'></a>
-        <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
-        <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
-        <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
-        <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png'></a>
-    </nav>
-   
-</footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="{{url_for('static', filename='js/app.js')}}"></script>
-</body>
+            {%endif%}
+         </div>
+      </main>
+      </div> 
+      <footer>
+         <nav class="navbar fixed-bottom navbar-light bg-light">
+            <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png' alt="Home Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png' alt="Search Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png' alt="Add Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png' alt="Heart Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png' alt="Menu Icon"></a>
+         </nav>
+      </footer>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script src="{{url_for('static', filename='js/app.js')}}"></script>
+   </body>
 </html>

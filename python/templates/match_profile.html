@@ -1,69 +1,63 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PadelPartner</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
-</head>
-<body id="container" class="book-container back-btn">
-   
-  <nav class="navbar-back">
-      
-       
-    <button type="button" id="backBtn">&larr;</button>
-
-  </nav>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>PadelPartner</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+   </head>
+   <body id="container" class="book-container back-btn">
+      <nav class="navbar-back">
+         <button type="button" id="backBtn">&larr;</button>
+      </nav>
       </div>
-  <main>
-      {%for game in match:%}
-      <div class="card text-center">
-          <div class="card-header">
-            {%for user in my_matches:%}
-            <!-- <h5 class="card-title">Skapad av: <a href="http://localhost:8080/creator_profile/{{user[3]}}">{{game[4]}}</a></h5> -->
-            <h3>Skapad av:</h3>
-            <a href="http://localhost:8080/creator_profile/{{user[3]}}"><h5 id="click-profile">{{game[4]}}</h5></a>
-            {%endfor%}
-            <h6 class="card-text cap"><b>Ort: </b>{{game[0]}}</h6>
-            <p class="card-text"><b>Spelarnivå: </b>{{game[1]}}</p>
-            <p class="card-text"><b>Info: </b>{{game[3]}}</p>
-          </div>
-          <div class="card-body">
-            <div class="booked-players">
-              <img src='/static/img/user (1).png'id="spelare1" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
-              <img src='/static/img/user (1).png'id="spelare2" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
-              <img src='/static/img/tennis-court.png'id="court" href="https://www.flaticon.com/authors/freepik" alt="Padelcourt icon" >
-              <img src='/static/img/user (1).png'id="spelare3" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
-              <img src='/static/img/user (1).png'id="spelare4" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
-            </div>  
-          
-            <form action="http://localhost:8080/book_game/{{game[5]}}#" method="POST">
-            <p class="card-text" hidden id="sökes">{{game[2]}}</p>
-            <input class="form-input" name="players" id="antal" selected hidden value="0"></input>
-            <!--ändra antal i js till players-->
-            {% for message in get_flashed_messages() %}
-            <p class="alert-error" >{{ message }}</p>
-            {% endfor %}
-            <input type="submit" class="btn btn-primary checkIfBooked" value="Boka">
-          </div>
-        </div>
-      {%endfor%}
-    
-  </main>
-<footer>
-  <nav class="navbar fixed-bottom navbar-light bg-light"id="navbar-matches">
-    <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png'></a>
-  </nav>
-</footer>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="{{url_for('static', filename='js/app.js')}}"></script>
-</body>
+      <main>
+         {%for game in match:%}
+         <div class="card text-center">
+            <div class="card-header">
+               {%for user in my_matches:%}
+               <h3>Skapad av:</h3>
+               <a href="http://localhost:8080/creator_profile/{{user[3]}}">
+                  <h5 id="click-profile">{{game[4]}}</h5>
+               </a>
+               {%endfor%}
+               <h6 class="card-text cap"><b>Ort: </b>{{game[0]}}</h6>
+               <p class="card-text"><b>Spelarnivå: </b>{{game[1]}}</p>
+               <p class="card-text"><b>Info: </b>{{game[3]}}</p>
+            </div>
+            <div class="card-body">
+               <div class="booked-players">
+                  <img src='/static/img/user (1).png'id="spelare1" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+                  <img src='/static/img/user (1).png'id="spelare2" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+                  <img src='/static/img/tennis-court.png'id="court" href="https://www.flaticon.com/authors/freepik" alt="Padelcourt icon" >
+                  <img src='/static/img/user (1).png'id="spelare3" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+                  <img src='/static/img/user (1).png'id="spelare4" class="players" href="https://www.flaticon.com/authors/freepik" alt="User icon" >
+               </div>
+               <form action="http://localhost:8080/book_game/{{game[5]}}#" method="POST">
+               <p class="card-text" hidden id="sökes">{{game[2]}}</p>
+               <input class="form-input" name="players" id="antal" selected hidden value="0"></input>
+               {% for message in get_flashed_messages() %}
+               <p class="alert-error" >{{ message }}</p>
+               {% endfor %}
+               <input type="submit" class="btn btn-primary checkIfBooked" value="Boka">
+            </div>
+         </div>
+         {%endfor%}
+      </main>
+      <footer>
+         <nav class="navbar fixed-bottom navbar-light bg-light"id="navbar-matches">
+            <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png' alt="Home Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'alt="Search Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'alt="Add Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'alt="Heart Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png'alt="Menu Icon"></a>
+         </nav>
+      </footer>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script src="{{url_for('static', filename='js/app.js')}}"></script>
+   </body>
 </html>

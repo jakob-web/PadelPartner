@@ -89,7 +89,6 @@ a:hover {
 }
 
 img {
-    /* Temp lösning för lättar visuell överblick */
     width: 100%;
     text-align: center;
 }
@@ -160,6 +159,7 @@ textarea {
     text-transform: capitalize;
     font-family: 'Open Sans', sans-serif;
 }
+
 #container > div:nth-child(4) > ul > li.list-group-item.active {
     background-color: white;
     padding: 2%;

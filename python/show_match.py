@@ -55,7 +55,6 @@ def main_show(location,level,gender):
     games1 = []
     games2 = []
     matchidContainer = []
-    #TODO Test if it's possbile to make 1 function, add matchid in first if instead.
     for record in games:
         if record[6] != session["username"]:
             games1.append(record)

@@ -1,99 +1,131 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>PadelPartner</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-  <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
-</head>
-<body id="container">
-  <div class="card">
-      <header class="card-header">
-          <img class="bild" id="b1" src="/static/padel.png" alt="Padelracket icon">
-          <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
-          <img class="bild" id ="b2" src="/static/handshake.png" alt="handshake icon">
-      </header>
-  </div>
-  
-<main>
-  <div class="text-center">
-    {%for item in picture:%}
-    <img src="../{{picture[0]}}" id="profilbild">
-    {%endfor%}
-  </div>
-  <div>
-    <ul class="list-group">
-    {%for string in personName:%}
-    <li class="list-group-item active"><p class="profilename">{{string}}</p></li>
-    {%endfor%}
-    <a class="button" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Min info
-    </a
-    <div class="collapse" id="collapseExample">
-      <div class="card card-body">
-        {% if ( (profileInfo[0][4] == None) and 
-          (profileInfo[0][1] == None) ) %}
-            <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right">{{profileInfo[0][2]}}</p></li>
-            <li class="list-group-item"><p class="float-left">Ort:</p><p class="float-right">{{profileInfo[0][3]}}</p></li>
-            <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">Ej tillagd</p></li>
-            <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
-          
-        {%elif profileInfo[0][4] == None :%}
-          
-          <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right"></p>{{profileInfo[0][2]}}</li>
-          <li class="list-group-item"><p class="float-left">Ort:</p><p class="float-right">{{profileInfo[0][3]}}</p></li>
-          <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">Ej tillagd</p></li>
-          <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profileInfo[0][1]}}</p></li>
-        
-        {%elif profileInfo[0][1] == None :%}
-          <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right">{{profileInfo[0][2]}}</p></li>
-          <li class="list-group-item"><p class="float-left">Ort:</p><p class="float-right">{{profileInfo[0][3]}}</p></li>
-          <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">{{profileInfo[0][4]}}</p></li>
-          <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">Ej tillagd</p></li>
-
-        {%else%}
-          <li class="list-group-item"><p class="float-left">Spelarnivå:</p><p class="float-right">{{profileInfo[0][2]}}</p></li>
-          <li class="list-group-item"><p class="float-left">Ort:</p><p class="float-right">{{profileInfo[0][3]}}</p></li>
-          <li class="list-group-item"><p class="float-left">Ålder:</p><p class="float-right">{{profileInfo[0][4]}}</p></li>
-          <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profileInfo[0][1]}}</p></li>
-        {%endif%}
-      
-        
-        <!-- <li class="list-group-item"><p class="left">Spelarnivå:</p><p class="right">{{profileInfo[0][2]}}</p></li>
-        <li class="list-group-item"><p class="left">Ort:</p><p class="right">{{profileInfo[0][3]}}</p></li>
-        <li class="list-group-item"><p class="left">Ålder:</p><p class="right">{{profileInfo[0][4]}}</p></li>
-        <li class="list-group-item" id="last"><p id="marker">Info om dig:</p><p id="beskrivning">{{profileInfo[0][1]}}</p></li> -->
-        
-        
-        <br>
-        <a id ="redigera" class="button" href="http://localhost:8080/changeProfile">Redigera profil</a>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>PadelPartner</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
+   </head>
+   <body id="container">
+      <div class="card">
+         <header class="card-header">
+            <img class="bild" id="b1" src="/static/padel.png" alt="Padelracket icon">
+            <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
+            <img class="bild" id ="b2" src="/static/handshake.png" alt="handshake icon">
+         </header>
       </div>
-    </div>
-    
-  
-    </ul>
-  </div>
-
-  
- 
-
-</main>
-<footer>
-  <nav class="navbar fixed-bottom navbar-light bg-light">
-    <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png'></a>
-  </nav>
-</footer>
-<script src="{{url_for('static', filename='js/app.js')}}"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
+      <main>
+         <div class="text-center">
+            {%for item in picture:%}
+            <img src="../{{picture[0]}}" id="profilbild" alt="Profile image">
+            {%endfor%}
+         </div>
+         <div>
+            <ul class="list-group">
+               {%for string in personName:%}
+               <li class="list-group-item active">
+                  <p class="profilename">{{string}}</p>
+               </li>
+               {%endfor%}
+               <a class="button" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+               Min info
+               </a>
+               <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                     {% if ( (profileInfo[0][4] == None) and 
+                     (profileInfo[0][1] == None) ) %}
+                     <li class="list-group-item">
+                        <p class="float-left">Spelarnivå:</p>
+                        <p class="float-right">{{profileInfo[0][2]}}</p>
+                     </li>
+                     <li class="list-group-item">
+                        <p class="float-left">Ort:</p>
+                        <p class="float-right">{{profileInfo[0][3]}}</p>
+                     </li>
+                     <li class="list-group-item">
+                        <p class="float-left">Ålder:</p>
+                        <p class="float-right">Ej tillagd</p>
+                     </li>
+                     <li class="list-group-item" id="last">
+                        <p id="marker">Info om dig:</p>
+                        <p id="beskrivning">Ej tillagd</p>
+                     </li>
+                     {%elif profileInfo[0][4] == None :%}
+                     <li class="list-group-item">
+                        <p class="float-left">Spelarnivå:</p>
+                        <p class="float-right"></p>
+                        {{profileInfo[0][2]}}
+                     </li>
+                     <li class="list-group-item">
+                        <p class="float-left">Ort:</p>
+                        <p class="float-right">{{profileInfo[0][3]}}</p>
+                     </li>
+                     <li class="list-group-item">
+                        <p class="float-left">Ålder:</p>
+                        <p class="float-right">Ej tillagd</p>
+                     </li>
+                     <li class="list-group-item" id="last">
+                        <p id="marker">Info om dig:</p>
+                        <p id="beskrivning">{{profileInfo[0][1]}}</p>
+                     </li>
+                     {%elif profileInfo[0][1] == None :%}
+                     <li class="list-group-item">
+                        <p class="float-left">Spelarnivå:</p>
+                        <p class="float-right">{{profileInfo[0][2]}}</p>
+                     </li>
+                     <li class="list-group-item">
+                        <p class="float-left">Ort:</p>
+                        <p class="float-right">{{profileInfo[0][3]}}</p>
+                     </li>
+                     <li class="list-group-item">
+                        <p class="float-left">Ålder:</p>
+                        <p class="float-right">{{profileInfo[0][4]}}</p>
+                     </li>
+                     <li class="list-group-item" id="last">
+                        <p id="marker">Info om dig:</p>
+                        <p id="beskrivning">Ej tillagd</p>
+                     </li>
+                     {%else%}
+                     <li class="list-group-item">
+                        <p class="float-left">Spelarnivå:</p>
+                        <p class="float-right">{{profileInfo[0][2]}}</p>
+                     </li>
+                     <li class="list-group-item">
+                        <p class="float-left">Ort:</p>
+                        <p class="float-right">{{profileInfo[0][3]}}</p>
+                     </li>
+                     <li class="list-group-item">
+                        <p class="float-left">Ålder:</p>
+                        <p class="float-right">{{profileInfo[0][4]}}</p>
+                     </li>
+                     <li class="list-group-item" id="last">
+                        <p id="marker">Info om dig:</p>
+                        <p id="beskrivning">{{profileInfo[0][1]}}</p>
+                     </li>
+                     {%endif%}
+                     <br>
+                     <a id ="redigera" class="button" href="http://localhost:8080/changeProfile">Redigera profil</a>
+                  </div>
+               </div>
+            </ul>
+         </div>
+      </main>
+      <footer>
+         <nav class="navbar fixed-bottom navbar-light bg-light">
+            <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png' alt="Home Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'alt="Search Icon"></a>
+               <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'alt="Add Icon"></a>
+               <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'alt="Heart Icon"></a>
+               <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png'alt="Menu Icon"></a>
+         </nav>
+      </footer>
+      <script src="{{url_for('static', filename='js/app.js')}}"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   </body>
 </html>

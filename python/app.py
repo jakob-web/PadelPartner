@@ -318,8 +318,13 @@ def show_comment(matchid):
     print(comments)
     return comments
 
+if __name__ == '__main__':
+    app.debug = True
+    app.run(host='localhost', port=8080, debug=True)
+    socketio.run(app, debug=True)
 
-# Future chatt fnction
+# Code for future development with chatt function
+
 # @app.route('/show_chatt')
 # def show_chats():
 #     return render_template("session.html")
@@ -328,19 +333,3 @@ def show_comment(matchid):
 # def handleMessage(msg):
 #     print('Message: ' + msg)
 #     send(msg, broadcast=True)
-
-
-
-
-# @socketio.on('message')
-# def handleMessage(msg):
-# 	print('Message: ' + msg)
-# 	send(msg, broadcast=True)
-
-
-
-
-if __name__ == '__main__':
-    app.debug = True
-    app.run(host='localhost', port=8080, debug=True)
-    socketio.run(app, debug=True)

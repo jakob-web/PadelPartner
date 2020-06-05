@@ -1,40 +1,82 @@
 <!DOCTYPE html>
-  <html lang="sv">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta charset="UTF-8">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <title>Flask_Chat_App</title>
-  </head>
-  <body>
+<html lang="sv">
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta charset="UTF-8">
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <title>Flask_Chat_App</title>
+   </head>
+   <body>
+     
+     <!-- Start of chatt function, NOT implemented in the project.
+     Saved for potential future development  -->
 
-    <script type="text/javascript">
-    $(document).ready(function() {
-
-          var socket = io.connect('http://127.0.0.1:5000');
-
-          socket.on('connect', function() {
-            socket.send('User has connected!');
-          });
-
-          socket.on('message', function(msg) {
-            $("#messages").append('<li>'+msg+'</li>');
-            console.log('Received message');
-          });
-
-          $('#sendbutton').on('click', function() {
-            socket.send($('#myMessage').val());
-            $('#myMessage').val('');
-          });
-
-    });
-    </script>
-    <ul id="messages"></ul>
-    <input type="text" id="myMessage">
-    <button id="sendbutton">Send</button>
-  </body>
-  </html>
+    <!DOCTYPE html>
+    <html lang="sv">
+       <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <meta charset="UTF-8">
+          <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+          <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+          <title>Flask_Chat_App</title>
+       </head>
+       <body>
+          <script type="text/javascript">
+             $(document).ready(function() {
+             
+                   var socket = io.connect('http://127.0.0.1:5000');
+             
+                   socket.on('connect', function() {
+                     socket.send('User has connected!');
+                   });
+             
+                   socket.on('message', function(msg) {
+                     $("#messages").append('<li>'+msg+'</li>');
+                     console.log('Received message');
+                   });
+             
+                   $('#sendbutton').on('click', function() {
+                     socket.send($('#myMessage').val());
+                     $('#myMessage').val('');
+                   });
+             
+             });
+          </script>
+          <ul id="messages"></ul>
+          <input type="text" id="myMessage">
+          <button id="sendbutton">Send</button>
+       </body>
+    </html>
+      <script type="text/javascript">
+         $(document).ready(function() {
+         
+               var socket = io.connect('http://127.0.0.1:5000');
+         
+               socket.on('connect', function() {
+                 socket.send('User has connected!');
+               });
+         
+               socket.on('message', function(msg) {
+                 $("#messages").append('<li>'+msg+'</li>');
+                 console.log('Received message');
+               });
+         
+               $('#sendbutton').on('click', function() {
+                 socket.send($('#myMessage').val());
+                 $('#myMessage').val('');
+               });
+         
+         });
+      </script>
+      <ul id="messages"></ul>
+      <input type="text" id="myMessage">
+      <button id="sendbutton">Send</button>
+   </body>
+</html>

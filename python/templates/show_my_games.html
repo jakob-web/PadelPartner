@@ -1,84 +1,76 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PadelPartner</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
-</head>
-<body id="container" class="back-btn">
-   
-  <nav class="navbar-back">
-    <button type="button" id="backBtn">&larr;</button> 
-  </nav>
-
-  <main>
-      {%for match in my_matches:%}
-      <div class="card text-center">
-          <div class="card-header">
-            <a href="http://localhost:8080/creator_profile/{{match[3]}}"><h5 id="click-profile">{{match[3]}}</h5></a>
-            <p class="card-text"><b>Ort: </b>{{match[0]}}</p>
-            <p class="card-text"><b>Spelarnivå: </b>{{match[1]}}</p>
-            <p class="card-text"><b>Info: </b>{{match[2]}}</p>
-            <p id="sökes" hidden>{{match[5]}}</p>
-          </div>
-          <div class="card-body">
-            <div class="booked-players">
-              <img src='/static/img/user (1).png'id="spelare1" class="players" alt="User icon">
-              <img src='/static/img/user (1).png'id="spelare2" class="players" alt="User icon">
-              <img src='/static/img/tennis-court.png'id="court" alt="Padelcourt icon">
-              <img src='/static/img/user (1).png'id="spelare3" class="players" alt="User icon">
-              <img src='/static/img/user (1).png'id="spelare4" class="players" alt="User icon">
-          </div>
-            
-            
-
-            {%if creator == True:%}
-            <a href="http://localhost:8080/remove_match/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Ta bort match</button></a>
-            {%else:%}
-            <a href="http://localhost:8080/remove_booking/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Avboka Match</button></a>
-            {%endif%}
-         </div>
-             <fieldset>
-            <form action="http://localhost:8080/make_comment/{{match[4]}}" method="POST">
-              
-              <textarea name="comment" id="comment" placeholder="Skriv ditt meddelande här..." required></textarea>
-              <input type="hidden" id="username" name="username" value="{{username}}">
-              <input type="submit" class="btn btn-primary" value="Skicka">
-            </form>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>PadelPartner</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+   </head>
+   <body id="container" class="back-btn">
+      <nav class="navbar-back">
+         <button type="button" id="backBtn">&larr;</button> 
+      </nav>
+      <main>
+         {%for match in my_matches:%}
+         <div class="card text-center">
+            <div class="card-header">
+               <a href="http://localhost:8080/creator_profile/{{match[3]}}">
+                  <h5 id="click-profile">{{match[3]}}</h5>
+               </a>
+               <p class="card-text"><b>Ort: </b>{{match[0]}}</p>
+               <p class="card-text"><b>Spelarnivå: </b>{{match[1]}}</p>
+               <p class="card-text"><b>Info: </b>{{match[2]}}</p>
+               <p id="sökes" hidden>{{match[5]}}</p>
+            </div>
+            <div class="card-body">
+               <div class="booked-players">
+                  <img src='/static/img/user (1).png'id="spelare1" class="players" alt="User icon">
+                  <img src='/static/img/user (1).png'id="spelare2" class="players" alt="User icon">
+                  <img src='/static/img/tennis-court.png'id="court" alt="Padelcourt icon">
+                  <img src='/static/img/user (1).png'id="spelare3" class="players" alt="User icon">
+                  <img src='/static/img/user (1).png'id="spelare4" class="players" alt="User icon">
+               </div>
+               {%if creator == True:%}
+               <a href="http://localhost:8080/remove_match/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Ta bort match</button></a>
+               {%else:%}
+               <a href="http://localhost:8080/remove_booking/{{match[4]}}#"><button type="button" class="btn btn-primary btn-lg btn-block">Avboka Match</button></a>
+               {%endif%}
+            </div>
+            <fieldset>
+               <form action="http://localhost:8080/make_comment/{{match[4]}}" method="POST">
+                  <textarea name="comment" id="comment" placeholder="Skriv ditt meddelande här..." required></textarea>
+                  <input type="hidden" id="username" name="username" value="{{username}}">
+                  <input type="submit" class="btn btn-primary" value="Skicka">
+               </form>
             </fieldset>
             <h5 id="comment-header">Kommentar</h5>
-            
             <div id="comment_box">
-            {%for comment in comments:%}
-            <li id="listcomment">
-              <h6 class="writer">{{comment[1]}}</h6>
-              <p class="msg">{{comment[0]}}</p>
-            </li>
-            {%endfor%}
+               {%for comment in comments:%}
+               <li id="listcomment">
+                  <h6 class="writer">{{comment[1]}}</h6>
+                  <p class="msg">{{comment[0]}}</p>
+               </li>
+               {%endfor%}
             </div>
-            </div>
-            </div
-
-
-        </div>
-      {%endfor%}
-      
-  </main>
-<footer>
-  <nav class="navbar fixed-bottom navbar-light bg-light"id="navbar-matches">
-    <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
-    <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png'></a>
-  </nav>
-</footer>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="{{url_for('static', filename='js/app.js')}}"></script>
-</body>
+         </div>
+         </div>
+         </div>
+         {%endfor%}
+      </main>
+      <footer>
+         <nav class="navbar fixed-bottom navbar-light bg-light"id="navbar-matches">
+            <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png' alt="Home Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png' alt="Search Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png' alt="Add Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png' alt="Heart Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png' alt="Menu Icon"></a>
+         </nav>
+      </footer>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+      <script src="{{url_for('static', filename='js/app.js')}}"></script>
+   </body>
 </html>

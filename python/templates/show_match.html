@@ -1,73 +1,69 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PadelPartner</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
-</head>
-<body id="container">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>PadelPartner</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+   </head>
+   <body id="container">
       <div class="card">
-        <header class="card-header">
+         <header class="card-header">
             <img class="bild" id="b1" src="/static/padel.png" alt="Padelracket icon">
             <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
             <img class="bild" id ="b2" src="/static/handshake.png" alt="Handshake icon">
-        </header>
-    </div>
-  
-       
-        </div>
-    <div class="card-body">
-    <main> 
-    <fieldset>
-        <form action="http://localhost:8080/show_match" method="POST">
-                <label class="hjalptext">Vilken stad vill du spela i?..</label>
-                <select class="form-input" id="location" name="location" required>
-                <option value="" disabled selected hidden>Stad</option>
-                <option value="Malmö">Malmö</option>
-                <option value="Helsingborg">Helsingborg</option>
-                <option value="Lund">Lund</option>
-                <option value="Lomma">Lomma</option>
-            </select>
-            
-            <label class="hjalptext">Vilken nivå vill du spela på?..</label>
-            <select class="form-input" id="level" name="level" required>
-                <option value="" disabled selected hidden>Nivå</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="C">C</option>
-                <option value="D">D</option>
-                <option value="1"selected hidden>Alla</option>
-            </select>
-            
-            <label class="hjalptext">Vilka vill du spela med?..</label>
-            <select class="form-input" id="gender" name="gender" required>
-                <option value="" disabled selected hidden>Kön</option>
-                <option value="Herr">Herr</option>
-                <option value="Dam">Dam</option>
-                <option value="Mix">Mix</option>
-                <option value="6" selected hidden>Alla</option>
-            </select> <br>
-            <input type="submit" class="btn btn-primary" value="Sök">
-        </form>
-    </fieldset>
-    </main>
-    </div>
-</div> 
-<footer>
-    <nav class="navbar fixed-bottom navbar-light bg-light">
-        <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png'></a>
-        <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
-        <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
-        <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
-        <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png'></a>
-    </nav>
-</footer>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
+         </header>
+      </div>
+      </div>
+      <div class="card-body">
+         <main>
+            <fieldset>
+               <form action="http://localhost:8080/show_match" method="POST">
+                  <label class="hjalptext">Vilken stad vill du spela i?..</label>
+                  <select class="form-input" id="location" name="location" required>
+                     <option value="" disabled selected hidden>Stad</option>
+                     <option value="Malmö">Malmö</option>
+                     <option value="Helsingborg">Helsingborg</option>
+                     <option value="Lund">Lund</option>
+                     <option value="Lomma">Lomma</option>
+                  </select>
+                  <label class="hjalptext">Vilken nivå vill du spela på?..</label>
+                  <select class="form-input" id="level" name="level" required>
+                     <option value="" disabled selected hidden>Nivå</option>
+                     <option value="A">A</option>
+                     <option value="B">B</option>
+                     <option value="C">C</option>
+                     <option value="D">D</option>
+                     <option value="1"selected hidden>Alla</option>
+                  </select>
+                  <label class="hjalptext">Vilka vill du spela med?..</label>
+                  <select class="form-input" id="gender" name="gender" required>
+                     <option value="" disabled selected hidden>Kön</option>
+                     <option value="Herr">Herr</option>
+                     <option value="Dam">Dam</option>
+                     <option value="Mix">Mix</option>
+                     <option value="6" selected hidden>Alla</option>
+                  </select>
+                  <br>
+                  <input type="submit" class="btn btn-primary" value="Sök">
+               </form>
+            </fieldset>
+         </main>
+      </div>
+      </div> 
+      <footer>
+         <nav class="navbar fixed-bottom navbar-light bg-light">
+            <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png' alt="Home Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png' alt="Search Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png' alt="Add Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png' alt="Heart Icon"></a>
+            <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png' alt="Menu Icon"></a>
+         </nav>
+      </footer>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   </body>
 </html>

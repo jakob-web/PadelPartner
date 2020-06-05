@@ -1,10 +1,13 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send
 
+#
+# main.py is available for future delelopment towards the chatt function.
+#
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
 socketio = SocketIO(app)
-
 
 @socketio.on('message')
 def handleMessage(msg):
@@ -21,7 +24,6 @@ def handleMessage(msg):
 #     print('message was received!!!')
 #     print('received my event: ' + str(json))
 #     socketio.emit('my response', json, callback=messageReceived)
-
 
 # if __name__ == '__main__':
 #     socketio.run(app, debug=True)
