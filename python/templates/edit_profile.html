@@ -1,89 +1,73 @@
 <!DOCTYPE html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PadelPartner</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
-    <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-</head>
-<body id="container" class="edit-profile">
-    <div class="card">
-        <header class="card-header">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>PadelPartner</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Bangers|Bree+Serif&display=swap" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+   </head>
+   <body id="container" class="edit-profile">
+      <div class="card">
+         <header class="card-header">
             <img class="bild" id="b1" src="/static/padel.png" alt="Padelracket icon">
             <a id="slogan" href="http://localhost:8080/start_page">PadelPartner</a>
             <img class="bild" id ="b2" src="/static/handshake.png" alt="Handshake icon">
-        </header>
-    </div>
-    <!-- <div class="pos-f-t">
-        <div class="collapse" id="navbarToggleExternalContent">
-        <div class="bg-dark p-4">
-            <ul class="list-group">
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/createMatch">Skapa match</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_games">Hitta match</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/my_games">Mina matcher</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/show_past_chatt">Inkorg</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/about_us">Om oss</a></li>
-                <li class="list-group-item" class="hamburger"><a href="http://localhost:8080/logout">Logga ut</a></li>
-            </ul>
-        </div>
-        </div> -->
-        
-<div class="card-body">
-<main> 
-    <fieldset>
-    {%for item in info:%}
-     {%for pic in pics:%}
-        <form action="http://localhost:8080/profile" method="POST" enctype=multipart/form-data>
-          <img src="{{pics[0]}}" id="profilbild">
-          <input id="choose-file" type=file name="image" id="image" onChange="previewpicture(event)">
-            <label for="beskrivning" >Beskrivning:</label><br>
-            <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required>{{item[1]}}</textarea> <br> <br>
-            
-            <label for="Nivå" >Ort:</label>
-            <select id="location" name="location">
-            <option selected hidden >{{item[3]}}</option>
-            <option value="Malmö">Malmö</option>
-            <option value="Helsingborg">Helsingborg</option>
-            <option value="Lund">Lund</option>
-            <option value="Lomma">Lomma</option>
-            </select>
-
-            <label for="Nivå" >Nivå:</label>
-            <select class="form-input" id="level" name="level">
-            <option selected hidden >{{item[2]}}</option>
-            <option value="A">A</option>
-            <option value="B">B</option>
-            <option value="C">C</option>
-            <option value="D">D</option>
-            </select><br>
-
-            <label for="age">Ålder:</label>
-            <input class="form-input" type="number" id="age" name="age" placeholder="Endast siffror kan anges" value={{item[4]}} required>
-            <a class="button" href="http://localhost:8080/change_password">Byt lösenord</a>
-             
-            <input type="submit" class="btn btn-primary" value="Uppdatera">
-        </form>
-    </fieldset>
-</main>
-</div>
-    {%endfor%}
-    {%endfor%}
-</div> 
-<footer>
-    <nav class="navbar fixed-bottom navbar-light bg-light">
-      <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png'></a>
-      <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png'></a>
-      <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png'></a>
-      <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png'></a>
-      <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png'></a>
-    </nav>
-</footer>
-<script src="{{url_for('static', filename='js/app.js')}}"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
+         </header>
+      </div>
+      <div class="card-body">
+         <main>
+            <fieldset>
+               {%for item in info:%}
+               {%for pic in pics:%}
+               <form action="http://localhost:8080/profile" method="POST" enctype=multipart/form-data>
+                  <img src="{{pics[0]}}" id="profilbild">
+                  <input id="choose-file" type=file name="image" id="image" onChange="previewpicture(event)">
+                  <label for="beskrivning" >Beskrivning:</label><br>
+                  <textarea name="info" cols="30" rows="10" placeholder="Information om dig som spelare" required>{{item[1]}}</textarea>
+                  <br> <br>
+                  <label for="Nivå" >Ort:</label>
+                  <select id="location" name="location">
+                     <option selected hidden >{{item[3]}}</option>
+                     <option value="Malmö">Malmö</option>
+                     <option value="Helsingborg">Helsingborg</option>
+                     <option value="Lund">Lund</option>
+                     <option value="Lomma">Lomma</option>
+                  </select>
+                  <label for="Nivå" >Nivå:</label>
+                  <select class="form-input" id="level" name="level">
+                     <option selected hidden >{{item[2]}}</option>
+                     <option value="A">A</option>
+                     <option value="B">B</option>
+                     <option value="C">C</option>
+                     <option value="D">D</option>
+                  </select>
+                  <br>
+                  <label for="age">Ålder:</label>
+                  <input class="form-input" type="number" id="age" name="age" placeholder="Endast siffror kan anges" value={{item[4]}} required>
+                  <a class="button" href="http://localhost:8080/change_password">Byt lösenord</a>
+                  <input type="submit" class="btn btn-primary" value="Uppdatera">
+               </form>
+            </fieldset>
+         </main>
+      </div>
+      {%endfor%}
+      {%endfor%}
+      </div> 
+      <footer>
+         <nav class="navbar fixed-bottom navbar-light bg-light">
+            <a class="navbar-brand" href="http://localhost:8080/start_page"><img src='/static/img/home.png' alt="home"></a>
+            <a class="navbar-brand" href="http://localhost:8080/show_games"><img src='/static/img/search.png' alt="search"></a>
+            <a class="navbar-brand" href="http://localhost:8080/createMatch"><img src='/static/img/add.png' alt="add game"></a>
+            <a class="navbar-brand" href="http://localhost:8080/my_games"><img src='/static/img/heart.png' alt=" my games"></a>
+            <a class="navbar-brand" href="http://localhost:8080/about_us"><img src='/static/img/menu.png' alt="menu"></a>
+         </nav>
+      </footer>
+      <script src="{{url_for('static', filename='js/app.js')}}"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+   </body>
 </html>
